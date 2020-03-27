@@ -15,7 +15,7 @@ NLP and you'll be able to understand modern research papers in this
 field, and you'll have some practical experience coding up some of the
 well-known models.
 
-See also a [separate page](Content.md) that describes the content of
+See also a [separate page](content.md) that describes the content of
 the course a bit more extensively.
 
 ## Course Literature
