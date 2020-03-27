@@ -14,11 +14,11 @@ In the first module, we introduce the most important building blocks used in mod
 
 ## Lecture 2
 
-**Form:** Self-study, before 31 March, 10:15
+**Form:** Self-study
 
 * Basic linguistics, annotation for NLP
 * Introduction to text classification [[slides](slides/marco-03.pdf)] [[video](https://youtu.be/3yeOoKhiy8A)]
-* Evaluation of text classification systems [[slides](slides/marco-04.pdf)] [[video](https://youtu.be/YPq1Ztr-AAI)]
+* Evaluation of text classifiers [[slides](slides/marco-04.pdf)] [[video](https://youtu.be/YPq1Ztr-AAI)]
 
 **Reading:** Eisenstein, sections 2.1, 2.3, 2.5, 2.6; chapter 4
 
@@ -30,7 +30,7 @@ In the first module, we introduce the most important building blocks used in mod
 
 ## Lecture 3
 
-**Form:** Self-study, before Exercise 2
+**Form:** Self-study
 
 * Introduction to representations: bag-of-words [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)]
 * Introduction to embeddings [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_2.pdf)] [[video](https://youtu.be/LLUjsmuEgk8)]

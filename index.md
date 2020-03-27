@@ -53,6 +53,8 @@ In the first module, we introduce the most important building blocks
 used in modern NLP architectures. We will also consider one of the
 most fundamental NLP tasks: text categorization.
 
+[Detailed information about Module 1](module1.html)
+
 ### Module 2: Structured prediction problems in NLP
 
 In the second module, we will focus on NLP tasks where the goal is to
