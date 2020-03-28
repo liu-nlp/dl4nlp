@@ -6,9 +6,9 @@ In the first module, we introduce the most important building blocks used in mod
 
 **Form:** Scheduled, 30 March, 13:15–14:00, Zoom
 
-* Welcome. Practical matters
-* Capsule introduction to NLP [[slides](slides/marco-01.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
+* Welcome! Practical matters, assessment
 * Overview of the content of the course
+* Capsule introduction to NLP [[slides](slides/marco-01.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
 
 **Reading:** Eisenstein, chapter 1
 
@@ -26,13 +26,13 @@ In the first module, we introduce the most important building blocks used in mod
 
 **Form:** Scheduled, 31 March, 10:15–12:00, Zoom
 
-* Working with text practically [[notebook](notebooks/exercise1.ipynb)]
+* Working with text practically
 
 ## Lecture 3
 
 **Form:** Self-study
 
-* Introduction to representations: bag-of-words [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)]
+* Representing documents for neural networks [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)]
 * Introduction to embeddings [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_2.pdf)] [[video](https://youtu.be/LLUjsmuEgk8)]
-* Continuous bag of words [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_3.pdf)] [[video](https://youtu.be/MOcGoA3Fbi8)]
+* Continuous bag-of-words representations [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_3.pdf)] [[video](https://youtu.be/MOcGoA3Fbi8)]
 * Examples [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)]
