@@ -2,6 +2,8 @@
 
 In the first module, we introduce the most important building blocks used in modern NLP architectures. We will also consider one of the most fundamental NLP tasks: text categorization.
 
+This module assumes that you have some previous experience in machine learning and particularly with neural networks. If you feel that you need a recap, chapters 1&ndash;7 in Goldberg's book give a good introduction.
+
 ## Lecture 1
 
 **Form:** Scheduled, 30 March, 13:15–14:00, Zoom
@@ -35,4 +37,6 @@ In the first module, we introduce the most important building blocks used in mod
 * Representing documents for neural networks [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)]
 * Introduction to embeddings [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_2.pdf)] [[video](https://youtu.be/LLUjsmuEgk8)]
 * Continuous bag-of-words representations [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_3.pdf)] [[video](https://youtu.be/MOcGoA3Fbi8)]
-* Examples [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)]
+* Examples [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)] [[colab](https://drive.google.com/file/d/1VLIAYXSoLN99BwS9CUTJYS7caazBVORF/view?usp=sharing)] [[video](https://youtu.be/ZEYESgSR29o)]
+
+**Reading:** Goldberg, chapter 8; [Joulin et al. (2017)](https://aclweb.org/anthology/E17-2068)
