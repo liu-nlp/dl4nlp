@@ -2,6 +2,8 @@
 
 In the first module, we introduce the most important building blocks used in modern NLP architectures. We will also consider one of the most fundamental NLP tasks: text categorization.
 
+This module assumes that you have some previous experience in machine learning and particularly with neural networks. If you feel that you need a recap, chapters 1&ndash;7 in Goldberg's book give a good introduction.
+
 ## Lecture 1
 
 **Form:** Scheduled, 30 March, 13:15–14:00, Zoom
