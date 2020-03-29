@@ -4,11 +4,11 @@ In the first module, we introduce the most important building blocks used in mod
 
 ## Review
 
-We assume that each of you has some background knowledge in machine learning and neural networks and that you have had some practical exposure to PyTorch. If you need to brush up this up a bit, then you may want to look at the following background/review material:
+We assume that you have background knowledge in machine learning and neural networks and practical exposure to PyTorch. If you need to brush up this up a bit, then you can look at the following background/review material:
 
 * Machine learning basics, deep feedforward networks [[playlist](https://www.youtube.com/playlist?list=PLvWwkcdbWwLWq2H9Zs1Ze91oE0kJN8OD_)]
 * PyTorch 60 Minute Blitz [[tutorial](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)]
-* Neural models with PyTorch: Linear regression and handwritten digit recognition [[videos](https://www.youtube.com/watch?v=XqUCkf7Muuw&list=PLvWwkcdbWwLVi7Nb9RK410ApKdHsHhxtO&index=3&t=0s)] [[notebook](background/NeuralModelsWithPyTorch.ipynb)] [[housing prices data file](background/portland.csv)]
+* Neural models with PyTorch [[videos](https://www.youtube.com/watch?v=XqUCkf7Muuw&list=PLvWwkcdbWwLVi7Nb9RK410ApKdHsHhxtO&index=3&t=0s)] [[notebook and data](https://github.com/liu-nlp/dl4nlp/tree/master/background)]
 
 **Reading:** Goldberg, chapter 1–7 (review)
 
