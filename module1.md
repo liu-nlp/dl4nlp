@@ -26,7 +26,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Self-study
 
-* Essentials of linguistics [[slides](slides/slides-121.pdf)] [[video]()]
+* Essentials of linguistics [[slides](slides/slides-121.pdf)] [[video](https://youtu.be/riYFhZj_CMg)]
 * Introduction to text classification [[slides](slides/slides-122.pdf)] [[video](https://youtu.be/3yeOoKhiy8A)]
 * Evaluation of text classifiers [[slides](slides/slides-123.pdf)] [[video](https://youtu.be/YPq1Ztr-AAI)]
 
