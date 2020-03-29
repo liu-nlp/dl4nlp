@@ -2,7 +2,15 @@
 
 In the first module, we introduce the most important building blocks used in modern NLP architectures. We will also consider one of the most fundamental NLP tasks: text categorization.
 
-This module assumes that you have some previous experience in machine learning and particularly with neural networks. If you feel that you need a recap, chapters 1&ndash;7 in Goldberg's book give a good introduction.
+## Review
+
+We assume that each of you has some background knowledge in machine learning and neural networks and that you have had some practical exposure to PyTorch. If you need to brush up this up a bit, then you may want to look at the following background/review material:
+
+* Machine learning basics, deep feedforward networks [[playlist](https://www.youtube.com/playlist?list=PLvWwkcdbWwLWq2H9Zs1Ze91oE0kJN8OD_)]
+* PyTorch 60 Minute Blitz [[tutorial](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)]
+* Neural models with PyTorch: Linear regression and handwritten digit recognition [[videos](https://www.youtube.com/watch?v=XqUCkf7Muuw&list=PLvWwkcdbWwLVi7Nb9RK410ApKdHsHhxtO&index=3&t=0s)] [[notebook](background/NeuralModelsWithPyTorch.ipynb)] [[housing prices data file](background/portland.csv)]
+
+**Reading:** Goldberg, chapter 1–7 (review)
 
 ## Lecture 1
 
@@ -10,7 +18,7 @@ This module assumes that you have some previous experience in machine learning a
 
 * Welcome! Practical matters, assessment
 * Overview of the content of the course
-* Capsule introduction to NLP [[slides](slides/marco-01.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
+* Capsule introduction to NLP [[slides](slides/slides-111.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
 
 **Reading:** Eisenstein, chapter 1
 
@@ -18,9 +26,9 @@ This module assumes that you have some previous experience in machine learning a
 
 **Form:** Self-study
 
-* Basic linguistics, annotation for NLP
-* Introduction to text classification [[slides](slides/marco-03.pdf)] [[video](https://youtu.be/3yeOoKhiy8A)]
-* Evaluation of text classifiers [[slides](slides/marco-04.pdf)] [[video](https://youtu.be/YPq1Ztr-AAI)]
+* Essentials of linguistics [[slides](slides/slides-121.pdf)] [[video]()]
+* Introduction to text classification [[slides](slides/slides-122.pdf)] [[video](https://youtu.be/3yeOoKhiy8A)]
+* Evaluation of text classifiers [[slides](slides/slides-123.pdf)] [[video](https://youtu.be/YPq1Ztr-AAI)]
 
 **Reading:** Eisenstein, sections 2.1, 2.3, 2.5, 2.6; chapter 4
 
