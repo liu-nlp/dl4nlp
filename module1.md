@@ -84,3 +84,8 @@ We assume that you have background knowledge in machine learning and neural netw
 * Pre-training deep models (ELMo, BERT)
 
 ## Exercise 4
+
+## Programming assignment
+
+[The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2020/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
+
