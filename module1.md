@@ -14,7 +14,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Lecture 1
 
-**Form:** Scheduled, 30 March, 13:15–14:00, Zoom
+**Form:** Scheduled, 30 March, 13:15–14:00, [Zoom](https://liu-se.zoom.us/j/417912565)
 
 * Welcome! Practical matters, assessment
 * Overview of the content of the course
@@ -88,4 +88,4 @@ We assume that you have background knowledge in machine learning and neural netw
 ## Programming assignment
 
 [The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2020/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
-
+     

@@ -6,6 +6,10 @@ Kuhlmann](https://www.ida.liu.se/~marku61/) and [Richard
 Johansson](http://www.cse.chalmers.se/~richajo/).  The course will run
 as a distance course in the second half of the Spring term of 2020.
 
+## News
+
+* The Zoom meeting introducing the course is available [here](https://liu-se.zoom.us/j/417912565).
+
 ## Goals
 
 The goal is to introduce machine learning techniques used in modern
