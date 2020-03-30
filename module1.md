@@ -14,7 +14,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Lecture 1
 
-**Form:** Scheduled, 30 March, 13:15–14:00, [Zoom](https://liu-se.zoom.us/j/417912565)
+**Form:** Scheduled, 30 March, 13:15–14:00, [Zoom](https://liu-se.zoom.us/j/417912565) [[slides](slides/intro.pdf)]
 
 * Welcome! Practical matters, assessment
 * Overview of the content of the course
