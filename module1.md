@@ -36,7 +36,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Scheduled, 31 March, 10:15–12:00, [Zoom](https://liu-se.zoom.us/j/482622664)
 
-* Working with text [[github](https://github.com/liu-nlp/dl4nlp/tree/master/exercise1)]
+* Working with text [[notebook and data](https://github.com/liu-nlp/dl4nlp/tree/master/exercise1)]
 
 ## Lecture 3
 
