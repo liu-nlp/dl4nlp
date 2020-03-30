@@ -14,7 +14,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Lecture 1
 
-**Form:** Scheduled, 30 March, 13:15–14:00, Zoom
+**Form:** Scheduled, 30 March, 13:15–14:00, [Zoom](https://liu-se.zoom.us/j/417912565) [[slides](slides/intro.pdf)]
 
 * Welcome! Practical matters, assessment
 * Overview of the content of the course
@@ -48,3 +48,44 @@ We assume that you have background knowledge in machine learning and neural netw
 * Examples [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)] [[colab](https://drive.google.com/file/d/1VLIAYXSoLN99BwS9CUTJYS7caazBVORF/view?usp=sharing)] [[video](https://youtu.be/ZEYESgSR29o)]
 
 **Reading:** Goldberg, chapter 8; [Joulin et al. (2017)](https://aclweb.org/anthology/E17-2068)
+
+## Exercise 2
+
+## Lecture 4
+
+**Form:** Self-study
+
+* Pre-training word embedding models
+* Applying pre-trained embedding models
+
+## Exercise 3
+
+## Lecture 5
+
+**Form:** Self-study
+
+* Convolutional neural networks
+* Recurrent neural networks
+
+## Lecture 6
+
+**Form:** Self-study
+
+* More recurrent architectures
+* Attention models
+* Language models
+
+## Lecture 7
+
+**Form:** Self-study
+
+* Transfer learning in NLP
+* Transformer models
+* Pre-training deep models (ELMo, BERT)
+
+## Exercise 4
+
+## Programming assignment
+
+[The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2020/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
+     
