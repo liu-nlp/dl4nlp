@@ -14,10 +14,10 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Lecture 1
 
-**Form:** Scheduled, 30 March, 13:15–14:00, [Zoom](https://liu-se.zoom.us/j/417912565) [[slides](slides/intro.pdf)]
+**Form:** Scheduled, 30 March, 13:15–14:00, [Zoom](https://liu-se.zoom.us/j/417912565)
 
-* Welcome! Practical matters, assessment
-* Overview of the content of the course
+* Welcome!
+* Course overview, practical matters [[slides](slides/intro.pdf)]
 * Capsule introduction to NLP [[slides](slides/slides-111.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
 
 **Reading:** Eisenstein, chapter 1
@@ -34,9 +34,9 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Exercise 1
 
-**Form:** Scheduled, 31 March, 10:15–12:00, Zoom
+**Form:** Scheduled, 31 March, 10:15–12:00, [Zoom](https://liu-se.zoom.us/j/482622664)
 
-* Working with text practically
+* Working with text [[github](https://github.com/liu-nlp/dl4nlp/tree/master/exercise1)]
 
 ## Lecture 3
 
