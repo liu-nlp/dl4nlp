@@ -53,7 +53,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Scheduled, TBA, Zoom
 
-* [[Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html)]
+* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html)
 
 ## Lecture 4
 
