@@ -60,7 +60,7 @@ We assume that you have background knowledge in machine learning and neural netw
 **Form:** Self-study
 
 * Pre-training word embedding models: introduction [[slides](slides/slides-141.pdf)] [[video](https://youtu.be/6AozaHmWugs)]
-* The SGNS algorithm
+* The SGNS algorithm [[slides](slides/slides-142.pdf)] [[video](https://youtu.be/R5EhgHz2S5w)]
 * Evaluation and interpretation of word embeddings
 * More training algorithms for word embeddings
 * Research outlook
