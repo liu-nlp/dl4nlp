@@ -65,6 +65,8 @@ We assume that you have background knowledge in machine learning and neural netw
 * More training algorithms for word embeddings
 * Research outlook
 
+**Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
+
 ## Exercise 3
 
 ## Lecture 5
