@@ -73,7 +73,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Self-study
 
-* Convolutional neural networks
+* Convolutional neural networks [[slides](slides/slides-151.pdf)] [[video](https://youtu.be/8sUa97gYNDE)]
 * Recurrent neural networks
 
 ## Lecture 6
