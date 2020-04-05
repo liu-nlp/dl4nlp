@@ -51,7 +51,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Exercise 2
 
-**Form:** Scheduled, TBA, Zoom
+**Form:** Scheduled, 9 april, 10:15–12:00, Zoom
 
 * [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html)
 
