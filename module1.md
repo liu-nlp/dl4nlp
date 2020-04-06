@@ -75,7 +75,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 * Convolutional neural networks [[slides](slides/slides-151.pdf)] [[video](https://youtu.be/8sUa97gYNDE)]
 * Recurrent neural networks [[slides](slides/slides-152.pdf)] [[video](https://youtu.be/cswaoJvJass)]
-* The LSTM architecture
+* The LSTM architecture [[slides](slides/slides-153.pdf)] [[video](https://youtu.be/YVvW9i_BhEg)]
 
 ## Lecture 6
 
