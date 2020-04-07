@@ -14,7 +14,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Lecture 1
 
-**Form:** Scheduled, 30 March, 13:15–14:00, [Zoom](https://liu-se.zoom.us/j/417912565)
+**Form:** Scheduled, 30 March, 13:15–14:00, Zoom
 
 * Welcome!
 * Course overview, practical matters [[slides](slides/intro.pdf)] [[video](https://www.ida.liu.se/~marku61/tmp/introduction.mp4)]
@@ -34,7 +34,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Exercise 1
 
-**Form:** Scheduled, 31 March, 10:15–12:00, [Zoom](https://liu-se.zoom.us/j/482622664)
+**Form:** Scheduled, 31 March, 10:15–12:00, Zoom
 
 * Working with text [[notebook and data](https://github.com/liu-nlp/dl4nlp/tree/master/exercise1)]
 
