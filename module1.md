@@ -63,7 +63,7 @@ We assume that you have background knowledge in machine learning and neural netw
 * The SGNS algorithm [[slides](slides/slides-142.pdf)] [[video](https://youtu.be/R5EhgHz2S5w)]
 * Evaluation and interpretation of word embeddings [[slides](slides/slides-143.pdf)] [[video](https://youtu.be/gcWF3AIUtJ8)]
 * More training algorithms for word embeddings [[slides](slides/slides-144.pdf)] [[video](https://youtu.be/TMHI-Dk3c44)]
-* Research outlook
+* Perspectives [[slides](slides/slides-145.pdf)] [[video](https://youtu.be/XxI7fb7aabU)]
 
 **Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
 
