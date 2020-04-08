@@ -64,7 +64,9 @@ We assume that you have background knowledge in machine learning and neural netw
 * Evaluation and interpretation of word embeddings [[slides](slides/slides-143.pdf)] [[video](https://youtu.be/gcWF3AIUtJ8)]
 * More training algorithms for word embeddings [[slides](slides/slides-144.pdf)] [[video](https://youtu.be/TMHI-Dk3c44)]
 * Perspectives [[slides](slides/slides-145.pdf)] [[video](https://youtu.be/XxI7fb7aabU)]
-* Example: using Gensim [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Word%20embeddings%20in%20Gensim.ipynb)]
+
+**Examples:**
+* Using Gensim [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Word%20embeddings%20in%20Gensim.ipynb)]
 
 **Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
 
