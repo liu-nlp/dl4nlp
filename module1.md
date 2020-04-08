@@ -66,7 +66,7 @@ We assume that you have background knowledge in machine learning and neural netw
 * Perspectives [[slides](slides/slides-145.pdf)] [[video](https://youtu.be/XxI7fb7aabU)]
 
 **Examples:**
-* Using Gensim [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Word%20embeddings%20in%20Gensim.ipynb)]
+* Using Gensim [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Word%20embeddings%20in%20Gensim.ipynb)] [[colab](https://drive.google.com/file/d/1CE37dcmGRIbUtuAoTruzzuGAnboeyaVh/view?usp=sharing)]
 
 **Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
 
