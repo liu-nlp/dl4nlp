@@ -53,7 +53,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Scheduled, 9 April, 10:15–12:00, Zoom
 
-* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html)
+* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[solution](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/Exercise%201.2%20-%20solution.ipynb)]
 
 ## Lecture 4
 
