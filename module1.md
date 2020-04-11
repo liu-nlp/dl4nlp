@@ -95,9 +95,10 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Self-study
 
-* Transfer learning in NLP
-* Transformer models
-* Pre-training deep models (ELMo, BERT)
+* Transfer learning in NLP: static and contextualized representations [[slides](slides/slides-171.pdf)] [[video](https://youtu.be/2Lo1U-O9Ta4)]
+* Language modeling for pre-training
+* The Transformer
+* Pre-trained Transformer models
 
 ## Exercise 4
 
