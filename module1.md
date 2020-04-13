@@ -100,6 +100,10 @@ We assume that you have background knowledge in machine learning and neural netw
 * The Transformer
 * Pre-trained Transformer models
 
+**Reading:**
+* [NLP's ImageNet moment has arrived](https://ruder.io/nlp-imagenet/)
+* [The illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+
 ## Exercise 4
 
 ## Programming assignment
