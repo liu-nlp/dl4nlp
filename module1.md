@@ -96,7 +96,7 @@ We assume that you have background knowledge in machine learning and neural netw
 **Form:** Self-study
 
 * Transfer learning in NLP: static and contextualized representations [[slides](slides/slides-171.pdf)] [[video](https://youtu.be/2Lo1U-O9Ta4)]
-* Language modeling for pre-training
+* Language models for pre-training [[slides](slides-172.pdf)] [[video](https://youtu.be/GFG38b0CKS0)]
 * The Transformer
 * Pre-trained Transformer models
 
