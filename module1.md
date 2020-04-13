@@ -103,6 +103,8 @@ We assume that you have background knowledge in machine learning and neural netw
 **Reading:**
 * [NLP's ImageNet moment has arrived](https://ruder.io/nlp-imagenet/)
 * [The illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+* [The illustrated BERT, ELMo, and co.](http://jalammar.github.io/illustrated-bert/)
+* Papers: [Peters et al. (2018)](https://arxiv.org/abs/1802.05365), [Devlin et al. (2019)](https://arxiv.org/abs/1810.04805)
 
 ## Exercise 4
 
