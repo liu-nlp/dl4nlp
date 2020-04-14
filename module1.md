@@ -36,7 +36,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Scheduled, 31 March, 10:15–12:00, Zoom
 
-* Working with text [[notebook and data](https://github.com/liu-nlp/dl4nlp/tree/master/exercise1)] [[video](https://youtu.be/WgExvhBMHUU)]
+* Working with text [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise1)] [[video](https://youtu.be/WgExvhBMHUU)]
 
 ## Lecture 3
 
@@ -53,7 +53,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Scheduled, 9 April, 10:15–12:00, Zoom
 
-* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[solution](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/Exercise%201.2%20-%20solution.ipynb)]
+* Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] [[solution](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/Exercise%201.2%20-%20solution.ipynb)]
 
 ## Lecture 4
 
