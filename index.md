@@ -62,6 +62,8 @@ predict a structured object such a sequence or a tree. Applications
 include well-known use cases such as named entity recognition and
 syntactic parsing.
 
+[Detailed information about Module 2](module2.md)
+
 ### Module 3: Generation problems in NLP and research outlook
 
 In the third module, we consider NLP tasks where we want to generate a
