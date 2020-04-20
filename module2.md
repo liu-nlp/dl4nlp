@@ -16,89 +16,74 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Self-study
 
-* Essentials of linguistics [[slides](slides/slides-121.pdf)] [[video](https://youtu.be/riYFhZj_CMg)]
-* Introduction to text classification [[slides](slides/slides-122.pdf)] [[video](https://youtu.be/3yeOoKhiy8A)]
-* Evaluation of text classifiers [[slides](slides/slides-123.pdf)] [[video](https://youtu.be/YPq1Ztr-AAI)]
+* Introduction to tagging, bracketing, segmentation tasks
+* Simple labeling architectures
+* Word and character-based representations
 
-**Reading:** Eisenstein, sections 2.1, 2.3, 2.5, 2.6; chapter 4
+**Reading:** 
 
 ## Exercise 1
 
-**Form:** Scheduled, 31 March, 10:15–12:00, Zoom
+**Form:** Zoom, date and time TBA
 
-* Working with text [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise1)] [[video](https://youtu.be/WgExvhBMHUU)]
+* Named entity recognition 1
 
 ## Lecture 3
 
 **Form:** Self-study
 
-* Representing documents for neural networks [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)]
-* Introduction to embeddings [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_2.pdf)] [[video](https://youtu.be/LLUjsmuEgk8)]
-* Continuous bag-of-words representations [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_3.pdf)] [[video](https://youtu.be/MOcGoA3Fbi8)]
-* Examples [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)] [[colab](https://drive.google.com/file/d/1VLIAYXSoLN99BwS9CUTJYS7caazBVORF/view?usp=sharing)] [[video](https://youtu.be/ZEYESgSR29o)]
+* Labeling as structured prediction
+* Conditional random fields
+* The Viterbi algorithm
 
-**Reading:** Goldberg, chapter 8; [Joulin et al. (2017)](https://aclweb.org/anthology/E17-2068)
+**Reading:**
 
 ## Exercise 2
 
-**Form:** Scheduled, 9 April, 10:15–12:00, Zoom
+**Form:** Zoom, date and time TBA
 
-* Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] [[solution](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/Exercise%201.2%20-%20solution.ipynb)]
+* Named entity recognition 2
 
 ## Lecture 4
 
 **Form:** Self-study
 
-* Pre-training word embedding models: introduction [[slides](slides/slides-141.pdf)] [[video](https://youtu.be/6AozaHmWugs)]
-* The SGNS algorithm [[slides](slides/slides-142.pdf)] [[video](https://youtu.be/R5EhgHz2S5w)]
-* Evaluation and interpretation of word embeddings [[slides](slides/slides-143.pdf)] [[video](https://youtu.be/gcWF3AIUtJ8)]
-* More training algorithms for word embeddings [[slides](slides/slides-144.pdf)] [[video](https://youtu.be/TMHI-Dk3c44)]
-* Perspectives [[slides](slides/slides-145.pdf)] [[video](https://youtu.be/XxI7fb7aabU)]
+* Introduction to parsing
+* Transition-based parsing
+* Imitation learning
 
-**Examples**
-* Using Gensim: [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Word%20embeddings%20in%20Gensim.ipynb)] [[colab](https://drive.google.com/file/d/1CE37dcmGRIbUtuAoTruzzuGAnboeyaVh/view?usp=sharing)]
-* SGNS implementation in PyTorch: [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Skip-gram%20with%20negative%20sampling.ipynb)] [[colab](https://drive.google.com/file/d/1_ian039WL__VdYaW6PoOtcgHkdlUlsOJ/view?usp=sharing)]
-
-**Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
-
-## Exercise 3
+**Reading:** 
 
 ## Lecture 5
 
 **Form:** Self-study
 
-* Convolutional neural networks [[slides](slides/slides-151.pdf)] [[video](https://youtu.be/8sUa97gYNDE)]
-* Recurrent neural networks [[slides](slides/slides-152.pdf)] [[video](https://youtu.be/cswaoJvJass)]
-* The LSTM architecture [[slides](slides/slides-153.pdf)] [[video](https://youtu.be/YVvW9i_BhEg)]
+* Factorized parsing
+* Minimum spanning tree parsing
 
-**Reading:** Goldberg, chapters 13–15
+**Reading:** 
+
+## Discussion
+
+**Form:** Zoom, date and time TBA
+
+* Introduction to Assignment 2
 
 ## Lecture 6
 
 **Form:** Self-study
 
-* More recurrent architectures
-* Attention models
-* Language models
+* More complex structured prediction tasks
 
-## Lecture 7
+**Reading:** 
 
-**Form:** Self-study
+## Discussion
 
-* Transfer learning in NLP: static and contextualized representations [[slides](slides/slides-171.pdf)] [[video](https://youtu.be/2Lo1U-O9Ta4)]
-* Language models for pre-training [[slides](slides-172.pdf)] [[video](https://youtu.be/GFG38b0CKS0)]
-* The Transformer model [[slides](slides/slides-173.pdf)] [[video](https://youtu.be/Wtlxh2-JWq8)]
-* Pre-trained Transformer models
+**Form:** Zoom, date and time TBA
 
-**Reading:**
-* [NLP's ImageNet moment has arrived](https://ruder.io/nlp-imagenet/)
-* [The illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
-* [The illustrated BERT, ELMo, and co.](http://jalammar.github.io/illustrated-bert/)
-* Papers: [Peters et al. (2018)](https://arxiv.org/abs/1802.05365), [Devlin et al. (2019)](https://arxiv.org/abs/1810.04805)
-
-## Exercise 4
+* Project pitch
 
 ## Programming assignment
 
-[The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2020/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
+The second programming assignment is dedicated to the task of *dependency parsing*.
      
