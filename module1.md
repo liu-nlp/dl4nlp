@@ -71,10 +71,6 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
 
-## Exercise 3
-
-**Form:** Scheduled, 23 April, 15:15–17:00, Zoom.
-
 ## Lecture 5
 
 **Form:** Self-study
@@ -92,6 +88,12 @@ We assume that you have background knowledge in machine learning and neural netw
 * More recurrent architectures
 * Attention models
 * Language models
+
+## Exercise 3
+
+**Form:** Scheduled, 23 April, 15:15–17:00, Zoom.
+
+* Language modelling [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)]
 
 ## Lecture 7
 
