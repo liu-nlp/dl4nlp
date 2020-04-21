@@ -73,6 +73,8 @@ We assume that you have background knowledge in machine learning and neural netw
 
 ## Exercise 3
 
+**Form:** Scheduled, 23 April, 15:15–17:00, Zoom.
+
 ## Lecture 5
 
 **Form:** Self-study
@@ -106,7 +108,9 @@ We assume that you have background knowledge in machine learning and neural netw
 * [The illustrated BERT, ELMo, and co.](http://jalammar.github.io/illustrated-bert/)
 * Papers: [Peters et al. (2018)](https://arxiv.org/abs/1802.05365), [Devlin et al. (2019)](https://arxiv.org/abs/1810.04805)
 
-## Exercise 4
+## Discussion about the assignment
+
+**Form:** Scheduled, 17 April, 16:00–17:00, Zoom.
 
 ## Programming assignment
 
