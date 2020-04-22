@@ -92,17 +92,11 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Reading:**  Eisenstein, chapter 6
 
-## Exercise 3
-
-**Form:** Scheduled, 23 April, 15:15–17:00, Zoom.
-
-* Language modelling [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)]
-
 ## Lecture 7
 
 **Form:** Self-study
 * Transfer learning in NLP: static and contextualized representations [[slides](slides/slides-171.pdf)] [[video](https://youtu.be/2Lo1U-O9Ta4)]
-* Language models for pre-training [[slides](slides-172.pdf)] [[video](https://youtu.be/GFG38b0CKS0)]
+* Language models for pre-training [[slides](slides/slides-172.pdf)] [[video](https://youtu.be/GFG38b0CKS0)]
 * The Transformer model [[slides](slides/slides-173.pdf)] [[video](https://youtu.be/Wtlxh2-JWq8)]
 * Pre-trained Transformer models [[slides](slides/slides-174.pdf)] [[video](https://youtu.be/BEYeBd5Gxc0)]
 
@@ -115,11 +109,14 @@ We assume that you have background knowledge in machine learning and neural netw
 * [The illustrated BERT, ELMo, and co.](http://jalammar.github.io/illustrated-bert/)
 * Papers: [Peters et al. (2018)](https://arxiv.org/abs/1802.05365), [Devlin et al. (2019)](https://arxiv.org/abs/1810.04805)
 
-## Discussion about the assignment
+## Exercise 3
 
-**Form:** Scheduled, 17 April, 16:00–17:00, Zoom.
+**Form:** Scheduled, 23 April, 15:15–17:00, Zoom.
+
+* Language modelling [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)]
 
 ## Programming assignment
 
 [The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2020/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
-     
+
+We have a scheduled QA session about the assignment: 17 April, 16:00–17:00, Zoom.
