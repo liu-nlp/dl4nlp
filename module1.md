@@ -104,7 +104,7 @@ We assume that you have background knowledge in machine learning and neural netw
 * Pre-trained Transformer models [[slides](slides/slides-174.pdf)] [[video](https://youtu.be/BEYeBd5Gxc0)]
 
 **Examples:**
-* Document classification using BERT [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_7/Document%20classification%20with%20BERT.ipynb)] [colab]
+* Document classification using BERT [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_7/Document%20classification%20with%20BERT.ipynb)] [[colab](https://drive.google.com/file/d/1SS_IB07kcbRGdIhbQCGMwd70TDPh9eqH/view?usp=sharing)]
 
 **Reading:**
 * [NLP's ImageNet moment has arrived](https://ruder.io/nlp-imagenet/)
