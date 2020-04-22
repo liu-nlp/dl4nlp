@@ -85,9 +85,12 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Self-study
 
-* More recurrent architectures
+* Language modelling [[slides](slides/slides-161.pdf)] [[video](https://youtu.be/EeVQzalQp2I)]
+* N-gram language models [[slides](slides/slides-162.pdf)] [[video](https://youtu.be/QcZpgBzQlBg)]
+* Neural language models
 * Attention models
-* Language models
+
+**Reading:**  Eisenstein, chapter 6
 
 ## Exercise 3
 
