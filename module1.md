@@ -98,11 +98,13 @@ We assume that you have background knowledge in machine learning and neural netw
 ## Lecture 7
 
 **Form:** Self-study
-
 * Transfer learning in NLP: static and contextualized representations [[slides](slides/slides-171.pdf)] [[video](https://youtu.be/2Lo1U-O9Ta4)]
 * Language models for pre-training [[slides](slides-172.pdf)] [[video](https://youtu.be/GFG38b0CKS0)]
 * The Transformer model [[slides](slides/slides-173.pdf)] [[video](https://youtu.be/Wtlxh2-JWq8)]
 * Pre-trained Transformer models [[slides](slides/slides-174.pdf)] [[video](https://youtu.be/BEYeBd5Gxc0)]
+
+**Examples:**
+* Document classification using BERT [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_7/Document%20classification%20with%20BERT.ipynb)] [colab]
 
 **Reading:**
 * [NLP's ImageNet moment has arrived](https://ruder.io/nlp-imagenet/)
