@@ -113,7 +113,7 @@ We assume that you have background knowledge in machine learning and neural netw
 
 **Form:** Scheduled, 23 April, 15:15–17:00, Zoom.
 
-* Language modelling [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)]
+* Language modelling [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)] [[video](https://youtu.be/UPmQQwfNKfg)] [[solution](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)]
 
 ## Programming assignment
 
