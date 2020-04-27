@@ -87,10 +87,14 @@ We assume that you have background knowledge in machine learning and neural netw
 
 * Language modelling [[slides](slides/slides-161.pdf)] [[video](https://youtu.be/EeVQzalQp2I)]
 * N-gram language models [[slides](slides/slides-162.pdf)] [[video](https://youtu.be/QcZpgBzQlBg)]
-* Neural language models
-* Attention models
+* Attention [[slides](slides/slides-163.pdf)] [[video](https://youtu.be/Ft1J79L11oU)]
 
-**Reading:**  Eisenstein, chapter 6
+**Reading:**
+
+* Eisenstein, chapter 6
+* [Cheng et al. (2016)](https://www.aclweb.org/anthology/D16-1053/)
+* [Vaswani et al. (2017)](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)
+* [Serrano and Smith (2019)](https://www.aclweb.org/anthology/D18-1216/)
 
 ## Lecture 7
 
