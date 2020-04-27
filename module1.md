@@ -92,9 +92,7 @@ We assume that you have background knowledge in machine learning and neural netw
 **Reading:**
 
 * Eisenstein, chapter 6
-* [Cheng et al. (2016)](https://www.aclweb.org/anthology/D16-1053/)
-* [Vaswani et al. (2017)](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)
-* [Serrano and Smith (2019)](https://www.aclweb.org/anthology/D18-1216/)
+* Papers on attention: [Cheng et al. (2016)](https://www.aclweb.org/anthology/D16-1053/), [Vaswani et al. (2017)](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf), [Serrano and Smith (2019)](https://www.aclweb.org/anthology/D18-1216/)
 
 ## Lecture 7
 
