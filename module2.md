@@ -16,7 +16,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Self-study
 
-* Introduction to tagging, bracketing, segmentation tasks
+* Introduction to sequence prediction tasks [slides] [[video](https://youtu.be/VCORDrz-Tzs)]
 * Simple labeling architectures
 * Word and character-based representations
 
