@@ -16,7 +16,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Self-study
 
-* Introduction to sequence prediction tasks [slides] [[video](https://youtu.be/VCORDrz-Tzs)]
+* Introduction to sequence prediction tasks [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)]
 * Simple labeling architectures
 * Word and character-based representations
 
