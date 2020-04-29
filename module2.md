@@ -4,11 +4,9 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 ## Lecture 1
 
-**Form:** <!--Scheduled ???-->
+**Form:** Zoom meeting, Monday, 4 May, 10:15–12
 
-* Overview of structured prediction problems
-* Learning and search
-* Typical problems, application examples
+* Introduction to the module
 
 <!--**Reading:** Eisenstein, chapter 1-->
 
