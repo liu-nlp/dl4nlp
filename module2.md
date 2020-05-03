@@ -6,9 +6,9 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Zoom meeting, Monday, 4 May, 10:15–12
 
-* Introduction to the module
+* Introduction to the module [[slides](slides/module2.pdf)]
 
-<!--**Reading:** Eisenstein, chapter 1-->
+**Reading:** Eisenstein, chapter 1
 
 ## Lecture 2
 
