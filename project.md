@@ -43,5 +43,5 @@ If you need help deciding on a topic, here are a few suggestions. Some of these 
 * Reproducing the results of your seminar paper. The difficulty of this will obviously depend on which paper you have selected.
 * Shared tasks. Every year, several NLP competitions are arranged at the [SemEval](http://alt.qcri.org/semeval2020/index.php?id=tasks) conference. Participate in one of the 2020 tasks or get the data from some task from previous years. Additionally, there are shared tasks organized by CoNLL, BioNLP and other conferences, where datasets can often be accessed easily. 
 
-Alternatively, if you don't have an idea and you don't like the suggested topics, just talk to Richard. 
+Alternatively, if you don't have an idea and you don't like the suggested topics, just talk to Marco and Richard. 
 
