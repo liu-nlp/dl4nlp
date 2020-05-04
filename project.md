@@ -26,7 +26,7 @@ In your talk, the most important thing is to describe the task that you will wor
 
 # The report
 
-When writing your report, please use one of the these style templates (available for Word and LaTeX). The text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is *June 19*.
+When writing your report, please use one of [these style templates](http://www.cse.chalmers.se/~richajo/nlp2019/files/templates.zip) (available for Word and LaTeX). The text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is *June 19*.
 
 # Finding a topic
 
@@ -34,7 +34,7 @@ You can work on any project that is small and manageable enough for a short proj
 
 If you need help deciding on a topic, here are a few suggestions. Some of these are very easy and some more challenging, and this list is not sorted by the difficulty level.
 
-* Adapting an assignment or lecture demo. Start from one of the lab assignments or lecture demos and change it to something that is interesting for you. Maybe change assignment 1 to WSD for another language or another dataset? Maybe change assignment 2A to another entity recognition task or a part-of-speech tagging task?
+* Adapting an assignment or lecture demo. Start from one of the lab assignments or lecture demos and change it to something that is interesting for you. Maybe change assignment 1 to WSD for another language or another dataset? Maybe change the named entity exercise to another entity recognition task or a part-of-speech tagging task?
 * Comparing representations for an application. Select some NLP application, either one we saw during the lectures or something where you can find the code online. Investigate how various types of text representations affect the application's performance. For instance, you could compare standard word embeddings, ELMo, BERT, and other representations.
 * Using reinforcement learning for parsing. Train a transition-based dependency parser (or some other similar application) using reinforcement learning, for instance by following the approach described by [Fried and Klein (2018)](https://www.aclweb.org/anthology/P18-2075.pdf).
 * Caption generation. Build a system that generates descriptions of images.
