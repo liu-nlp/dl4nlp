@@ -10,15 +10,19 @@ In the project work, your task will be to
 * evaluate your system
 * write up a report about your results
 
-The projects would normally be done either individually or in groups of up to three.
+The projects should normally be carried out individually. If you want to collaborate, please ask us for permission.
 
 # Preliminary project description
 
 Please submit a short text that describes what you intend to work on. For suggestions of topics, see below.
 
-The text should include a project title and about 1 page giving a rough outline of how you intend to work. If you have found any related work or relevant dataset, this is useful information to include. The deadline for this preliminary description is *May 18*.
+The text should include a project title and about 1 page giving a rough outline of how you intend to work. If you have found any related work or relevant dataset, this is useful information to include. The deadline for this preliminary description is *May 18*. We will send you our comments on *May 20*.
 
 # Project pitch
+
+In a Zoom session on May 25 or 26, each project idea will be presented in a 5-minute talk.
+
+In your talk, the most important thing is to describe the task that you will work on. You may add a couple of examples to make the task a bit more understandable to someone who might have never heard about it before. In addition, if you have found a dataset, you may want to mention a few details about it.
 
 # The report
 
