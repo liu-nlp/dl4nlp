@@ -16,7 +16,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 * Introduction to sequence prediction tasks [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)]
 * Basic models for sequence labeling [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)]
-* Word and character-based representations
+* Subword representations [[slides](slides/slides-223.pdf)] [[video](https://youtu.be/1ZDpYspEM_M)]
 
 **Reading:** 
 
