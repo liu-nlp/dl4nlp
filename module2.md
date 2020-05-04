@@ -83,5 +83,4 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 ## Programming assignment
 
-The second programming assignment is dedicated to the task of *dependency parsing*.
-     
+[The second programming assignment](assignment2/assignment2.ipynb) is dedicated to the task of *dependency parsing*.
