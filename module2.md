@@ -18,7 +18,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 * Basic models for sequence labeling [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)]
 * Subword representations [[slides](slides/slides-223.pdf)] [[video](https://youtu.be/1ZDpYspEM_M)]
 
-**Reading:** 
+**Reading:** Eisenstein, 7.1, 7.6, 8
 
 ## Exercise 1
 
