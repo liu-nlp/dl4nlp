@@ -22,7 +22,7 @@ The text should include a project title and about 1 page giving a rough outline 
 
 In a Zoom session on May 25 or 26, each project idea will be presented in a 5-minute talk.
 
-In your talk, the most important thing is to describe the task that you will work on. You may add a couple of examples to make the task a bit more understandable to someone who might have never heard about it before. In addition, if you have found a dataset, you may want to mention a few details about it.
+In your talk, the most important thing is to describe the task that you will work on. You may add a couple of examples to make the task a bit more understandable to someone who has never heard about it before. In addition, if you have found a dataset, you may want to mention a few details about it.
 
 # The report
 
