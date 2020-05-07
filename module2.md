@@ -22,7 +22,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 ## Exercise 1
 
-**Form:** Zoom, date and time TBA
+**Form:** Zoom meeting, Monday, 11 May, 13:15–15:00
 
 * Named entity recognition 1
 
