@@ -211,7 +211,7 @@ def load_gensim_vectors(model_file, builtin=False, limit=None):
     is_cased = False
     for w in voc:
         w0 = w[0]
-        if w0.isascii() and w0.isupper():
+        if w0.isupper():
             is_cased = True
             break
     
