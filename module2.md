@@ -81,6 +81,8 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 * Project pitch
 
+* For a description of the organization of the project, see [this page](project.md).
+
 ## Programming assignment
 
 [The second programming assignment](assignment2/assignment2.ipynb) is dedicated to the task of *dependency parsing*.
