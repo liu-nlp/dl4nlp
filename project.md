@@ -34,7 +34,7 @@ You can work on any project that is small and manageable enough for a short proj
 
 If you need help deciding on a topic, here are a few suggestions. Some of these are very easy and some more challenging, and this list is not sorted by the difficulty level.
 
-* **Adapting an assignment or exercise**. Start from one of the lab assignments or lecture demos and change it to something that is interesting for you. Maybe change assignment 1 to WSD for another language or another dataset? Maybe change the named entity exercise to another entity recognition task or a part-of-speech tagging task?
+* **Adapting an assignment or exercise**. Start from one of the lab assignments or lecture demos and change it to something that is interesting for you. Maybe change assignment 1 to WSD for another language or another dataset? Maybe change the named entity exercise to another entity recognition task or a part-of-speech tagging task? Can you build a translation system for your native language?
 * **Comparing representations for an application**. Select some NLP application, either one we saw during the lectures or something where you can find the code online. Investigate how various types of text representations affect the application's performance. For instance, you could compare standard word embeddings, ELMo, BERT, T5, and other representations.
 * **Caption generation**. Build a system that generates descriptions of images.
 * **Try out a benchmark**. There are some popular benchmark sets such as [GLUE](https://gluebenchmark.com/) and the more recently released [Super GLUE](https://super.gluebenchmark.com/) that are used to evaluate language understanding systems. Build a model and evaluate it on one of these benchmarks.
