@@ -26,7 +26,7 @@ In your talk, the most important thing is to describe the task that you will wor
 
 # The report
 
-When writing your report, please use one of [these style templates](http://www.cse.chalmers.se/~richajo/nlp2019/files/templates.zip) (available for Word and LaTeX). The text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is **June 19**.
+The text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is **June 19**.
 
 # Finding a topic
 
