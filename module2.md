@@ -24,7 +24,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Zoom meeting, Monday, 11 May, 13:15–15:00
 
-* Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)] [[solution](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1/Exercise\ 2.1\ solution.ipynb)]
+* Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)] [[solution](https://github.com/liu-nlp/dl4nlp/blob/master/exercise2_1/Exercise%202.1%20solution.ipynb)]
 
 ## Lecture 3
 
