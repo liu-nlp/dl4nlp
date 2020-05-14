@@ -24,15 +24,15 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Zoom meeting, Monday, 11 May, 13:15–15:00
 
-* Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)]
+* Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)] [[solution](https://github.com/liu-nlp/dl4nlp/blob/master/exercise2_1/Exercise%202.1%20solution.ipynb)]
 
 ## Lecture 3
 
 **Form:** Self-study
 
-* Labeling as structured prediction
+* Autoregressive sequence models [[slides](slides/slides-231.pdf)] [[video](https://youtu.be/V9TJMODq-rU)]
+* Factorized sequence model and the Viterbi algorithm [[slides](slides/slides-232.pdf)] [[video](https://youtu.be/C_5nfLIhMjw)]
 * Conditional random fields
-* The Viterbi algorithm
 
 **Reading:**
 
@@ -73,6 +73,8 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 **Form:** Zoom, date and time TBA
 
 * Project pitch
+
+* For a description of the organization of the project, see [this page](project.md).
 
 ## Programming assignment
 
