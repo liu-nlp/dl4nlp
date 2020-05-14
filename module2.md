@@ -46,9 +46,9 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Self-study
 
-* Introduction to parsing
+* Introduction to dependency parsing [[slides](slides/slides-241.pdf)] [[video](https://youtu.be/cx4B43sstTQ)]
 * Transition-based parsing
-* Imitation learning
+* Dynamic oracles and imitation learning
 
 **Reading:** 
 
@@ -56,8 +56,9 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Self-study
 
-* Factorized parsing
-* Minimum spanning tree parsing
+* Eisner algorithm
+* Neural architectures for dependency parsing
+* Semantic dependency parsing
 
 **Reading:** 
 
@@ -66,14 +67,6 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 **Form:** Zoom, date and time TBA
 
 * Introduction to Assignment 2
-
-## Lecture 6
-
-**Form:** Self-study
-
-* More complex structured prediction tasks
-
-**Reading:** 
 
 ## Discussion
 
