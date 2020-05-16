@@ -32,7 +32,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 * Autoregressive sequence models [[slides](slides/slides-231.pdf)] [[video](https://youtu.be/V9TJMODq-rU)]
 * Factorized sequence model and the Viterbi algorithm [[slides](slides/slides-232.pdf)] [[video](https://youtu.be/C_5nfLIhMjw)]
-* Conditional random fields
+* Conditional random fields [[slides](slides/slides-233.pdf)] [[video](https://youtu.be/8wLScZOGeRc)]
 
 **Reading:**
 
