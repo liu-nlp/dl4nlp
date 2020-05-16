@@ -47,7 +47,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 **Form:** Self-study
 
 * Introduction to dependency parsing [[slides](slides/slides-241.pdf)] [[video](https://youtu.be/cx4B43sstTQ)]
-* Transition-based parsing
+* The arc-standard algorithm [[slides](slides/slides-242.pdf)] [[video](https://youtu.be/IQC8Qy8bfG8)]
 * Dynamic oracles and imitation learning
 
 **Reading:** 
