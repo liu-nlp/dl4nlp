@@ -64,13 +64,13 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 ## Discussion
 
-**Form:** Zoom, date and time TBA
+**Form:** Zoom, Tuesday, 25 May, 13:00–16:00 (after the project pitches)
 
 * Introduction to Assignment 2
 
 ## Discussion
 
-**Form:** Zoom, date and time TBA
+**Form:** Zoom, Tuesday, 25 May, 13:00–16:00
 
 * Project pitch
 
