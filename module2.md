@@ -69,7 +69,7 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 
 **Form:** Zoom, Tuesday, 25 May, 13:00–16:00 (after the project pitches)
 
-* Introduction to Assignment 2
+* Introduction to Assignment 2 [[video](https://youtu.be/C7PnsTie1YA)]
 
 ## Discussion
 
@@ -82,5 +82,3 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 ## Programming assignment
 
 [The second programming assignment](assignment2/assignment2.ipynb) is dedicated to the task of *dependency parsing*.
-
-You can find a recording of the introduction to the assignment [here](https://youtu.be/C7PnsTie1YA).
