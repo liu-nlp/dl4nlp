@@ -57,10 +57,13 @@ In the second module, we will focus on NLP tasks where the goal is to predict a 
 **Form:** Self-study
 
 * The Eisner algorithm [[slides](slides/slides-251.pdf)] [[video](https://youtu.be/QU059k3xifI)]
-* Neural architectures for dependency parsing
-* Semantic dependency parsing
+* Neural parsing architectures [[slides](slides/slides-252.pdf)] [[video](https://youtu.be/l3_HM9NfSjc)]
 
 **Reading:** 
+
+* [Chen and Manning (2014)](https://www.aclweb.org/anthology/D14-1082/)
+* [Kiperwasser and Goldberg (2016)](https://www.aclweb.org/anthology/Q16-1023/)
+* [Dozat and Manning (2017)](https://openreview.net/forum?id=Hk95PK9le)
 
 ## Discussion
 
