@@ -26,7 +26,7 @@ In your talk, the most important thing is to describe the task that you will wor
 
 # The report
 
-The text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is **June 19**.
+The text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is **June 19**. If you do not manage to submit by that date, there is a second chance on **August 28**.
 
 # Finding a topic
 
