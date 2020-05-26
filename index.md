@@ -67,6 +67,6 @@ syntactic parsing.
 ### Module 3: Generation problems in NLP and research outlook
 
 In the third module, we consider NLP tasks where we want to generate a
-text as the output, such as machine translation and summarization. We
-will also give quick introduction to some topics that have become
-prominent recently, such as model interpretability.
+text as the output, such as machine translation and summarization.
+
+[Detailed information about Module 3](module3.md)
