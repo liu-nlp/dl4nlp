@@ -12,7 +12,9 @@ In the third module, we consider NLP tasks where we want to generate a text as t
 * Introduction to machine translation
 * Sequence-to-sequence models for translation
 
-**Reading:** TBA
+**Reading:** Eisenstein, chapter 18
+
+Papers TBA
 
 ## Exercise 1
 
@@ -28,5 +30,7 @@ In the third module, we consider NLP tasks where we want to generate a text as t
 
 * Other generation topics
 
+**Reading:** Eisenstein, chapter 19
 
+Papers TBA
 
