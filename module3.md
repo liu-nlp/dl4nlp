@@ -7,7 +7,8 @@ In the third module, we consider NLP tasks where we want to generate a text as t
 
 **Form:** Self-study
 
-* Introduction to generation tasks 
+* Introduction to generation tasks [[slides](slides/slides-311.pdf)] [[video](https://youtu.be/rQgA09R8kSM)]
+* Evaluation of generation systems
 * Introduction to machine translation
 * Sequence-to-sequence models for translation
 
@@ -15,7 +16,7 @@ In the third module, we consider NLP tasks where we want to generate a text as t
 
 ## Exercise 1
 
-**Form:** Zoom meeting, time and date TBA
+**Form:** Zoom meeting, Monday, 8 June, 13:15–15:00
 
 * Machine translation
 
