@@ -9,8 +9,8 @@ In the third module, we consider NLP tasks where we want to generate a text as t
 
 * Introduction to generation tasks [[slides](slides/slides-311.pdf)] [[video](https://youtu.be/rQgA09R8kSM)]
 * Evaluation of generation systems [[slides](slides/slides-312.pdf)] [[video](https://youtu.be/pJHmKn2FDRY)]
-* Introduction to machine translation
-* Sequence-to-sequence models for translation
+* Introduction to machine translation [[slides](slides/slides-313.pdf)] [[video](https://youtu.be/_4F9cXe7dWc)]
+* Recent developments in machine translation
 
 **Reading:** Eisenstein, chapter 18 (where 18.2 is optional)
 
