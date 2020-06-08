@@ -20,7 +20,7 @@ Papers TBA
 
 **Form:** Zoom meeting, Monday, 8 June, 13:15–15:00
 
-* Machine translation
+* Machine translation [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3_1)]
 
 ## Lecture 2
 
