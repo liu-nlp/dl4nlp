@@ -26,11 +26,9 @@ Papers TBA
 
 **Form:** Self-study
 
-**Reading:** TBA
+This lecture consists of two external videos on other generation problems.
 
-* Other generation topics
+* Natural Language Generation (Abigail See) [[video](https://www.youtube.com/watch?v=4uG1NMKNWCU)]
+* Models of Dialog (Graham Neubig) [[video](https://www.youtube.com/watch?v=ytTwIgdSnVU)]
 
 **Reading:** Eisenstein, chapter 19
-
-Papers TBA
-
