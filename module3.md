@@ -8,7 +8,7 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 **Reading:** Eisenstein, chapter 1
 
-## Unit 3-1: Sequence labelling
+## Unit 3-1: Sequence labelling (94 min)
 
 * Introduction to sequence prediction tasks [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)] (16:48)
 * Basic models for sequence labeling [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)] (13:55)
@@ -23,7 +23,7 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 * Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)] [[solution](https://github.com/liu-nlp/dl4nlp/blob/master/exercise2_1/Exercise%202.1%20solution.ipynb)]
 * Named entity recognition 2
 
-## Unit 3-2: Syntactic analysis
+## Unit 3-2: Syntactic analysis (62 min)
 
 * Introduction to dependency parsing [[slides](slides/slides-241.pdf)] [[video](https://youtu.be/cx4B43sstTQ)] (15:07)
 * The arc-standard algorithm [[slides](slides/slides-242.pdf)] [[video](https://youtu.be/IQC8Qy8bfG8)] (16:31)
