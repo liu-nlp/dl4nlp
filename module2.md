@@ -1,83 +1,53 @@
-# Module 2
+# Module 2: Foundation models
 
-In the second module, we will focus on NLP tasks where the goal is to predict a structured object such a sequence or a tree. Applications include well-known use cases such as named entity recognition and syntactic parsing.
+Modern NLP architectures are based on general-purpose models that are trained on large amounts of broad-coverage data and are adaptable to a wide range of downstream tasks. This module introduces the basic ideas behind these models and their use for practical applications.
 
-## Lecture 1
+## Unit 2-1: Transformer models
 
-**Form:** Zoom meeting, Monday, 4 May, 10:15–12
+* Introduction to machine translation
+* Neural machine translation
+* Attention [[slides](slides/slides-163.pdf)] [[video](https://youtu.be/Ft1J79L11oU)]
+* The Transformer architecture
+* BERT and other pre-trained transformer models
 
-* Introduction to the module [[slides](slides/module2.pdf)] [[video](https://youtu.be/PK0Kil5REy8)]
+* Introduction to generation tasks [[slides](slides/slides-311.pdf)] [[video](https://youtu.be/rQgA09R8kSM)]
+* Evaluation of generation systems [[slides](slides/slides-312.pdf)] [[video](https://youtu.be/pJHmKn2FDRY)]
+* Introduction to machine translation [[slides](slides/slides-313.pdf)] [[video](https://youtu.be/_4F9cXe7dWc)]
+* Recent developments in machine translation
 
-**Reading:** Eisenstein, chapter 1
-
-## Lecture 2
-
-**Form:** Self-study
-
-* Introduction to sequence prediction tasks [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)]
-* Basic models for sequence labeling [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)]
-* Subword representations [[slides](slides/slides-223.pdf)] [[video](https://youtu.be/1ZDpYspEM_M)]
-
-**Reading:** Eisenstein, 7.1, 7.6, 8
-
-## Exercise 1
-
-**Form:** Zoom meeting, Monday, 11 May, 13:15–15:00
-
-* Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)] [[solution](https://github.com/liu-nlp/dl4nlp/blob/master/exercise2_1/Exercise%202.1%20solution.ipynb)]
-
-## Lecture 3
-
-**Form:** Self-study
-
-* Autoregressive sequence models [[slides](slides/slides-231.pdf)] [[video](https://youtu.be/V9TJMODq-rU)]
-* Factorized sequence model and the Viterbi algorithm [[slides](slides/slides-232.pdf)] [[video](https://youtu.be/C_5nfLIhMjw)]
-* Conditional random fields [[slides](slides/slides-233.pdf)] [[video](https://youtu.be/8wLScZOGeRc)]
+## Unit 2-2: Domain adaptation
 
 **Reading:**
 
-## Exercise 2
+* Eisenstein, chapter 6
+* Papers on attention: [Cheng et al. (2016)](https://www.aclweb.org/anthology/D16-1053/), [Vaswani et al. (2017)](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf), [Serrano and Smith (2019)](https://www.aclweb.org/anthology/D18-1216/)
 
-**Form:** Zoom, date and time TBA
-
-* Named entity recognition 2
-
-## Lecture 4
+## Lecture 7
 
 **Form:** Self-study
+* Transfer learning in NLP: static and contextualized representations [[slides](slides/slides-171.pdf)] [[video](https://youtu.be/2Lo1U-O9Ta4)]
+* Language models for pre-training [[slides](slides/slides-172.pdf)] [[video](https://youtu.be/GFG38b0CKS0)]
+* The Transformer model [[slides](slides/slides-173.pdf)] [[video](https://youtu.be/Wtlxh2-JWq8)]
+* Pre-trained Transformer models [[slides](slides/slides-174.pdf)] [[video](https://youtu.be/BEYeBd5Gxc0)]
 
-* Introduction to dependency parsing [[slides](slides/slides-241.pdf)] [[video](https://youtu.be/cx4B43sstTQ)]
-* The arc-standard algorithm [[slides](slides/slides-242.pdf)] [[video](https://youtu.be/IQC8Qy8bfG8)]
+**Examples:**
+* Document classification using BERT [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_7/Document%20classification%20with%20BERT.ipynb)] [[colab](https://drive.google.com/file/d/1SS_IB07kcbRGdIhbQCGMwd70TDPh9eqH/view?usp=sharing)]
 
-**Reading:** Eisenstein, chapter 11
+**Reading:**
+* [NLP's ImageNet moment has arrived](https://ruder.io/nlp-imagenet/)
+* [The illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+* [The illustrated BERT, ELMo, and co.](http://jalammar.github.io/illustrated-bert/)
+* Papers: [Peters et al. (2018)](https://arxiv.org/abs/1802.05365), [Devlin et al. (2019)](https://arxiv.org/abs/1810.04805)
 
-## Lecture 5
+## Assignment 2
 
-**Form:** Self-study
+* Machine translation [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3_1)] [[colab](https://drive.google.com/file/d/1sjw6F1V1ruIc02mejKMq1cdYyU56u3i4/view?usp=sharing)] [[solution](https://github.com/liu-nlp/dl4nlp/blob/master/exercise3_1/Machine%20Translation%20Exercise%20(solution).ipynb)]
 
-* The Eisner algorithm [[slides](slides/slides-251.pdf)] [[video](https://youtu.be/QU059k3xifI)]
-* Neural parsing architectures [[slides](slides/slides-252.pdf)] [[video](https://youtu.be/l3_HM9NfSjc)]
+## Random stuff
 
-**Reading:** 
+This lecture consists of two external videos on other generation problems.
 
-* [Chen and Manning (2014)](https://www.aclweb.org/anthology/D14-1082/)
-* [Kiperwasser and Goldberg (2016)](https://www.aclweb.org/anthology/Q16-1023/)
-* [Dozat and Manning (2017)](https://openreview.net/forum?id=Hk95PK9le)
+* Natural Language Generation (Abigail See) [[video](https://www.youtube.com/watch?v=4uG1NMKNWCU)]
+* Models of Dialog (Graham Neubig) [[video](https://www.youtube.com/watch?v=ytTwIgdSnVU)]
 
-## Discussion
-
-**Form:** Zoom, Tuesday, 25 May, 13:00–16:00 (after the project pitches)
-
-* Introduction to Assignment 2 [[video](https://youtu.be/C7PnsTie1YA)]
-
-## Discussion
-
-**Form:** Zoom, Tuesday, 25 May, 13:00–16:00
-
-* Project pitch
-
-* For a description of the organization of the project, see [this page](project.md).
-
-## Programming assignment
-
-[The second programming assignment](assignment2/assignment2.ipynb) is dedicated to the task of *dependency parsing*.
+**Reading:** Eisenstein, chapter 19
