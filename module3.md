@@ -4,17 +4,17 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 ## Unit 3-0: Introduction to structured prediction
 
-* Introduction to the module [[slides](slides/module2.pdf)] [[video](https://youtu.be/PK0Kil5REy8)]
+* Introduction to the module [[slides](slides/module2.pdf)] [[video](https://youtu.be/PK0Kil5REy8)] (44:47)
 
 **Reading:** Eisenstein, chapter 1
 
 ## Unit 3-1: Sequence labelling
 
-* Introduction to sequence prediction tasks [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)]
-* Basic models for sequence labeling [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)]
-* Autoregressive sequence models [[slides](slides/slides-231.pdf)] [[video](https://youtu.be/V9TJMODq-rU)]
-* Factorized sequence model and the Viterbi algorithm [[slides](slides/slides-232.pdf)] [[video](https://youtu.be/C_5nfLIhMjw)]
-* Conditional random fields [[slides](slides/slides-233.pdf)] [[video](https://youtu.be/8wLScZOGeRc)]
+* Introduction to sequence prediction tasks [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)] (16:48)
+* Basic models for sequence labeling [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)] (13:55)
+* Autoregressive sequence models [[slides](slides/slides-231.pdf)] [[video](https://youtu.be/V9TJMODq-rU)] (13:34)
+* Factorized sequence model and the Viterbi algorithm [[slides](slides/slides-232.pdf)] [[video](https://youtu.be/C_5nfLIhMjw)] (19:36)
+* Conditional random fields [[slides](slides/slides-233.pdf)] [[video](https://youtu.be/8wLScZOGeRc)] (30:56)
 
 **Reading:** Eisenstein, 7.1, 7.6, 8
 
@@ -25,10 +25,10 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 ## Unit 3-2: Syntactic analysis
 
-* Introduction to dependency parsing [[slides](slides/slides-241.pdf)] [[video](https://youtu.be/cx4B43sstTQ)]
-* The arc-standard algorithm [[slides](slides/slides-242.pdf)] [[video](https://youtu.be/IQC8Qy8bfG8)]
-* The Eisner algorithm [[slides](slides/slides-251.pdf)] [[video](https://youtu.be/QU059k3xifI)]
-* Neural parsing architectures [[slides](slides/slides-252.pdf)] [[video](https://youtu.be/l3_HM9NfSjc)]
+* Introduction to dependency parsing [[slides](slides/slides-241.pdf)] [[video](https://youtu.be/cx4B43sstTQ)] (15:07)
+* The arc-standard algorithm [[slides](slides/slides-242.pdf)] [[video](https://youtu.be/IQC8Qy8bfG8)] (16:31)
+* The Eisner algorithm [[slides](slides/slides-251.pdf)] [[video](https://youtu.be/QU059k3xifI)] (15:26)
+* Neural parsing architectures [[slides](slides/slides-252.pdf)] [[video](https://youtu.be/l3_HM9NfSjc)] (15:24)
 * Dynamic oracles
 
 **Reading:** Eisenstein, chapter 11
