@@ -1,72 +1,57 @@
 # Deep Learning for Natural Language Processing
 
-This is an overview of the PhD-level course Deep Learning for Natural
-Language Processing, taught by [Marco
-Kuhlmann](https://www.ida.liu.se/~marku61/) and [Richard
-Johansson](http://www.cse.chalmers.se/~richajo/).  The course will run
-as a distance course in the second half of the Spring term of 2020.
+This is an overview of the [WASP](https://wasp-sweden.org/) course Deep Learning for Natural Language Processing, taught by [Marco Kuhlmann](https://www.ida.liu.se/~marku61/) and [Richard Johansson](http://www.cse.chalmers.se/~richajo/).
 
 ## Goals
 
-The goal is to introduce machine learning techniques used in modern
-natural language processing (NLP). Ideally, after finishing this
-course, you will have some familiarity with the state of the art in
-NLP and you'll be able to understand modern research papers in this
-field, and you'll have some practical experience coding up some of the
-well-known models.
+Natural Language Processing (NLP) develops methods for making human language accessible to computers. The goal of this course is to provide students with a theoretical understanding of and practical experience with the advanced algorithms that power modern NLP. The course focuses on methods based on deep neural networks.
 
-See also a [separate page](content.md) that describes the content of
-the course a bit more extensively.
+On completion of the course, you will be able to
+
+* explain and analyze state-of-the-art deep learning architectures for NLP
+* implement such architectures and apply them to practical problems
+* design and carry out evaluations of deep learning architectures for NLP
+* use current approaches to NLP in your own field of research
 
 ## Course Literature
 
 Main course book:
 
-Yoav Goldberg, [Neural Network Methods for Natural Language
-Processing](https://www.morganclaypool.com/doi/abs/10.2200/S00762ED1V01Y201703HLT037). Morgan
-Claypool, 2017.  [Pre-print version](https://arxiv.org/abs/1510.00726)
+Yoav Goldberg, [Neural Network Methods for Natural Language Processing](https://www.morganclaypool.com/doi/abs/10.2200/S00762ED1V01Y201703HLT037). Morgan Claypool, 2017. [Pre-print version](https://arxiv.org/abs/1510.00726)
 
-Jacob Eisenstein, [Natural Language
-Processing](https://mitpress.mit.edu/books/introduction-natural-language-processing). MIT
-Press, 2019.  [Pre-print
-version](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf)
+Jacob Eisenstein, [Natural Language Processing](https://mitpress.mit.edu/books/introduction-natural-language-processing). MIT Press, 2019. [Pre-print version](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf)
 
-Much of the content of the course is not described in a book, so we
-will also give pointers to research papers and survey articles when
-needed.
+Much of the content of the course is not described in a book, so we will also give pointers to research papers and survey articles when needed.
 
 ## Modules
 
-The course consists of the following three modules, each of which
-corresponds to roughly one month's work.
+The course consists of the following three modules:
+
+1. Word representations
+2. Foundation models
+3. Structured prediction
 
 The content of each module consists of
 * video lectures introducing the important topics
 * pointers to literature, some of which is fundamental and some optional
-* a set of small programming exercises
-* a set of small discussion tasks
-* a large assignment where you implement a model and write a technical report
+* a set of programming exercises
+* a set of discussion tasks
+* an assignment where you implement a model
 
-### Module 1: Representation in NLP; categorization tasks
+### Module 1: Word representations
 
-In the first module, we introduce the most important building blocks
-used in modern NLP architectures. We will also consider one of the
-most fundamental NLP tasks: text categorization.
+This module introduces one of the most fundamental ideas in modern NLP: that words can be represented as vectors which can be learned from text data. On the application side of things, we focus on one of the most fundamental NLP tasks: text categorization.
 
 [Detailed information about Module 1](module1.md)
 
-### Module 2: Structured prediction problems in NLP
+### Module 2: Foundation models
 
-In the second module, we will focus on NLP tasks where the goal is to
-predict a structured object such a sequence or a tree. Applications
-include well-known use cases such as named entity recognition and
-syntactic parsing.
+Modern NLP architectures are based on general-purpose models that are trained on large amounts of broad-coverage data and are adaptable to a wide range of downstream tasks. This module introduces the basic ideas behind these models and their use for practical applications.
 
 [Detailed information about Module 2](module2.md)
 
-### Module 3: Generation problems in NLP and research outlook
+### Module 2: Structured prediction
 
-In the third module, we consider NLP tasks where we want to generate a
-text as the output, such as machine translation and summarization.
+This module focuses on architectures and algorithms for NLP tasks where the goal is to predict a structured object such a sequence or a tree. Applications include well-known use cases such as named entity recognition and relation extraction.
 
 [Detailed information about Module 3](module3.md)
