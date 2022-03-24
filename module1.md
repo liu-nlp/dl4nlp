@@ -30,29 +30,25 @@ This module introduces one of the most fundamental ideas in modern NLP: the idea
 
 **Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
 
-## Unit 1-3: Contextualized word embeddings (76 min)
+## Unit 1-2: Language modelling and contextualized embeddings
 
-* Introduction to language modelling
-* N-gram language models
+### Lectures
+
+* Introduction to language modelling [[slides](slides/slides-121.pdf)] [[video](https://youtu.be/_TlvRtoGOn8)] (15:03)
+* N-gram language models [[slides](slides/slides-122.pdf)] [[video](https://youtu.be/GuTAMrqiFSM)] (16:35)
+* Recurrent neural networks [[slides](slides/slides-123.pdf)] [[video](https://youtu.be/RWxoiA2uGZU)] (18:34)
+* The LSTM architecture [[slides](slides/slides-124.pdf)] [[video](https://youtu.be/8es6TKvw7qI)] (12:55)
+* Recurrent neural network language models [[slides](slides/slides-125.pdf)] [[video](https://youtu.be/J-KglYsuJ28)] (11:14)
+* Contextualized word embeddings [[slides](slides/slides-126.pdf)] [[video](https://youtu.be/5oXWnSBoe7A)] (13:00)
+
+### Reading
+
+Goldberg, chapters 13–15
+
+### Exercises (on-site)
+
 * Recurrent neural networks
-* The LSTM architecture
 * Recurrent neural network language models
-* Contextualized word embeddings
-
-* Convolutional neural networks [[slides](slides/slides-151.pdf)] [[video](https://youtu.be/8sUa97gYNDE)] (15:59)
-* Recurrent neural networks [[slides](slides/slides-152.pdf)] [[video](https://youtu.be/cswaoJvJass)] (14:15)
-* The LSTM architecture [[slides](slides/slides-153.pdf)] [[video](https://youtu.be/YVvW9i_BhEg)] (15:37)
-
-**Reading:** Goldberg, chapters 13–15
-
-* Language modelling [[slides](slides/slides-161.pdf)] [[video](https://youtu.be/EeVQzalQp2I)] (14:56)
-* N-gram language models [[slides](slides/slides-162.pdf)] [[video](https://youtu.be/QcZpgBzQlBg)] (15:12)
-
-## Exercise 3
-
-**Form:** Scheduled, 23 April, 15:15–17:00, Zoom.
-
-* Language modelling [[notebook](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)] [[video](https://youtu.be/UPmQQwfNKfg)] [[solution](https://github.com/liu-nlp/dl4nlp/tree/master/exercise3)] (60:54)
 
 ## Assignment 1
 
