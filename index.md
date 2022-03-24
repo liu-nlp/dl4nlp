@@ -1,8 +1,8 @@
 # Deep Learning for Natural Language Processing
 
-This is an overview of the [WASP](https://wasp-sweden.org/) course Deep Learning for Natural Language Processing, taught by [Marco Kuhlmann](https://www.ida.liu.se/~marku61/) and [Richard Johansson](http://www.cse.chalmers.se/~richajo/).
+This is the website for the [WASP](https://wasp-sweden.org/) course “Deep Learning for Natural Language Processing”, taught by [Marco Kuhlmann](https://www.ida.liu.se/~marku61/) (Linköping University) and [Richard Johansson](http://www.cse.chalmers.se/~richajo/) (Chalmers University of Technology).
 
-## Goals
+## Learning outcomes
 
 Natural Language Processing (NLP) develops methods for making human language accessible to computers. The goal of this course is to provide students with a theoretical understanding of and practical experience with the advanced algorithms that power modern NLP. The course focuses on methods based on deep neural networks.
 
@@ -13,9 +13,7 @@ On completion of the course, you will be able to
 * design and carry out evaluations of deep learning architectures for NLP
 * use current approaches to NLP in your own field of research
 
-## Course Literature
-
-Main course book:
+## Course literature
 
 Yoav Goldberg, [Neural Network Methods for Natural Language Processing](https://www.morganclaypool.com/doi/abs/10.2200/S00762ED1V01Y201703HLT037). Morgan Claypool, 2017. [Pre-print version](https://arxiv.org/abs/1510.00726)
 
@@ -25,13 +23,7 @@ Much of the content of the course is not described in a book, so we will also gi
 
 ## Modules
 
-The course consists of the following three modules:
-
-1. Word representations
-2. Foundation models
-3. Structured prediction
-
-The content of each module consists of
+The course consists of three thematic modules and a final project. The content of each module consists of
 * video lectures introducing the important topics
 * pointers to literature, some of which is fundamental and some optional
 * a set of programming exercises
@@ -40,7 +32,7 @@ The content of each module consists of
 
 ### Module 1: Word representations
 
-This module introduces one of the most fundamental ideas in modern NLP: that words can be represented as vectors which can be learned from text data. On the application side of things, we focus on one of the most fundamental NLP tasks: text categorization.
+This module introduces one of the most fundamental ideas in modern NLP: the idea that words can be represented as vectors which can be learned from text data. On the application side of things, we focus on one of the most fundamental NLP tasks: text categorization.
 
 [Detailed information about Module 1](module1.md)
 
@@ -50,8 +42,12 @@ Modern NLP architectures are based on general-purpose models that are trained on
 
 [Detailed information about Module 2](module2.md)
 
-### Module 2: Structured prediction
+### Module 3: Structured prediction
 
 This module focuses on architectures and algorithms for NLP tasks where the goal is to predict a structured object such a sequence or a tree. Applications include well-known use cases such as named entity recognition and relation extraction.
 
 [Detailed information about Module 3](module3.md)
+
+### Project
+
+In the project, you apply your learning in the course to your own field of research.
