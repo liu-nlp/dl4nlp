@@ -12,7 +12,7 @@ We assume that you have a background in mathematics corresponding to the content
 
 We do not expect you to have any background in linguistics, but will often use linguistic terminology. (No natural language processing without language!) The following video provides a compact, 30-minute introduction to some of the essentials of linguistics that you may encounter in the course.
 
-[Essentials of linguistics]()
+[Essentials of linguistics](https://youtu.be/jOm1Mvx8DbA)
 
 ## Basic text processing
 
