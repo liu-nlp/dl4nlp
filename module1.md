@@ -4,7 +4,7 @@ This module introduces one of the most fundamental ideas in modern NLP: the idea
 
 Before working with the material in this module, you may want to have a look at the following:
 
-* Capsule introduction to NLP [[slides](slides/slides-111.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
+* Capsule introduction to NLP [[slides](slides/intro.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
 * [Review materials](review.md)
 
 ## Unit 1-1: Introduction (56 min)
