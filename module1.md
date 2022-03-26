@@ -2,6 +2,11 @@
 
 This module introduces one of the most fundamental ideas in modern NLP: the idea that words can be represented as vectors which can be learned from text data. On the application side of things, we focus on one of the most fundamental NLP tasks: text categorization.
 
+Before working with the material in this module, you may want to have a look at the following:
+
+* Capsule introduction to NLP [[slides](slides/slides-111.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
+* [Review materials](review.md)
+
 ## Unit 1-1: Introduction (56 min)
 
 * Representing documents for neural networks [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)] (07:07)
@@ -14,8 +19,6 @@ This module introduces one of the most fundamental ideas in modern NLP: the idea
 ## Exercise 2
 
 * Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] [[solution](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/Exercise%201.2%20-%20solution.ipynb)] (55:52)
-
-## Unit 1-2: Word embeddings (96 min)
 
 * Pre-training word embedding models: introduction [[slides](slides/slides-141.pdf)] [[video](https://youtu.be/6AozaHmWugs)] (15:06)
 * The SGNS algorithm [[slides](slides/slides-142.pdf)] [[video](https://youtu.be/R5EhgHz2S5w)] (09:21)
