@@ -18,7 +18,7 @@ Before working with the material in this module, you may want to have a look at 
 
 ## Exercise 2
 
-* Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] [[solution](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/Exercise%201.2%20-%20solution.ipynb)] (55:52)
+* Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] (55:52)
 
 * Pre-training word embedding models: introduction [[slides](slides/slides-141.pdf)] [[video](https://youtu.be/6AozaHmWugs)] (15:06)
 * The SGNS algorithm [[slides](slides/slides-142.pdf)] [[video](https://youtu.be/R5EhgHz2S5w)] (09:21)
