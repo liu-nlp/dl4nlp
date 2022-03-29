@@ -12,7 +12,8 @@ Before working with the material in this module, you may want to have a look at 
 * Representing documents for neural networks [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)] (07:07)
 * Introduction to embeddings [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_2.pdf)] [[video](https://youtu.be/LLUjsmuEgk8)] (09:43)
 * Continuous bag-of-words representations [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_3.pdf)] [[video](https://youtu.be/MOcGoA3Fbi8)] (11:05)
-* Examples [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)] [[colab](https://drive.google.com/file/d/1VLIAYXSoLN99BwS9CUTJYS7caazBVORF/view?usp=sharing)] [[video](https://youtu.be/ZEYESgSR29o)] (28:46)
+* Examples [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)] [[colab](https://drive.google.com/file/d/1VLIAYXSoLN99BwS9CUTJYS7caazBVORF/view?usp=sharing)]
+<!--[[video](https://youtu.be/ZEYESgSR29o)] (28:46)-->
 
 **Reading:** Goldberg, chapter 8; [Joulin et al. (2017)](https://aclweb.org/anthology/E17-2068)
 
