@@ -33,6 +33,10 @@ Before working with the material in this module, you may want to have a look at 
 
 **Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
 
+### Exercises (on-site)
+
+* Word embeddings
+
 ## Unit 1-3: Language modelling and contextualized embeddings
 
 ### Lectures
