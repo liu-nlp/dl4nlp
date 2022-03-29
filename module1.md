@@ -55,4 +55,4 @@ Goldberg, chapters 13–15
 
 ## Assignment 1
 
-[The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2020/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
+[The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2022/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
