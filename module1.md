@@ -16,9 +16,9 @@ Before working with the material in this module, you may want to have a look at 
 
 **Reading:** Goldberg, chapter 8; [Joulin et al. (2017)](https://aclweb.org/anthology/E17-2068)
 
-## Exercise 2
+## Unit 1-2: Pre-training word embeddings
 
-* Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] (55:52)
+<!--* Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] (55:52)-->
 
 * Pre-training word embedding models: introduction [[slides](slides/slides-141.pdf)] [[video](https://youtu.be/6AozaHmWugs)] (15:06)
 * The SGNS algorithm [[slides](slides/slides-142.pdf)] [[video](https://youtu.be/R5EhgHz2S5w)] (09:21)
@@ -33,7 +33,7 @@ Before working with the material in this module, you may want to have a look at 
 
 **Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
 
-## Unit 1-2: Language modelling and contextualized embeddings
+## Unit 1-3: Language modelling and contextualized embeddings
 
 ### Lectures
 
