@@ -7,7 +7,7 @@ Before working with the material in this module, you may want to have a look at 
 * Capsule introduction to NLP [[slides](slides/intro.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
 * [Review materials](review.md)
 
-## Unit 1-1: Introduction (56 min)
+## Unit 1-1: Introduction to representations of words and documents (56 min)
 
 * Representing documents for neural networks [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] [[video](https://youtu.be/xsQ46CXsIfc)] (07:07)
 * Introduction to embeddings [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_2.pdf)] [[video](https://youtu.be/LLUjsmuEgk8)] (09:43)
