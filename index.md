@@ -48,8 +48,6 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 <!--[Detailed information about Module 3](module3.md)-->
 
-Test.
-
 ### Project
 
 In the project, you apply your learning in the course to your own field of research.
