@@ -58,6 +58,18 @@ Goldberg, chapters 13–15
 * Recurrent neural networks
 * Recurrent neural network language models
 
+### Schedule for the meeting
+
+Zoom link: https://chalmers.zoom.us/meeting/68800469462 password **232767**
+
+
+| April 7    | April 8   |
+|------------|-----------|
+|Introduction|Discussion |
+|Discussion  |Exercise   |
+|Exercise    |Assignment |
+|Discussion  |Project    |
+
 ## Assignment 1
 
 [The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2022/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
