@@ -65,10 +65,10 @@ Zoom link: [https://chalmers.zoom.us/meeting/68800469462](https://chalmers.zoom.
 
 | April 7    | April 8   |
 |------------|-----------|
-|Introduction|Discussion |
-|Discussion  |Exercise   |
-|Exercise    |Assignment |
-|Discussion  |Project    |
+|**10:15&ndash;11:00** Introduction|**9:15&ndash;11:00**  Discussion |
+|**11:15&ndash;13:00** Discussion  |**11:15&ndash;13:00** Exercise   |
+|**14:15&ndash;16:00**Exercise     |**14:15&ndash;16:00** Assignment |
+|**16:15&ndash;17:00**Discussion   |**16:15&ndash;17:00** Project    |
 
 ## Assignment 1
 
