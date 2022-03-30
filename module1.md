@@ -58,9 +58,9 @@ Goldberg, chapters 13–15
 * Recurrent neural networks
 * Recurrent neural network language models
 
-### Schedule for the meeting
+## Schedule for the meeting
 
-Zoom link: https://chalmers.zoom.us/meeting/68800469462 password **232767**
+Zoom link: [https://chalmers.zoom.us/meeting/68800469462](https://chalmers.zoom.us/meeting/68800469462) password **232767**
 
 
 | April 7    | April 8   |
