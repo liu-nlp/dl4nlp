@@ -23,13 +23,13 @@ Much of the content of the course is not described in a book, so we will also gi
 
 ## Teaching
 
-The course uses a *flipped classroom* format where the important concepts and methods are presented in pre-recorded lectures. The interactions between students and teachers will then be focused on discussions of the important points in the recorded material, practical exercises, and reflections.
+The course uses a **flipped classroom** format where the important concepts and methods are presented in pre-recorded lectures. The interactions between students and teachers will then be focused on discussions of the important points in the recorded material, practical exercises, and reflections.
 
 The teaching is divided into three meetings, where each meeting takes place over a two-day period. Each meeting corresponds to one of the modules discussed below. We will have the following meetings:
 
-* Module 1: April 7&ndash;8
-* Module 2: May 9&ndash;10
-* Module 3: June 2&ndash;3
+* **Module 1**: April 7&ndash;8
+* **Module 2**: May 9&ndash;10
+* **Module 3**: June 2&ndash;3
 
 Please refer to the module pages for more details about each of the meetings.
 
