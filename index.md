@@ -31,7 +31,7 @@ The teaching is divided into three meetings, where each meeting takes place over
 * **Module 2**: May 9&ndash;10
 * **Module 3**: June 2&ndash;3
 
-Please refer to the module pages for more details about each of the meetings.
+Please refer to the module pages below for more details about each of the meetings.
 
 ## Modules
 
