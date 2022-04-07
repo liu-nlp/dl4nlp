@@ -56,7 +56,7 @@ Goldberg, chapters 13–15
 ### Exercises (on-site)
 
 * Recurrent neural networks
-* Recurrent neural network language models
+* [Recurrent neural network language models](exercise2/)
 
 ## Schedule for the meeting
 
