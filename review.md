@@ -28,4 +28,6 @@ As our deep learning framework, we will use [PyTorch](https://pytorch.org/). Man
 
 ## Using Colab
 
-Most of the assignments and exercises will require you to use a GPU-based machine. If you do not have easy access to such a machine at your institution, using Google's free Colab service may be an alternative. We have written [some instructions](http://www.cse.chalmers.se/~richajo/dat450/reading/using_colab.html) describing the basics of how to work with Colab.
+Most of the assignments and exercises will require you to use a GPU-based machine. If you do not have easy access to such a machine at your institution, using Google's free Colab service may be an alternative. We have written some instructions describing the basics of how to work with Colab.
+
+[Using Colab](http://www.cse.chalmers.se/~richajo/dat450/reading/using_colab.html)
