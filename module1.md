@@ -55,8 +55,8 @@ Goldberg, chapters 13–15
 
 ### Exercises (on-site)
 
-* Recurrent neural networks
-* [Recurrent neural network language models](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2)
+* [Usage patterns for recurrent neural networks](https://github.com/liu-nlp/dl4nlp/tree/master/exercise131)
+* [Recurrent neural network language models](https://github.com/liu-nlp/dl4nlp/tree/master/exercise132)
 
 ## Schedule for the meeting
 
