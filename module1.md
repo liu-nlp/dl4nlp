@@ -36,7 +36,7 @@ Before working with the material in this module, you may want to have a look at 
 
 ### Exercises (on-site)
 
-* Word embeddings
+* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2022/ex1_1/ex1_1.html)
 
 ## Unit 1-3: Language modelling and contextualized embeddings
 
