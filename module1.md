@@ -60,8 +60,7 @@ Goldberg, chapters 13–15
 
 ## Schedule for the meeting
 
-Zoom link: [https://chalmers.zoom.us/meeting/68800469462](https://chalmers.zoom.us/meeting/68800469462) password **232767**
-
+[Zoom link](https://liu-se.zoom.us/j/63610376728?pwd=NDA0aHEwd05WaEVwNTJlTFpsUTNRdz09)
 
 | April 7    | April 8   |
 |------------|-----------|
