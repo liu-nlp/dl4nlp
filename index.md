@@ -52,7 +52,7 @@ This module introduces one of the most fundamental ideas in modern NLP: the idea
 
 Modern NLP architectures are based on general-purpose models that are trained on large amounts of broad-coverage data and are adaptable to a wide range of downstream tasks. This module introduces the basic ideas behind these models and their use for practical applications.
 
-<!--[Detailed information about Module 2](module2.md)-->
+[Detailed information about Module 2](module2.md)
 
 ### Module 3: Structured prediction
 
