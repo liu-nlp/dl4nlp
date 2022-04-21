@@ -36,7 +36,7 @@ Before working with the material in this module, you may want to have a look at 
 
 ### Exercises (on-site)
 
-* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2022/ex1_1/ex1_1.html)
+* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2022/ex1_1/ex1_1.html) [[solution](https://colab.research.google.com/drive/19LpsoI1ajRm4VtVSTOoP9nb9bqLxh1GL?usp=sharing)]
 
 ## Unit 1-3: Language modelling and contextualized embeddings
 
@@ -53,10 +53,14 @@ Before working with the material in this module, you may want to have a look at 
 
 Goldberg, chapters 13–15
 
-### Exercises (on-site)
+### Demos
 
 * [Usage patterns for recurrent neural networks](https://github.com/liu-nlp/dl4nlp/tree/master/exercise131)
-* [Recurrent neural network language models](https://github.com/liu-nlp/dl4nlp/tree/master/exercise132)
+* [The LSTM classifier](https://github.com/liu-nlp/dl4nlp/tree/master/exercise133)
+
+### Exercise
+
+[Recurrent neural network language models](https://github.com/liu-nlp/dl4nlp/tree/master/exercise132)
 
 ## Schedule for the meeting
 
