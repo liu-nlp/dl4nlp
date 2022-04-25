@@ -19,4 +19,13 @@ Modern NLP architectures are based on general-purpose models that are trained on
 
 ## Unit 2-3: More applications of generation
 
+* Summarization [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l12/l12_1.pdf)] [[video](https://youtu.be/EUJlrdJhBJg)]
+* Dialogue systems
+* Pre-trained models for generation systems
+
 ## Unit 2-4: Out-of distribution scenarios and domain adaptation
+
+* Introduction to domain adaptation [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_1.pdf)] [[video](https://youtu.be/C-Liu_qvavY)]
+* Domain-adversarial training [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_2.pdf)] [[video](https://youtu.be/Ei9JY06nepo)]
+* Pseudo-labeling for domain adaptation [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_3.pdf)] [[video](https://youtu.be/us7l7xvGQ-U)]
+* Fine-tuning for adaptation
