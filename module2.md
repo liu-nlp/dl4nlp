@@ -25,6 +25,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 
 **Reading:**
 * [Eisenstein](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf), chapter 19
+* [Roller et al (2021)](https://aclanthology.org/2021.eacl-main.24/)
 
 ## Unit 2-4: Out-of distribution scenarios and domain adaptation
 
