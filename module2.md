@@ -20,8 +20,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 ## Unit 2-3: More applications of generation
 
 * Summarization [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l12/l12_1.pdf)] [[video](https://youtu.be/EUJlrdJhBJg)]
-* Dialogue systems
-* Pre-trained models for generation systems
+* Dialogue systems [[slides](slides/slides-2022-232.pdf)] [[video](https://youtu.be/jWkQLVN3ixI)]
 
 **Reading:**
 * [Eisenstein](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf), chapter 19
