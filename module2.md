@@ -16,9 +16,9 @@ Modern NLP architectures are based on general-purpose models that are trained on
 ## Unit 2-2: Transformer models (71 min)
 
 * Attention [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/HHUR6VX5CeU)] (15:13)
-* The Transformer architecture [[slides](slide/slides-222.pdf)] [[video](https://youtu.be/dSd0-RFZLnk)] (13:43)
-* Pre-trained transformer models 1 (GPT) [[slides](slide/slides-223.pdf)] [[video](https://youtu.be/9QE1bQTSbx8)] (22:53)
-* Pre-trained transformer models 2 (BERT) [[slides](slide/slides-224.pdf)] [[video](https://youtu.be/JeY6N1012Sg)] (18:59)
+* The Transformer architecture [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/dSd0-RFZLnk)] (13:43)
+* Pre-trained transformer models 1 (GPT) [[slides](slides/slides-223.pdf)] [[video](https://youtu.be/9QE1bQTSbx8)] (22:53)
+* Pre-trained transformer models 2 (BERT) [[slides](slides/slides-224.pdf)] [[video](https://youtu.be/JeY6N1012Sg)] (18:59)
 
 **Reading:**
 
