@@ -35,3 +35,17 @@ Modern NLP architectures are based on general-purpose models that are trained on
 
 **Reading:**
 * [Plank and Ramponi (2020)](https://aclanthology.org/2020.coling-main.603/)
+
+## Schedule for the meeting
+
+[Zoom link]
+
+| May 9    | May 10   |
+|------------|-----------|
+|9:15&ndash;10:00: **Assignment recap**  |9:15&ndash;10:00:  **Discussion** |
+|10:15&ndash;12:00: **Discussion**   |10:15&ndash;12:00: **Exercise**   |
+|13:15&ndash;15:00: **Exercise**     |13:15&ndash;14:00: **Discussion** |
+|15:15&ndash;17:00: **Discussion**   |14:15&ndash;16:00: **Assignment** |
+|                                    |16:15&ndash;17:00: **Project**    |
+
+## Assignment 2
