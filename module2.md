@@ -60,3 +60,5 @@ Modern NLP architectures are based on general-purpose models that are trained on
 |                                    |16:15&ndash;17:00: **Project**    |
 
 ## Assignment 2
+
+In [the second programming assignment](assignment2/) you will implement the encoder–decoder architecture of Sutskever et al. (2014), including the attention-based extension of Bahdanau et al. (2015), and evaluate this architecture on a machine translation task.
