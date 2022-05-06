@@ -49,7 +49,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 
 ## Schedule for the meeting
 
-[Zoom link]
+[Zoom link](https://liu-se.zoom.us/j/65824605892?pwd=RjdwUCtBRnh2YzA1MENEOSt4V2o3QT09)
 
 | May 9    | May 10   |
 |------------|-----------|
