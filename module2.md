@@ -42,7 +42,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 * Introduction to domain adaptation [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_1.pdf)] [[video](https://youtu.be/C-Liu_qvavY)]
 * Domain-adversarial training [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_2.pdf)] [[video](https://youtu.be/Ei9JY06nepo)]
 * Pseudo-labeling for domain adaptation [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_3.pdf)] [[video](https://youtu.be/us7l7xvGQ-U)]
-* Fine-tuning for adaptation
+* Fine-tuning for adaptation [[slides](slides/slides-2022-244.pdf)] [[video](https://youtu.be/_s8zi_rFjyI)]
 
 **Reading:**
 * [Plank and Ramponi (2020)](https://aclanthology.org/2020.coling-main.603/)
