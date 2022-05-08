@@ -59,6 +59,11 @@ Modern NLP architectures are based on general-purpose models that are trained on
 |15:15&ndash;17:00: **Discussion**   |14:15&ndash;16:00: **Assignment** |
 |                                    |16:15&ndash;17:00: **Project**    |
 
+## Exercises
+
+* Exercise 1: Using BERT models <!-- https://drive.google.com/file/d/17hVSNA2xjZLOJm_qapSeaC7dDnaqvwAi/view?usp=sharing -->
+* Exercise 2: Generation
+
 ## Assignment 2
 
 In [the second programming assignment](https://github.com/liu-nlp/dl4nlp/tree/master/assignment2) you will implement the encoder–decoder architecture of Sutskever et al. (2014), including the attention-based extension of Bahdanau et al. (2015), and evaluate this architecture on a machine translation task.
