@@ -28,7 +28,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 * [Radford et al. (2018)](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
 * [Devlin et al. (2019)](dx.doi.org/10.18653/v1/N19-1423)
 
-## Unit 2-3: More applications of generation
+## Unit 2-3: More applications of generation (55 min)
 
 * Summarization [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l12/l12_1.pdf)] [[video](https://youtu.be/EUJlrdJhBJg)]
 * Dialogue systems [[slides](slides/slides-2022-232.pdf)] [[video](https://youtu.be/jWkQLVN3ixI)]
@@ -37,7 +37,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 * [Eisenstein](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf), chapter 19
 * [Roller et al (2021)](https://aclanthology.org/2021.eacl-main.24/)
 
-## Unit 2-4: Out-of distribution scenarios and domain adaptation
+## Unit 2-4: Out-of distribution scenarios and domain adaptation (54 min)
 
 * Introduction to domain adaptation [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_1.pdf)] [[video](https://youtu.be/C-Liu_qvavY)]
 * Domain-adversarial training [[slides](http://www.cse.chalmers.se/~richajo/dat450/lectures/l13/l13_2.pdf)] [[video](https://youtu.be/Ei9JY06nepo)]
