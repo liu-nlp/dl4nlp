@@ -55,13 +55,13 @@ Modern NLP architectures are based on general-purpose models that are trained on
 |------------|-----------|
 |9:15&ndash;10:00: **Assignment recap**  |9:15&ndash;10:00:  **Discussion** |
 |10:15&ndash;12:00: **Discussion**   |10:15&ndash;12:00: **Exercise**   |
-|13:15&ndash;15:00: **Exercise**     |13:15&ndash;14:00: **Discussion** |
+|13:15&ndash;15:00: **[Exercise](https://drive.google.com/file/d/17hVSNA2xjZLOJm_qapSeaC7dDnaqvwAi/view?usp=sharing)**     |13:15&ndash;14:00: **Discussion** |
 |15:15&ndash;17:00: **Discussion**   |14:15&ndash;16:00: **Assignment** |
 |                                    |16:15&ndash;17:00: **Project**    |
 
 ## Exercises
 
-* Exercise 1: Using BERT models <!-- https://drive.google.com/file/d/17hVSNA2xjZLOJm_qapSeaC7dDnaqvwAi/view?usp=sharing -->
+* Exercise 1: [Using BERT models](https://drive.google.com/file/d/17hVSNA2xjZLOJm_qapSeaC7dDnaqvwAi/view?usp=sharing)
 * Exercise 2: Generation
 
 ## Assignment 2
