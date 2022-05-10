@@ -63,6 +63,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 
 * Exercise 1: [Using BERT models](https://drive.google.com/file/d/17hVSNA2xjZLOJm_qapSeaC7dDnaqvwAi/view?usp=sharing)
 * Exercise 2: [Generation](https://drive.google.com/file/d/1wavzFlUFyeybqUe9iLU_5QWhbwHMNL4s/view?usp=sharing)
+* [Solutions](documents/Module 2 exercises solutions.pdf)
 
 ## Assignment 2
 
