@@ -18,10 +18,10 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 **Reading:** Eisenstein, 7.1, 7.6, 8
 
-### Exercise
+### Exercises
 
-* Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)] [[solution](https://github.com/liu-nlp/dl4nlp/blob/master/exercise2_1/Exercise%202.1%20solution.ipynb)]
-* Named entity recognition 2
+<!--* Named entity recognition 1 [[code](https://github.com/liu-nlp/dl4nlp/tree/master/exercise2_1)] [[colab](https://drive.google.com/file/d/1xLwc_NGpqscRfJaQAITmE5CoTRqksJAz/view)] [[solution](https://github.com/liu-nlp/dl4nlp/blob/master/exercise2_1/Exercise%202.1%20solution.ipynb)]
+* Named entity recognition 2-->
 
 ## Unit 3-2: Syntactic analysis (62 min)
 
