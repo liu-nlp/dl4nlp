@@ -10,11 +10,11 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 ## Unit 3-1: Sequence labelling (94 min)
 
-* Introduction to sequence prediction tasks [[slides](slides/slides-221.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)] (16:48)
-* Basic models for sequence labeling [[slides](slides/slides-222.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)] (13:55)
-* Autoregressive sequence models [[slides](slides/slides-231.pdf)] [[video](https://youtu.be/V9TJMODq-rU)] (13:34)
-* Factorized sequence model and the Viterbi algorithm [[slides](slides/slides-232.pdf)] [[video](https://youtu.be/C_5nfLIhMjw)] (19:36)
-* Conditional random fields [[slides](slides/slides-233.pdf)] [[video](https://youtu.be/8wLScZOGeRc)] (30:56)
+* Introduction to sequence prediction tasks [[slides](slides/slides-2022-311.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)] (16:48)
+* Basic models for sequence labeling [[slides](slides/slides-2022-312.pdf)] [[video](https://youtu.be/E7jrhDkrmZQ)] (13:55)
+* Autoregressive sequence models [[slides](slides/slides-2022-313.pdf)] [[video](https://youtu.be/V9TJMODq-rU)] (13:34)
+* Factorized sequence model and the Viterbi algorithm [[slides](slides/slides-2022-314.pdf)] [[video](https://youtu.be/C_5nfLIhMjw)] (19:36)
+* Conditional random fields [[slides](slides/slides-2022-315.pdf)] [[video](https://youtu.be/8wLScZOGeRc)] (30:56)
 
 **Reading:** Eisenstein, 7.1, 7.6, 8
 
@@ -41,8 +41,7 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 ## Assignment 3
 
-* Introduction to Assignment 2 [[video](https://youtu.be/C7PnsTie1YA)]
+<!--* Introduction to Assignment 3 [[video](https://youtu.be/C7PnsTie1YA)]-->
 
-[The second programming assignment](assignment2/assignment2.ipynb) is dedicated to the task of *dependency parsing*.
+The third programming assignment will be dedicated to the task of *dependency parsing*
 
-**Reading:** Eisenstein, chapter 18 (where 18.2 is optional)
