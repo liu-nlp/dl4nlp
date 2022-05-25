@@ -58,7 +58,7 @@ Modern NLP architectures are based on general-purpose models that are trained on
 
 This module focuses on architectures and algorithms for NLP tasks where the goal is to predict a structured object such a sequence or a tree. Applications include well-known use cases such as named entity recognition and relation extraction.
 
-<!--[Detailed information about Module 3](module3.md)-->
+[Detailed information about Module 3](module3.md)
 
 ### Project
 
