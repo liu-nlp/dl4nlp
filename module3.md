@@ -44,4 +44,4 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 <!--* Introduction to Assignment 3 [[video](https://youtu.be/C7PnsTie1YA)]-->
 
-The third programming assignment will be dedicated to the task of *dependency parsing*. It will be published here no later than 2022-05-30.
+The [the second programming assignment](https://github.com/liu-nlp/dl4nlp/tree/master/assignment3) is dedicated to the task of *dependency parsing*. More specifically, you will implement a simplified version of the dependency parser used by [Glavaš and Vulić (2021)](http://dx.doi.org/10.18653/v1/2021.eacl-main.270).
