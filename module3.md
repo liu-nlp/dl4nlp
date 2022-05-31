@@ -40,6 +40,14 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 * [Dozat and Manning (2017)](https://openreview.net/forum?id=Hk95PK9le)
 * [Glavaš and Vulić (2021)](http://dx.doi.org/10.18653/v1/2021.eacl-main.270)
 
+## Schedule for the meeting
+
+| June 2    | June 3   |
+|------------|-----------|
+|10:15&ndash;12:00: **Discussion**   |9:15&ndash;12:00: **Project presentations**   |
+|13:15&ndash;15:00: **Discussion**   |13:15&ndash;15:00: **Assignment** |
+|15:15&ndash;17:00: **Exercise**     |15:15&ndash;16:00: **Course recap** |
+
 ## Assignment 3
 
 <!--* Introduction to Assignment 3 [[video](https://youtu.be/C7PnsTie1YA)]-->
