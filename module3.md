@@ -33,10 +33,11 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 * Neural parsing architectures [[slides](slides/slides-324.pdf)] [[video](https://youtu.be/Y9MAL5dan2I)] (16:08)
 * Dynamic oracles [[slides](slides/slides-325.pdf)] [[video](https://youtu.be/epuUR3BzPZo)] (23:10)
 
-**Reading:** Eisenstein, chapter 11
+**Exercise:** [[Transition-based dependency parsing](https://github.com/liu-nlp/dl4nlp/tree/master/exercise31)]
 
 **Reading:** 
 
+* Eisenstein, chapter 11
 * [Chen and Manning (2014)](https://www.aclweb.org/anthology/D14-1082/)
 * [Kiperwasser and Goldberg (2016)](https://www.aclweb.org/anthology/Q16-1023/)
 * [Dozat and Manning (2017)](https://openreview.net/forum?id=Hk95PK9le)
@@ -48,10 +49,8 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 |------------|-----------|
 |10:15&ndash;12:00: **Discussion**   |9:15&ndash;12:00: **Project presentations**   |
 |13:15&ndash;15:00: **Discussion**   |13:15&ndash;15:00: **Assignment** |
-|15:15&ndash;17:00: **Exercise**     |15:15&ndash;16:00: **Course recap** |
+|15:15&ndash;17:00: [**Exercise**](https://github.com/liu-nlp/dl4nlp/tree/master/exercise31)     |15:15&ndash;16:00: **Course recap** |
 
 ## Assignment 3
-
-<!--* Introduction to Assignment 3 [[video](https://youtu.be/C7PnsTie1YA)]-->
 
 The [the third programming assignment](https://github.com/liu-nlp/dl4nlp/tree/master/assignment3) is dedicated to the task of *dependency parsing*. More specifically, you will implement a simplified version of the dependency parser used by [Glavaš and Vulić (2021)](http://dx.doi.org/10.18653/v1/2021.eacl-main.270).
