@@ -8,6 +8,8 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 **Reading:** Eisenstein, chapter 1
 
+**Optional exercise:** [[Biomedical NER](http://www.cse.chalmers.se/~richajo/dat450/assignments/assignment4.html)]
+
 ## Unit 3-1: Sequence labelling (94 min)
 
 * Introduction to sequence prediction tasks [[slides](slides/slides-2022-311.pdf)] [[video](https://youtu.be/VCORDrz-Tzs)] (16:48)
