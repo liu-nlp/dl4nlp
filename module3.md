@@ -45,6 +45,8 @@ This module focuses on architectures and algorithms for NLP tasks where the goal
 
 ## Schedule for the meeting
 
+[Zoom link](https://liu-se.zoom.us/j/62456053815?pwd=MS9rT3k1RkV1UXBHZ1lJRDY3dG1jUT09)
+
 | June 2    | June 3   |
 |------------|-----------|
 |10:15&ndash;12:00: **Discussion**   |9:15&ndash;12:00: **Project presentations**   |
