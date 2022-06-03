@@ -44,7 +44,7 @@ Order of the presentations:
 * Alexandru
 * Bram, Livia, Shivam
 * Fredrik
-* Hooman
+* Hooman, Saaed
 * Huaifeng
 * Lena, Olle
 * Mehrdad
