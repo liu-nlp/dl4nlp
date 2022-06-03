@@ -24,6 +24,33 @@ In a Zoom session on June 2 or 3, each project idea will be presented in a 5-min
 
 In your talk, the most important thing is to describe the task that you will work on. You may add a couple of examples to make the task a bit more understandable to someone who has never heard about it before. In addition, if you have found a dataset, you may want to mention a few details about it.
 
+<!--
+
+* 09:15–09:45
+* 09:45–10:00
+* 10:00–10:15
+* 10:15–10:30
+* 10:30–10:45
+* 10:45–11:15
+* 11:15–11:30
+* 11:30–11:45
+* 10:15–10:30
+
+-->
+
+Order of the presentations:
+
+* Adam, Georg
+* Alexandru
+* Bram, Livia, Shivam
+* Fredrik
+* Hooman
+* Huaifeng
+* Lena, Olle
+* Mehrdad
+* Rajmund
+* Simon
+
 # The report
 
 The text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is **June 15**. If you do not manage to submit by that date, there is a second chance on **August 28**.
