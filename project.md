@@ -41,7 +41,6 @@ In your talk, the most important thing is to describe the task that you will wor
 Order of the presentations:
 
 * Adam, Georg
-<!-- * Alexandru -->
 * Bram, Livia, Shivam
 * Fredrik
 * Hooman, Saaed
