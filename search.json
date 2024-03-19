@@ -4,13 +4,13 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site. Richard is testing."
+    "text": "About this site"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This is a Quarto website. Test.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   }
 ]
