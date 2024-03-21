@@ -2,18 +2,33 @@ project:
   type: website
 
 website:
-  title: "Website"
+  title: "DL4NLP"
+  search: true
   navbar:
+    background: primary
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Modules"
+        menu:
+          - modules/module0/index.qmd
+          - modules/module1/index.qmd
+          - modules/module2/index.qmd
+          - modules/module3/index.qmd
+      - text: "Assignments"
+        menu:
+          - assignments/assignment1/index.qmd
+          - assignments/assignment2/index.qmd
+          - assignments/assignment3/index.qmd
+      - text: "Project"
+        href: project/index.qmd
+    tools:
+      - icon: github
+        href: https://github.com/liu-nlp/dl4nlp
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      - cosmo
+      - _custom.scss
     toc: true
-
-
-
+    linestretch: 1.6
+    highlight-style: github

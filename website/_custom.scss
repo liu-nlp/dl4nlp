@@ -1,0 +1,28 @@
+/*-- scss:defaults --*/
+
+$spacer: 1rem !default;
+$paragraph-margin-bottom: $spacer !default;
+$headings-margin-bottom: $spacer !default;
+
+/*-- scss:rules --*/
+h5 {
+    margin-bottom: $spacer * 0.25;
+}
+section {
+    margin-top: $spacer * 2;
+}
+section.level2 {
+    margin-bottom: $spacer * 3;
+}
+section.level5 {
+    margin-top: $spacer;
+    margin-bottom: $spacer;
+}
+
+.quarto-title-meta {
+    margin-bottom: $spacer * 2;
+}
+
+.quarto-title {
+    margin-top: $spacer * 2;
+}
