@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Website</title>
+<title>DL4NLP - Deep Learning for Natural Language Processing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,7 +68,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -79,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Website</span>
+    <span class="navbar-title">DL4NLP</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -88,17 +87,21 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modules</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modules">    
+        <li>
+    <a class="dropdown-item" href="./modules/module0/index.html">
+ <span class="dropdown-text">Review</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
+    <a href="https://github.com/liu-nlp/dl4nlp" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -108,14 +111,24 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
+  <li><a href="#course-literature" id="toc-course-literature" class="nav-link" data-scroll-target="#course-literature">Course literature</a></li>
+  <li><a href="#teaching" id="toc-teaching" class="nav-link" data-scroll-target="#teaching">Teaching</a></li>
+  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
+  <li><a href="#project" id="toc-project" class="nav-link" data-scroll-target="#project">Project</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Website</h1>
+<h1 class="title">Deep Learning for Natural Language Processing</h1>
 </div>
 
 
@@ -132,10 +145,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website. Test.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<p>This is the website for the <a href="https://wasp-sweden.org/">WASP</a> course “Deep Learning for Natural Language Processing”, taught by <a href="https://www.ida.liu.se/~marku61/">Marco Kuhlmann</a> (Linköping University) and <a href="http://www.cse.chalmers.se/~richajo/">Richard Johansson</a> (Chalmers University of Technology).</p>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
+<p>Natural Language Processing (NLP) develops methods for making human language accessible to computers. The goal of this course is to provide students with a theoretical understanding of and practical experience with the advanced algorithms that power modern NLP. The course focuses on methods based on deep neural networks.</p>
+<p>On completion of the course, you will be able to</p>
+<ul>
+<li>explain and analyze state-of-the-art deep learning architectures for NLP</li>
+<li>implement such architectures and apply them to practical problems</li>
+<li>design and carry out evaluations of deep learning architectures for NLP</li>
+<li>use current approaches to NLP in your own field of research</li>
+</ul>
+</section>
+<section id="course-literature" class="level2">
+<h2 class="anchored" data-anchor-id="course-literature">Course literature</h2>
+<p>Much of the content of the course is not described in a book, so we will mostly give pointers to research papers and survey articles when needed. If you prefer textbook-style introductions, you can have a look at these:</p>
+<ul>
+<li><p>Yoav Goldberg, <a href="https://www.morganclaypool.com/doi/abs/10.2200/S00762ED1V01Y201703HLT037">Neural Network Methods for Natural Language Processing</a>. Morgan Claypool, 2017. <a href="https://arxiv.org/abs/1510.00726">Pre-print version</a></p></li>
+<li><p>Jacob Eisenstein, <a href="https://mitpress.mit.edu/books/introduction-natural-language-processing">Natural Language Processing</a>. MIT Press, 2019. <a href="https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf">Pre-print version</a></p></li>
+</ul>
+</section>
+<section id="teaching" class="level2">
+<h2 class="anchored" data-anchor-id="teaching">Teaching</h2>
+<p>The course uses a flipped classroom format where the central concepts and methods are presented in pre-recorded video lectures. The physical meetings will focus on discussions of the important points in the recorded material, practical exercises, and reflections.</p>
+<p>The teaching is divided into three two-day meetings:</p>
+<ul>
+<li><strong>Meeting 1</strong>: 11–12 April (Linköping)</li>
+<li><strong>Meeting 2</strong>: 16–17 May (Gothenburg)</li>
+<li><strong>Meeting 3</strong>: 3–4 June (Linköping)</li>
+</ul>
+<p>Each meeting will start with a lunch at 12:00 and end at 15:00 on the second day.</p>
+</section>
+<section id="modules" class="level2">
+<h2 class="anchored" data-anchor-id="modules">Modules</h2>
+<p>The course consists of three thematic modules and a final project. The content of each module consists of</p>
+<ul>
+<li>video lectures introducing the important topics</li>
+<li>pointers to literature, some of which is fundamental and some optional</li>
+<li>a set of programming exercises</li>
+<li>a set of discussion tasks</li>
+<li>an assignment where you implement a model</li>
+</ul>
+<p>Detailed information about the modules is available on the module pages.</p>
+</section>
+<section id="project" class="level2">
+<h2 class="anchored" data-anchor-id="project">Project</h2>
+<p>In the project, you apply your learning in the course to your own field of research.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

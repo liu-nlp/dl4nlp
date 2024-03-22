@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/about.html</loc>
-    <lastmod>2024-03-19T11:51:21.512Z</lastmod>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module1/index.html</loc>
+    <lastmod>2024-03-21T08:44:29.397Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module0/basic-text-processing/basic-text-processing-with-solutions.html</loc>
+    <lastmod>2024-01-29T09:16:53.501Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/index.html</loc>
+    <lastmod>2024-03-21T08:38:06.105Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/project/index.html</loc>
+    <lastmod>2024-03-22T09:59:13.063Z</lastmod>
   </url>
   <url>
     <loc>https://liu-nlp.github.io/dl4nlp/index.html</loc>
-    <lastmod>2024-03-19T11:52:59.476Z</lastmod>
+    <lastmod>2024-03-22T10:07:33.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment3/index.html</loc>
+    <lastmod>2024-03-22T09:59:13.063Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment2/index.html</loc>
+    <lastmod>2024-03-22T09:59:13.063Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment1/index.html</loc>
+    <lastmod>2024-03-22T09:59:13.062Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment2/Assignment2.html</loc>
+    <lastmod>2024-03-21T08:38:06.047Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment3/Assignment3.html</loc>
+    <lastmod>2024-03-21T08:38:06.097Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/about.html</loc>
+    <lastmod>2024-03-21T08:38:06.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module3/index.html</loc>
+    <lastmod>2024-03-21T08:38:06.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module0/index.html</loc>
+    <lastmod>2024-03-22T10:04:12.508Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module0/Introduction_to_PyTorch.html</loc>
+    <lastmod>2024-01-29T09:16:52.838Z</lastmod>
   </url>
 </urlset>
