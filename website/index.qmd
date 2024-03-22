@@ -17,11 +17,9 @@ On completion of the course, you will be able to
 
 ## Course literature
 
-Much of the content of the course is not described in a book, so we will mostly give pointers to research papers and survey articles when needed.
+Much of the content of the course is not described in a book, so we will mostly give pointers to research papers and survey articles when needed. If you prefer textbook-style introductions, you can have a look
 
-If you prefer textbook-style introductions, you can have a look at this:
-
-* Jacob Eisenstein, [Natural Language Processing](https://mitpress.mit.edu/books/introduction-natural-language-processing). MIT Press, 2019. [Pre-print version](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf)
+Jacob Eisenstein, [Natural Language Processing](https://mitpress.mit.edu/books/introduction-natural-language-processing). MIT Press, 2019. [Pre-print version](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf)
 
 ## Teaching
 
@@ -33,7 +31,7 @@ The teaching is divided into three two-day meetings, each of which covers one mo
 * **Meeting 2**: 16–17 May (Gothenburg)
 * **Meeting 3**: 3–4 June (Linköping)
 
-Each meeting will start with a lunch at 11:30 and end at 15:00 on the second day.
+Each meeting will start with a lunch at 12:00 and end at 15:00 on the second day.
 
 ## Modules
 
@@ -48,8 +46,6 @@ The content of each module consists of
 
 Detailed information about the modules is available on the module pages, which you can find in the menu at the top of this page.
 
-### Project
+## Project
 
 In the project, you apply your learning in the course to your own field of research.
-
-[Detailed information about the project](project.md)

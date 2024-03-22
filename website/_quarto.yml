@@ -10,16 +10,6 @@ website:
       - text: "Modules"
         menu:
           - modules/module0/index.qmd
-          - modules/module1/index.qmd
-          - modules/module2/index.qmd
-          - modules/module3/index.qmd
-      - text: "Assignments"
-        menu:
-          - assignments/assignment1/index.qmd
-          - assignments/assignment2/index.qmd
-          - assignments/assignment3/index.qmd
-      - text: "Project"
-        href: project/index.qmd
     tools:
       - icon: github
         href: https://github.com/liu-nlp/dl4nlp
