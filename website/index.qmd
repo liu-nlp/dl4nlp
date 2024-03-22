@@ -19,9 +19,7 @@ On completion of the course, you will be able to
 
 Much of the content of the course is not described in a book, so we will mostly give pointers to research papers and survey articles when needed.
 
-If you prefer textbook-style introductions, you can have a look at these:
-
-* Yoav Goldberg, [Neural Network Methods for Natural Language Processing](https://www.morganclaypool.com/doi/abs/10.2200/S00762ED1V01Y201703HLT037). Morgan Claypool, 2017. [Pre-print version](https://arxiv.org/abs/1510.00726)
+If you prefer textbook-style introductions, you can have a look at this:
 
 * Jacob Eisenstein, [Natural Language Processing](https://mitpress.mit.edu/books/introduction-natural-language-processing). MIT Press, 2019. [Pre-print version](https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf)
 
@@ -29,7 +27,7 @@ If you prefer textbook-style introductions, you can have a look at these:
 
 The course uses a flipped classroom format where the central concepts and methods are presented in pre-recorded video lectures. The physical meetings will focus on discussions of the important points in the recorded material, practical exercises, and reflections.
 
-The teaching is divided into three two-day meetings:
+The teaching is divided into three two-day meetings, each of which covers one module:
 
 * **Meeting 1**: 11–12 April (Linköping)
 * **Meeting 2**: 16–17 May (Gothenburg)
@@ -39,7 +37,8 @@ Each meeting will start with a lunch at 11:30 and end at 15:00 on the second day
 
 ## Modules
 
-The course consists of three thematic modules and a final project. The content of each module consists of
+The course consists of three thematic modules and a final project.
+The content of each module consists of
 
 * video lectures introducing the important topics
 * pointers to literature, some of which is fundamental and some optional
@@ -47,7 +46,7 @@ The course consists of three thematic modules and a final project. The content o
 * a set of discussion tasks
 * an assignment where you implement a model
 
-Detailed information about the modules is available on the module pages.
+Detailed information about the modules is available on the module pages, which you can find in the menu at the top of this page.
 
 ### Project
 
