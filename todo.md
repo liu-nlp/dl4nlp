@@ -18,6 +18,7 @@
 - [ ] Set up the page
 - [ ] New unit on practical use of modern LMs (retrieval augmentation, fine-tuning)
 - [ ] Create assignment (retrieval augmentation and fine-tuning?)
+- [ ] Order lunch [Richard]
 
 ### Module 3:
 
