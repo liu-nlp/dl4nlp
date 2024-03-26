@@ -7,9 +7,11 @@
 
 ### Module 1:
 - [ ] Decide what goes into Unit 1-1: create new or reuse from elsewhere?
+- [ ] Fix all broken links
 - [ ] Send out info to participants
 - [ ] Create assignment (language modeling?)
 - [ ] Decide how to structure the meeting
+- [ ] Create/reuse exercises for the meeting
 
 ### Module 2:
 
