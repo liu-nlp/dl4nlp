@@ -9,75 +9,48 @@ Before working with the material in this module, you may want to have a look at 
 * Capsule introduction to NLP [[slides](slides/intro.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
 * [Review materials](review.md)
 
-## Unit 1-1: Introduction to representations of words and documents (56 min)
+## Unit 1-1: Introduction to representations of words and documents
 
 | Title | Slides | Video |
 |---|---|---|
-| Representing documents for neural networks | [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_1.pdf)] |  [[video](https://youtu.be/xsQ46CXsIfc)] (07:07) |
-| Introduction to embeddings | [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_2.pdf)] | [[video](https://youtu.be/LLUjsmuEgk8)] (09:43) |
-| Continuous bag-of-words representations | [[slides](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/m3_3.pdf)] |  [[video](https://youtu.be/MOcGoA3Fbi8)] (11:05) |
-| Examples | [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_3/Document%20classification.ipynb)] | [[colab](https://drive.google.com/file/d/1VLIAYXSoLN99BwS9CUTJYS7caazBVORF/view?usp=sharing)] |
-
+| Introduction to the module | | |
+| Learning word and document representations; embeddings | | |
+| Tokenization | | |
+| Deep learning in NLP: practical considerations | | |
 : {.striped}
 
-**Reading:** Goldberg, chapter 8; [Joulin et al. (2017)](https://aclweb.org/anthology/E17-2068)
+## Unit 1-2: Language modelling and contextualized embeddings
 
-## Unit 1-2: Pre-training word embeddings
+| Title | Slides | Video |
+|---|---|---|
+| Introduction to language modelling | [[slides](slides/slides-121.pdf)] | [[video](https://youtu.be/_TlvRtoGOn8)] (15:03) |
+| N-gram language models | [[slides](slides/slides-122.pdf)] | [[video](https://youtu.be/GuTAMrqiFSM)] (16:35) |
+| Recurrent neural networks | [[slides](slides/slides-123.pdf)] | [[video](https://youtu.be/RWxoiA2uGZU)] (18:34) |
+| The LSTM architecture | [[slides](slides/slides-124.pdf)] | [[video](https://youtu.be/8es6TKvw7qI)] (12:55) |
+| Recurrent neural network language models | [[slides](slides/slides-125.pdf)] | [[video](https://youtu.be/J-KglYsuJ28)] (11:14) |
+| Contextualized word embeddings | [[slides](slides/slides-126.pdf)] | [[video](https://youtu.be/5oXWnSBoe7A)] (13:00) |
+: {.striped}
 
-<!--* Text categorization and word embeddings [[notebook]](http://www.cse.chalmers.se/~richajo/waspnlp2020/ex1_2/ex1_2.html) [[video](https://www.youtube.com/watch?v=pcVh5Ga3JmM)] (55:52)-->
+## Unit 1-3: Transformer-based language models
 
-* Pre-training word embedding models: introduction [[slides](slides/slides-141.pdf)] [[video](https://youtu.be/6AozaHmWugs)] (15:06)
-* The SGNS algorithm [[slides](slides/slides-142.pdf)] [[video](https://youtu.be/R5EhgHz2S5w)] (09:21)
-* Evaluation and interpretation of word embeddings [[slides](slides/slides-143.pdf)] [[video](https://youtu.be/gcWF3AIUtJ8)] (19:17)
-* More training algorithms for word embeddings [[slides](slides/slides-144.pdf)] [[video](https://youtu.be/TMHI-Dk3c44)] (22:23)
-<!--* Perspectives [[slides](slides/slides-145.pdf)] [[video](https://youtu.be/XxI7fb7aabU)] (16:19)-->
-* Subword representations [[slides](slides/slides-223.pdf)] [[video](https://youtu.be/1ZDpYspEM_M)] (13:50)
+| Title | Slides | Video |
+|---|---|---|
+| Attention | [[slides](slides/slides-221.pdf)] | [[video](https://youtu.be/HHUR6VX5CeU)] (15:13) |
+| The Transformer architecture | [[slides](slides/slides-222.pdf)] | [[video](https://youtu.be/dSd0-RFZLnk)] (13:43) |
+| Pre-trained transformer models 1 (GPT) | [[slides](slides/slides-223.pdf)] | [[video](https://youtu.be/9QE1bQTSbx8)] (22:53) |
+| Pre-trained transformer models 2 (BERT) | [[slides](slides/slides-224.pdf)] | [[video](https://youtu.be/JeY6N1012Sg)] (18:59) |
+| Generation algorithms | [[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l7/m7_3.pdf)] | [[video](https://youtu.be/QtwpM-OGOew)] (26:42) |
+: {.striped}
+  
+**Reading:**
 
-**Examples**
-* Using Gensim: [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Word%20embeddings%20in%20Gensim.ipynb)] [[colab](https://drive.google.com/file/d/1wMeKV4R4pVzDFKyqPkp4ckwqizrKDe8r/view?usp=sharing)]
-* SGNS implementation in PyTorch: [[notebook](http://www.cse.chalmers.se/~richajo/waspnlp2020/m1_4/Skip-gram%20with%20negative%20sampling.ipynb)] [[colab](https://drive.google.com/file/d/1_ian039WL__VdYaW6PoOtcgHkdlUlsOJ/view?usp=sharing)]
+* [Cheng et al. (2016)](https://www.aclweb.org/anthology/D16-1053/)
+* [Vaswani et al. (2017)](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)
+* [Serrano and Smith (2019)](https://www.aclweb.org/anthology/D18-1216/)
+* [Radford et al. (2018)](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
+* [Devlin et al. (2019)](dx.doi.org/10.18653/v1/N19-1423)
 
-**Reading:** Goldberg, chapter 10–11; [Schnabel et al. (2015)](https://www.aclweb.org/anthology/D15-1036.pdf)
-
-### Exercises (on-site)
-
-* [Text categorization and word embeddings](http://www.cse.chalmers.se/~richajo/waspnlp2022/ex1_1/ex1_1.html) [[solution](https://colab.research.google.com/drive/19LpsoI1ajRm4VtVSTOoP9nb9bqLxh1GL?usp=sharing)]
-
-## Unit 1-3: Language modelling and contextualized embeddings
-
-### Lectures
-
-* Introduction to language modelling [[slides](slides/slides-121.pdf)] [[video](https://youtu.be/_TlvRtoGOn8)] (15:03)
-* N-gram language models [[slides](slides/slides-122.pdf)] [[video](https://youtu.be/GuTAMrqiFSM)] (16:35)
-* Recurrent neural networks [[slides](slides/slides-123.pdf)] [[video](https://youtu.be/RWxoiA2uGZU)] (18:34)
-* The LSTM architecture [[slides](slides/slides-124.pdf)] [[video](https://youtu.be/8es6TKvw7qI)] (12:55)
-* Recurrent neural network language models [[slides](slides/slides-125.pdf)] [[video](https://youtu.be/J-KglYsuJ28)] (11:14)
-* Contextualized word embeddings [[slides](slides/slides-126.pdf)] [[video](https://youtu.be/5oXWnSBoe7A)] (13:00)
-
-### Reading
-
-Goldberg, chapters 13–15
-
-### Demos
-
-* [Usage patterns for recurrent neural networks](https://github.com/liu-nlp/dl4nlp/tree/master/exercise131)
-* [The LSTM classifier](https://github.com/liu-nlp/dl4nlp/tree/master/exercise133)
-
-### Exercise
-
-[Recurrent neural network language models](https://github.com/liu-nlp/dl4nlp/tree/master/exercise132)
-
-## Schedule for the meeting
-
-[Zoom link](https://liu-se.zoom.us/j/63610376728?pwd=NDA0aHEwd05WaEVwNTJlTFpsUTNRdz09)
-
-| April 7    | April 8   |
-|------------|-----------|
-|10:15&ndash;11:00: **Introduction** |9:15&ndash;11:00:  **Discussion** |
-|11:15&ndash;13:00: **Discussion**   |11:15&ndash;13:00: **Exercise**   |
-|14:15&ndash;16:00: **Exercise**     |14:15&ndash;16:00: **Assignment** |
-|16:15&ndash;17:00: **Discussion**   |16:15&ndash;17:00: **Project**    |
 
 ## Assignment 1
 
-[The first programming assignment](http://www.cse.chalmers.se/~richajo/waspnlp2022/a1/assignment1.html) is dedicated to the task of *word sense disambiguation*.
+The first programming assignment will be about training a language model and using it to generate text.
