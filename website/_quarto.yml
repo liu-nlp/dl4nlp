@@ -10,6 +10,7 @@ website:
       - text: "Modules"
         menu:
           - modules/module0/index.qmd
+          - modules/module1/index.qmd	  
     tools:
       - icon: github
         href: https://github.com/liu-nlp/dl4nlp
