@@ -6,8 +6,8 @@ This module introduces one of the most fundamental ideas in modern NLP: the idea
 
 Before working with the material in this module, you may want to have a look at the following:
 
-* Capsule introduction to NLP [[slides](slides/intro.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
-* [Review materials](review.md)
+* Capsule introduction to NLP [[slides](https://github.com/liu-nlp/dl4nlp/blob/main/slides/intro.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
+* [Review materials](../module0/)
 
 ## Unit 1-1: Introduction to representations of words and documents
 
@@ -42,10 +42,6 @@ This unit begins with an overview of language modelling. It highlights the histo
 | Contextualized word embeddings | [[slides](contextualised-word-embeddings.pdf)] | [[video](https://youtu.be/aIgYQE6zGOA)] (14:48) |
 : {.striped}
 
-### Reading
-
-None
-
 ## Unit 1-3: Transformer-based language models
 
 This unit explores the evolution of transformer-based language models, starting with the sequence-to-sequence or encoder–decoder architecture for neural machine translation. We then delve into the concept of attention, followed by the Transformer architecture as such, which sets a benchmark in machine translation and various natural language processing applications. We go through Transformer-based models, specifically the GPT family, which derives from the Transformer’s decoder side, and BERT, which utilizes the encoder side. The unit ends by discussing text generation algorithms, including beam search generation.
@@ -54,11 +50,11 @@ This unit explores the evolution of transformer-based language models, starting 
 
 | Title | Slides | Video |
 |---|---|---|
-| Neural machine translation | [[slides](slides/slides-221.pdf)] | [[video](https://youtu.be/yPe9dg8tpXQ)] (14:48) |
-| Attention | [[slides](slides/slides-221.pdf)] | [[video](https://youtu.be/C_DOh_tM520)] (14:49) |
-| The Transformer architecture | [[slides](slides/slides-222.pdf)] | [[video](https://youtu.be/DbI2lHb2nBE)] (14:45) |
-| Decoder-based language models (GPT) | [[slides](slides/slides-223.pdf)] | [[video](https://youtu.be/z2BL7s40klo)] (14:50) |
-| Encoder-based language models (BERT) | [[slides](slides/slides-224.pdf)] | [[video](https://youtu.be/CmmBXUvfEI4)] (14:44) |
+| Neural machine translation | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit3/nlp-2024-302.pdf)] | [[video](https://youtu.be/yPe9dg8tpXQ)] (14:48) |
+| Attention | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit3/nlp-2024-303.pdf)] | [[video](https://youtu.be/C_DOh_tM520)] (14:49) |
+| The Transformer architecture | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit3/nlp-2024-304.pdf)] | [[video](https://youtu.be/DbI2lHb2nBE)] (14:45) |
+| Decoder-based language models (GPT) | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit3/nlp-2024-305.pdf)] | [[video](https://youtu.be/z2BL7s40klo)] (14:50) |
+| Encoder-based language models (BERT) | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit3/nlp-2024-306.pdf)] | [[video](https://youtu.be/CmmBXUvfEI4)] (14:44) |
 | Generation algorithms | [[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l7/m7_3.pdf)] | [[video](https://youtu.be/QtwpM-OGOew)] (26:42) |
 : {.striped}
 
@@ -68,4 +64,4 @@ This unit explores the evolution of transformer-based language models, starting 
 * [Vaswani et al. (2017)](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)
 * [Serrano and Smith (2019)](https://www.aclweb.org/anthology/D18-1216/)
 * [Radford et al. (2018)](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
-* [Devlin et al. (2019)](dx.doi.org/10.18653/v1/N19-1423)
+* [Devlin et al. (2019)](https://aclanthology.org/N19-1423.pdf)
