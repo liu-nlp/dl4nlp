@@ -9,6 +9,8 @@ Before working with the material in this module, you may want to have a look at 
 * Capsule introduction to NLP [[slides](https://github.com/liu-nlp/dl4nlp/blob/main/slides/intro.pdf)] [[video](https://youtu.be/6u7u1cpVT7Y)]
 * [Review materials](../module0/)
 
+We will discuss the material during the first course meeting. Please see the [meeting page](meeting1) for details.
+
 ## Unit 1-1: Introduction to representations of words and documents
 
 In the first unit, we introduce the idea of *word representations*: the basic building block that we use to build deep learning models that process language.
