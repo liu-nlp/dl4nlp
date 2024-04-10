@@ -4,7 +4,30 @@ title: "Meeting 1"
 
 The first meeting will take place 11–12 April in Linköping.
 
-**Start and end.** The meeting will start with lunch at 12:00 on Thursday, 11 April and end at 15:00 on Friday, 12 April. We will send out a detailed schedule shortly before the meeting.
+## Schedule
+
+The meeting will start with lunch at 12:00 on Thursday, 11 April and end at 15:00 on Friday, 12 April. Here is a rough schedule:
+
+| Time | Activity |
+|------|----------|
+| **Thursday** | |
+| 12:00–13:00 | Lunch at [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/), Gästmatsalen |
+| 13:00–13:30 | Welcome. Course logistics |
+| 13:30–14:30 | Discussion: Word and document representations |
+| 14:30–15:00 | Fika in [Ljusgården](https://link.mazemap.com/KTWYvTGh) |
+| 15:00–17:00 | Exercise: Simple neural NLP models from scratch |
+| 18:30–21:00 | Dinner at [Olympia Da Vinci](http://www.olympia-davinci.se) |
+| **Friday** | |
+| 09:00–10:00 | Discussion: Bias in NLP models |
+| 10:00–10:30 | Fika in [Ljusgården](https://link.mazemap.com/KTWYvTGh) |
+| 10:30–12:00 | Exercise: Using pre-trained NLP models from Hugging Face |
+| 12:00–13:00 | Lunch at [Universitetsklubben](https://www.hors.se/linkoping/17/6/universitetsklubben/) |
+| 13:00–14:00 | Introduction to the project |
+| 14:00–15:00 | Getting started on Assignment 1 |
+
+: {.striped .hover}
+
+## Practical information
 
 **Meeting venue.** We will be at Linköping University, in [B-huset](https://link.mazemap.com/gwzVmFfP), Campus Valla. Most sessions will be in lecture hall [Nobel](https://link.mazemap.com/o7AFQD2b). For fikas we will walk over to [Ljusgården](https://link.mazemap.com/KTWYvTGh). Lunches will be in [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/) and [Universitetsklubben](https://www.hors.se/linkoping/17/6/universitetsklubben/).
 
