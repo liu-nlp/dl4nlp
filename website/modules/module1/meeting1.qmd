@@ -15,12 +15,12 @@ The meeting will start with lunch at 12:00 on Thursday, 11 April and end at 15:
 | 13:00–13:30 | Welcome. Course logistics |
 | 13:30–14:30 | Discussion: Word and document representations |
 | 14:30–15:00 | Fika in [Ljusgården](https://link.mazemap.com/KTWYvTGh) |
-| 15:00–17:00 | Exercise: Simple neural NLP models from scratch |
+| 15:00–17:00 | Exercise: Simple neural NLP models from scratch ([notebook](https://colab.research.google.com/drive/1wZlxgaWsJaOxMhIHmjQpjLsg0QZkQiMQ?usp=sharing)) |
 | 18:30–21:00 | Dinner at [Olympia Da Vinci](http://www.olympia-davinci.se) |
 | **Friday** | |
 | 09:00–10:00 | Discussion: Bias in NLP models |
 | 10:00–10:30 | Fika in [Ljusgården](https://link.mazemap.com/KTWYvTGh) |
-| 10:30–12:00 | Exercise: Using pre-trained NLP models from Hugging Face |
+| 10:30–12:00 | Exercise: Using pre-trained NLP models from Hugging Face ([notebook](https://drive.google.com/file/d/1yHH_iR4RZaDFNvN9iIfcH_Eo6yYRxaRU/view?usp=sharing)) |
 | 12:00–13:00 | Lunch at [Universitetsklubben](https://www.hors.se/linkoping/17/6/universitetsklubben/) |
 | 13:00–14:00 | Introduction to the project |
 | 14:00–15:00 | Getting started on Assignment 1 |
