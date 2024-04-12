@@ -53,7 +53,28 @@
     "href": "project/index.html",
     "title": "Project",
     "section": "",
-    "text": "Independent project\nIn the project work, your task will be to\n\nfind an interesting NLP task that can be addressed with deep learning methods\nwrite a short pitch that introduces your idea\nfind (or annotate) an appropriate dataset for your task\nlook around for related work\nimplement software to train some deep learning model for your task\nevaluate your system\nwrite up a report about your results\n\nThe projects can be carried out individually or in groups of 2–4 students.\n\n\nPreliminary project description\nPlease submit a short text that describes what you intend to work on. For suggestions of topics, see below.\nThe text should include a project title and about 1 page giving a rough outline of how you intend to work. If you have found any related work or relevant dataset, this is useful information to include. The deadline for this preliminary description is 2024-05-10; we will give you comments on your description before the second meeting (16–17 May).\n\n\nThe report\nThe text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is 2024-06-14. If you do not manage to submit by that date, there is a second chance on 2024-08-31.\n\n\nFinding a topic\nYou can work on any project that is small and manageable enough for a short project of this kind. Ideally, try to find a topic that is relevant to your own research interests. It’s OK if you end up with preliminary results, as long as you have some tidbit to present at the end.\nIf you need help deciding on a topic, here are a few suggestions. Some of these are very easy and some more challenging, and this list is not sorted by the difficulty level.\n\nTry out a benchmark. There are some popular benchmark sets such as GLUE and the more recently released Super GLUE that are used to evaluate language understanding systems. Build a model and evaluate it on one of these benchmarks.\nCrosslingual applications. For some application, e.g. some categorization or tagging task we’ve seen in the course, investigate how well crosslingual representations such as multilingual BERT allows us to train with one language and evaluate with other languages.\nShared tasks. Every year, several NLP competitions are arranged at the SemEval conference. Participate in one of the 2020 tasks or get the data from some task from previous years. Additionally, there are shared tasks organized by CoNLL, BioNLP and other conferences, where datasets can often be accessed easily.\n\nAlternatively, if you don’t have an idea and you don’t like the suggested topics, just talk to Marco or Richard."
+    "text": "In the project work, your task will be to\nThe projects can be carried out individually or in groups of 2–4 students."
+  },
+  {
+    "objectID": "project/index.html#preliminary-project-description",
+    "href": "project/index.html#preliminary-project-description",
+    "title": "Project",
+    "section": "Preliminary project description",
+    "text": "Preliminary project description\nPlease submit a short text that describes what you intend to work on. For suggestions of topics, see below.\nThe text should include a project title and about 1 page giving a rough outline of how you intend to work. If you have found any related work or relevant dataset, this is useful information to include. The deadline for this preliminary description is 2024-05-10; we will give you comments on your description before the second meeting (16–17 May)."
+  },
+  {
+    "objectID": "project/index.html#the-report",
+    "href": "project/index.html#the-report",
+    "title": "Project",
+    "section": "The report",
+    "text": "The report\nThe text should be structured as a typical technical report, including an abstract, statement of problem, method description, experiments and results, and a conclusion. The deadline for submitting the report is 2024-06-14. If you do not manage to submit by that date, there is a second chance on 2024-08-31."
+  },
+  {
+    "objectID": "project/index.html#finding-a-topic",
+    "href": "project/index.html#finding-a-topic",
+    "title": "Project",
+    "section": "Finding a topic",
+    "text": "Finding a topic\nYou can work on any project that is small and manageable enough for a short project of this kind. Ideally, try to find a topic that is relevant to your own research interests. It’s OK if you end up with preliminary results, as long as you have some tidbit to present at the end.\nIf you need help deciding on a topic, here are a few suggestions. Some of these are very easy and some more challenging, and this list is not sorted by the difficulty level.\n\nTry out a benchmark. There are some popular benchmark sets such as GLUE and the more recently released Super GLUE that are used to evaluate language understanding systems. Build a model and evaluate it on one of these benchmarks.\nCrosslingual applications. For some application, e.g. some categorization or tagging task we’ve seen in the course, investigate how well crosslingual representations such as multilingual BERT allows us to train with one language and evaluate with other languages.\nShared tasks. Every year, several NLP competitions are arranged at the SemEval conference. Get the data from some task from previous years. Additionally, there are shared tasks organized by CoNLL, BioNLP and other conferences, where datasets can often be accessed easily.\n\nAlternatively, if you don’t have an idea and you don’t like the suggested topics, just talk to Marco or Richard."
   },
   {
     "objectID": "index.html",
