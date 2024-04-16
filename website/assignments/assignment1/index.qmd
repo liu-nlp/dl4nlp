@@ -5,3 +5,5 @@ title: "Assignment 1"
 In this assignment you will implement and train two or three neural language models: the fixed-window model, the recurrent neural network model from Unit&nbsp;1-2, and optionally a model based on the Transformer architecture from Unit&nbsp;1-3. You will evaluate these models by computing their perplexity on a benchmark dataset.
 
 [Link to the assignment](https://github.com/liu-nlp/dl4nlp/tree/main/website/assignments/assignment1)
+
+**Deadline:** 2024-05-03 (submit via Canvas)
