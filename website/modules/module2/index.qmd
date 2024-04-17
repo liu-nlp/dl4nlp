@@ -1,7 +1,9 @@
 ---
-title: "Website"
+title: "Module 2"
 ---
 
-This is a Quarto website. Test.
+This module will dive deeper in the techniques used to train modern language models. In addition, we will discuss applications and methodologies in text generation.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+We are going to provide recordings and reading material in the next few weeks.
+
+We will discuss this module during the second course meeting in Gothenburg. Please see the [meeting page](meeting2) for details.
