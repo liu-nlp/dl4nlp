@@ -350,6 +350,13 @@
     "text": "Schedule\nThe meeting will start with lunch at 12:00 on Thursday, 16 May and end at 15:00 on Friday, 17 May.\nWe will publish details about the schedule and venue later."
   },
   {
+    "objectID": "modules/module2/meeting2.html#practical-information",
+    "href": "modules/module2/meeting2.html#practical-information",
+    "title": "Meeting 2",
+    "section": "Practical information",
+    "text": "Practical information\nFor the sessions, we will use the room SB-L200, located at Sven Hultins gata 6. At the entrance, walk right and take the first staircase to SB-L200.\nThe Chalmers tram and bus stop is located a short distance from the venue.\nFrom the train station, you can walk a short distance to Brunnsparken, from which the following two lines can be taken directly to Chalmers.\n\nTram 10 (towards Guldheden)\nBus 16 (towards Högsbohöjd)\n\nYou can use the Västtrafik app or pay with a credit card for a single ticket."
+  },
+  {
     "objectID": "modules/module0/Introduction_to_PyTorch.html",
     "href": "modules/module0/Introduction_to_PyTorch.html",
     "title": "Introduction to PyTorch",
