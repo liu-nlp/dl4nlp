@@ -7,3 +7,38 @@ This module will dive deeper in the techniques used to train modern language mod
 We are going to provide recordings and reading material in the next few weeks.
 
 We will discuss this module during the second course meeting in Gothenburg. Please see the [meeting page](meeting2) for details.
+
+## Unit 2-1: Modern large language models
+
+| Title | Slides | Video |
+|---|---|---|
+|Introduction to modern language models|[[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l12/m12_1.pdf)]|[[video](https://youtu.be/VL1ND3zmNy4)]|
+|Properties of large models; Emergent abilities|[[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-501.pdf)]|[[video](https://youtu.be/F5Xh4uwrl9k)]|
+|Training LLMs to follow instructions; Alignment | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-502.pdf)] | [[video](https://youtu.be/EaU2Aerzxzo)] |
+|Evaluating general-purpose models| TBA | TBA |
+: {.striped}
+
+### Reading
+
+## Unit 2-2: Working with open large language models
+
+| Title | Slides | Video |
+|---|---|---|
+| Open LLMs | | [[video](https://www.youtube.com/watch?v=y9k-U9AuDeM)] |
+| Efficient fine-tuning techniques | [[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l13/m13_1.pdf)] | [[video](https://youtu.be/p8RnCZlR3fA)] |
+| Quantization | | [[video](https://www.youtube.com/watch?v=mNE_d-C82lI)] | 
+| Quantized fine-tuning | | [[video](https://www.youtube.com/watch?v=6l8GZDPbFn8)] |
+| Retrieval augmentation | | [[short video](https://www.youtube.com/watch?v=T-D1OfcDW1M)] [[long video](https://www.youtube.com/watch?v=mE7IDf2SmJg)] |
+: {.striped}
+
+### Reading
+
+
+## Unit 2-3: Generating text: Applications and methodology
+| Title | Slides | Video |
+|---|---|---|
+| Introduction to generation tasks | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-311.pdf)] | [[video](https://youtu.be/rQgA09R8kSM)] |
+| Evaluation of generation systems | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-312.pdf)] | [[video](https://youtu.be/pJHmKn2FDRY)] |
+| Summarization | [[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l10/l10_1.pdf)] | [[video](https://youtu.be/EUJlrdJhBJg)] |
+| Dialogue | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-2022-232.pdf)] | [[video](https://youtu.be/jWkQLVN3ixI)] |
+: {.striped}
