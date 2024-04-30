@@ -63,6 +63,7 @@ Large Language Models Catching up?](https://arxiv.org/pdf/2311.16989)
 ### Software resources
 
 - [bitsandbytes](https://huggingface.co/docs/bitsandbytes/main/en/index)
+- [peft](https://huggingface.co/docs/peft/index)
 - [accelerate](https://huggingface.co/docs/accelerate/index)
 - [Ollama](https://ollama.com/)
 - [Llamaindex](https://www.llamaindex.ai/)
