@@ -13,12 +13,27 @@ We will discuss this module during the second course meeting in Gothenburg. Plea
 | Title | Slides | Video |
 |---|---|---|
 |Introduction to modern language models|[[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l12/m12_1.pdf)]|[[video](https://youtu.be/VL1ND3zmNy4)]|
-|Properties of large models; Emergent abilities|[[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-501.pdf)]|[[video](https://youtu.be/F5Xh4uwrl9k)]|
-|Training LLMs to follow instructions; Alignment | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-502.pdf)] | [[video](https://youtu.be/EaU2Aerzxzo)] |
+|Emergent abilities of LLMs|[[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-501.pdf)]|[[video](https://youtu.be/F5Xh4uwrl9k)]|
+|LLM alignment | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-502.pdf)] | [[video](https://youtu.be/EaU2Aerzxzo)] |
 |Evaluating general-purpose models| TBA | TBA |
 : {.striped}
 
 ### Reading
+
+- Brown et al. (2020): [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
+- Ouyang et al. (2022): [Aligning language models to follow instructions](https://openai.com/research/instruction-following)
+
+### Surveys and other optional material
+
+- Kaddour et al. (2023): [Challenges and Applications of Large Language Models](https://arxiv.org/pdf/2307.10169)
+- Liu et al. (2023): [Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing](https://dl.acm.org/doi/full/10.1145/3560815)
+- Minaee et al. (2024): [Large Language Models: A Survey](https://arxiv.org/pdf/2402.06196)
+- Zheng et al. (2023): [Secrets of RLHF in Large Language Models Part I: PPO](https://arxiv.org/pdf/2307.04964)
+
+### Software resources
+
+- [TRL &ndash; Transformer Reinforcement Learning](https://huggingface.co/docs/trl/index)
+- [OpenAI Python API library](https://pypi.org/project/openai/)
 
 ## Unit 2-2: Working with open large language models
 
@@ -28,11 +43,30 @@ We will discuss this module during the second course meeting in Gothenburg. Plea
 | Efficient fine-tuning techniques | [[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l13/m13_1.pdf)] | [[video](https://youtu.be/p8RnCZlR3fA)] |
 | Quantization | | [[video](https://www.youtube.com/watch?v=mNE_d-C82lI)] | 
 | Quantized fine-tuning | | [[video](https://www.youtube.com/watch?v=6l8GZDPbFn8)] |
-| Retrieval augmentation | | [[short video](https://www.youtube.com/watch?v=T-D1OfcDW1M)] [[long video](https://www.youtube.com/watch?v=mE7IDf2SmJg)] |
+| Retrieval augmentation | | [[video](https://www.youtube.com/watch?v=T-D1OfcDW1M)] |
 : {.striped}
 
 ### Reading
 
+- Dettmers et al. (2023): [QLORA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/pdf/2305.14314)
+- Ram et al. (2023): [In-Context Retrieval-Augmented Language Models](https://aclanthology.org/2023.tacl-1.75.pdf)
+
+### Surveys and other optional material
+
+- Chen et al. (2023): [ChatGPT’s One-year Anniversary: Are Open-Source
+Large Language Models Catching up?](https://arxiv.org/pdf/2311.16989)
+- Lialin et al. (2023): [Scaling Down to Scale Up: A Guide to Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.15647)
+- Wan et al. (2023): [Efficient Large Language Models: A Survey](https://arxiv.org/pdf/2312.03863)
+- Gao et al. (2023): [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/pdf/2312.10997)
+- [Retrieval augmentation video by Douwe Kiela](https://www.youtube.com/watch?v=mE7IDf2SmJg), part of a Stanford course
+
+### Software resources
+
+- [bitsandbytes](https://huggingface.co/docs/bitsandbytes/main/en/index)
+- [accelerate](https://huggingface.co/docs/accelerate/index)
+- [Ollama](https://ollama.com/)
+- [Llamaindex](https://www.llamaindex.ai/)
+- Some accessible models: [Llama 3](https://llama.meta.com/llama3/), [Mistral](https://docs.mistral.ai/), [Falcon](https://falconllm.tii.ae/falcon.html)
 
 ## Unit 2-3: Generating text: Applications and methodology
 | Title | Slides | Video |
@@ -42,3 +76,8 @@ We will discuss this module during the second course meeting in Gothenburg. Plea
 | Summarization | [[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l10/l10_1.pdf)] | [[video](https://youtu.be/EUJlrdJhBJg)] |
 | Dialogue | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-2022-232.pdf)] | [[video](https://youtu.be/jWkQLVN3ixI)] |
 : {.striped}
+
+### Reading
+
+- [Eisenstein](https://raw.githubusercontent.com/jacobeisenstein/gt-nlp-class/master/notes/eisenstein-nlp-notes.pdf), chapter 19
+- Goyal et al. (2022) [News Summarization and Evaluation in the Era of GPT-3](https://arxiv.org/pdf/2209.12356)
