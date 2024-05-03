@@ -4,11 +4,13 @@ title: "Module 2"
 
 This module will dive deeper in the techniques used to train modern language models. In addition, we will discuss applications and methodologies in text generation.
 
-We are going to provide recordings and reading material in the next few weeks.
+When comparing the material for this module with that for [Module&nbsp;1](../module1/index.qmd), you will notice an increased share of material from external sources, such as video recordings and research articles. We have selected these to provide you with an up-to-date overview of this fast-developing field. If you want to know more, feel free to search for more detailed video lectures and articles from other sources.
 
-We will discuss this module during the second course meeting in Gothenburg. Please see the [meeting page](meeting2) for details.
+We will discuss this module during the second course meeting in Gothenburg. Please see the [meeting page](meeting2.qmd) for details.
 
 ## Unit 2-1: Modern large language models
+
+This unit reviews some of the central topics related to modern language models (LLMs), notably from the GPT family. We examine their emergent capabilities like zero-shot learning and in-context learning and explore methods for aligning LLMs with human instructions and preferences. Finally, the lectures address the crucial aspect of evaluating general-purpose language models, offering insights into their effectiveness and applicability across various tasks and domains.
 
 | Title | Slides | Video |
 |---|---|---|
@@ -36,6 +38,8 @@ We will discuss this module during the second course meeting in Gothenburg. Plea
 - [OpenAI Python API library](https://pypi.org/project/openai/)
 
 ## Unit 2-2: Working with open large language models
+
+The lectures in this unit present various techniques that collectively empower users to maximize the utility and efficiency of open large language models in various applications and scenarios. They explore efficient fine-tuning methods and quantization techniques to optimize model performance during training and deployment. The final lecture discusses retrieval augmentation, a strategy to enrich LLMs' responses by incorporating additional information from retrieval systems.
 
 | Title | Slides | Video |
 |---|---|---|
@@ -70,6 +74,9 @@ Large Language Models Catching up?](https://arxiv.org/pdf/2311.16989)
 - Some accessible models: [Llama 3](https://llama.meta.com/llama3/), [Mistral](https://docs.mistral.ai/), [Falcon](https://falconllm.tii.ae/falcon.html)
 
 ## Unit 2-3: Generating text: Applications and methodology
+
+The third unit explores applications of large language models (LLMs) in various generation tasks. Specific tasks covered include summarization, condensing information effectively, and dialogue generation, facilitating natural and engaging conversations. The unit also introduces evaluation methods for assessing the efficacy of generation systems.
+
 | Title | Slides | Video |
 |---|---|---|
 | Introduction to generation tasks | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-311.pdf)] | [[video](https://youtu.be/rQgA09R8kSM)] |
