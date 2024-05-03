@@ -134,7 +134,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unit-2-1-modern-large-language-models" id="toc-unit-2-1-modern-large-language-models" class="nav-link active" data-scroll-target="#unit-2-1-modern-large-language-models">Unit 2-1: Modern large language models</a>
+  <ul class="collapse">
+  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
+  <li><a href="#surveys-and-other-optional-material" id="toc-surveys-and-other-optional-material" class="nav-link" data-scroll-target="#surveys-and-other-optional-material">Surveys and other optional material</a></li>
+  <li><a href="#software-resources" id="toc-software-resources" class="nav-link" data-scroll-target="#software-resources">Software resources</a></li>
+  </ul></li>
+  <li><a href="#unit-2-2-working-with-open-large-language-models" id="toc-unit-2-2-working-with-open-large-language-models" class="nav-link" data-scroll-target="#unit-2-2-working-with-open-large-language-models">Unit 2-2: Working with open large language models</a>
+  <ul class="collapse">
+  <li><a href="#reading-1" id="toc-reading-1" class="nav-link" data-scroll-target="#reading-1">Reading</a></li>
+  <li><a href="#surveys-and-other-optional-material-1" id="toc-surveys-and-other-optional-material-1" class="nav-link" data-scroll-target="#surveys-and-other-optional-material-1">Surveys and other optional material</a></li>
+  <li><a href="#software-resources-1" id="toc-software-resources-1" class="nav-link" data-scroll-target="#software-resources-1">Software resources</a></li>
+  </ul></li>
+  <li><a href="#unit-2-3-generating-text-applications-and-methodology" id="toc-unit-2-3-generating-text-applications-and-methodology" class="nav-link" data-scroll-target="#unit-2-3-generating-text-applications-and-methodology">Unit 2-3: Generating text: Applications and methodology</a>
+  <ul class="collapse">
+  <li><a href="#reading-2" id="toc-reading-2" class="nav-link" data-scroll-target="#reading-2">Reading</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -159,10 +180,178 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>This module will dive deeper in the techniques used to train modern language models. In addition, we will discuss applications and methodologies in text generation.</p>
-<p>We are going to provide recordings and reading material in the next few weeks.</p>
-<p>We will discuss this module during the second course meeting in Gothenburg. Please see the <a href="meeting2">meeting page</a> for details.</p>
+<p>When comparing the material for this module with that for <a href="../../modules/module1/index.html">Module&nbsp;1</a>, you will notice an increased share of material from external sources, such as video recordings and research articles. We have selected these to provide you with an up-to-date overview of this fast-developing field. If you want to know more, feel free to search for more detailed video lectures and articles from other sources.</p>
+<p>We will discuss this module during the second course meeting in Gothenburg. Please see the <a href="../../modules/module2/meeting2.html">meeting page</a> for details.</p>
+<section id="unit-2-1-modern-large-language-models" class="level2">
+<h2 class="anchored" data-anchor-id="unit-2-1-modern-large-language-models">Unit 2-1: Modern large language models</h2>
+<p>This unit reviews some of the central topics related to modern language models (LLMs), notably from the GPT family. We examine their emergent capabilities like zero-shot learning and in-context learning and explore methods for aligning LLMs with human instructions and preferences. Finally, the lectures address the crucial aspect of evaluating general-purpose language models, offering insights into their effectiveness and applicability across various tasks and domains.</p>
+<table class="table-striped table">
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Slides</th>
+<th>Video</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introduction to modern language models</td>
+<td>[<a href="https://www.cse.chalmers.se/~richajo/dat450/lectures/l12/m12_1.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/VL1ND3zmNy4">video</a>]</td>
+</tr>
+<tr class="even">
+<td>Emergent abilities of LLMs</td>
+<td>[<a href="https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-501.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/F5Xh4uwrl9k">video</a>]</td>
+</tr>
+<tr class="odd">
+<td>LLM alignment</td>
+<td>[<a href="https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-502.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/EaU2Aerzxzo">video</a>]</td>
+</tr>
+<tr class="even">
+<td>Evaluating general-purpose models</td>
+<td>TBA</td>
+<td>TBA</td>
+</tr>
+</tbody>
+</table>
+<section id="reading" class="level3">
+<h3 class="anchored" data-anchor-id="reading">Reading</h3>
+<ul>
+<li>Brown et al.&nbsp;(2020): <a href="https://arxiv.org/abs/2005.14165">Language Models are Few-Shot Learners</a></li>
+<li>Ouyang et al.&nbsp;(2022): <a href="https://openai.com/research/instruction-following">Aligning language models to follow instructions</a></li>
+</ul>
+</section>
+<section id="surveys-and-other-optional-material" class="level3">
+<h3 class="anchored" data-anchor-id="surveys-and-other-optional-material">Surveys and other optional material</h3>
+<ul>
+<li>Kaddour et al.&nbsp;(2023): <a href="https://arxiv.org/pdf/2307.10169">Challenges and Applications of Large Language Models</a></li>
+<li>Liu et al.&nbsp;(2023): <a href="https://dl.acm.org/doi/full/10.1145/3560815">Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing</a></li>
+<li>Minaee et al.&nbsp;(2024): <a href="https://arxiv.org/pdf/2402.06196">Large Language Models: A Survey</a></li>
+<li>Zheng et al.&nbsp;(2023): <a href="https://arxiv.org/pdf/2307.04964">Secrets of RLHF in Large Language Models Part I: PPO</a></li>
+</ul>
+</section>
+<section id="software-resources" class="level3">
+<h3 class="anchored" data-anchor-id="software-resources">Software resources</h3>
+<ul>
+<li><a href="https://huggingface.co/docs/trl/index">TRL – Transformer Reinforcement Learning</a></li>
+<li><a href="https://pypi.org/project/openai/">OpenAI Python API library</a></li>
+</ul>
+</section>
+</section>
+<section id="unit-2-2-working-with-open-large-language-models" class="level2">
+<h2 class="anchored" data-anchor-id="unit-2-2-working-with-open-large-language-models">Unit 2-2: Working with open large language models</h2>
+<p>The lectures in this unit present various techniques that collectively empower users to maximize the utility and efficiency of open large language models in various applications and scenarios. They explore efficient fine-tuning methods and quantization techniques to optimize model performance during training and deployment. The final lecture discusses retrieval augmentation, a strategy to enrich LLMs’ responses by incorporating additional information from retrieval systems.</p>
+<table class="table-striped table">
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Slides</th>
+<th>Video</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Open LLMs</td>
+<td></td>
+<td>[<a href="https://www.youtube.com/watch?v=y9k-U9AuDeM">video</a>]</td>
+</tr>
+<tr class="even">
+<td>Efficient fine-tuning techniques</td>
+<td>[<a href="https://www.cse.chalmers.se/~richajo/dat450/lectures/l13/m13_1.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/p8RnCZlR3fA">video</a>]</td>
+</tr>
+<tr class="odd">
+<td>Quantization</td>
+<td></td>
+<td>[<a href="https://www.youtube.com/watch?v=mNE_d-C82lI">video</a>]</td>
+</tr>
+<tr class="even">
+<td>Quantized fine-tuning</td>
+<td></td>
+<td>[<a href="https://www.youtube.com/watch?v=6l8GZDPbFn8">video</a>]</td>
+</tr>
+<tr class="odd">
+<td>Retrieval augmentation</td>
+<td></td>
+<td>[<a href="https://www.youtube.com/watch?v=T-D1OfcDW1M">video</a>]</td>
+</tr>
+</tbody>
+</table>
+<section id="reading-1" class="level3">
+<h3 class="anchored" data-anchor-id="reading-1">Reading</h3>
+<ul>
+<li>Dettmers et al.&nbsp;(2023): <a href="https://arxiv.org/pdf/2305.14314">QLORA: Efficient Finetuning of Quantized LLMs</a></li>
+<li>Ram et al.&nbsp;(2023): <a href="https://aclanthology.org/2023.tacl-1.75.pdf">In-Context Retrieval-Augmented Language Models</a></li>
+</ul>
+</section>
+<section id="surveys-and-other-optional-material-1" class="level3">
+<h3 class="anchored" data-anchor-id="surveys-and-other-optional-material-1">Surveys and other optional material</h3>
+<ul>
+<li>Chen et al.&nbsp;(2023): <a href="https://arxiv.org/pdf/2311.16989">ChatGPT’s One-year Anniversary: Are Open-Source Large Language Models Catching up?</a></li>
+<li>Lialin et al.&nbsp;(2023): <a href="https://arxiv.org/pdf/2303.15647">Scaling Down to Scale Up: A Guide to Parameter-Efficient Fine-Tuning</a></li>
+<li>Wan et al.&nbsp;(2023): <a href="https://arxiv.org/pdf/2312.03863">Efficient Large Language Models: A Survey</a></li>
+<li>Gao et al.&nbsp;(2023): <a href="https://arxiv.org/pdf/2312.10997">Retrieval-Augmented Generation for Large Language Models: A Survey</a></li>
+<li><a href="https://www.youtube.com/watch?v=mE7IDf2SmJg">Retrieval augmentation video by Douwe Kiela</a>, part of a Stanford course</li>
+</ul>
+</section>
+<section id="software-resources-1" class="level3">
+<h3 class="anchored" data-anchor-id="software-resources-1">Software resources</h3>
+<ul>
+<li><a href="https://huggingface.co/docs/bitsandbytes/main/en/index">bitsandbytes</a></li>
+<li><a href="https://huggingface.co/docs/peft/index">peft</a></li>
+<li><a href="https://huggingface.co/docs/accelerate/index">accelerate</a></li>
+<li><a href="https://ollama.com/">Ollama</a></li>
+<li><a href="https://www.llamaindex.ai/">Llamaindex</a></li>
+<li>Some accessible models: <a href="https://llama.meta.com/llama3/">Llama 3</a>, <a href="https://docs.mistral.ai/">Mistral</a>, <a href="https://falconllm.tii.ae/falcon.html">Falcon</a></li>
+</ul>
+</section>
+</section>
+<section id="unit-2-3-generating-text-applications-and-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="unit-2-3-generating-text-applications-and-methodology">Unit 2-3: Generating text: Applications and methodology</h2>
+<p>The third unit explores applications of large language models (LLMs) in various generation tasks. Specific tasks covered include summarization, condensing information effectively, and dialogue generation, facilitating natural and engaging conversations. The unit also introduces evaluation methods for assessing the efficacy of generation systems.</p>
+<table class="table-striped table">
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Slides</th>
+<th>Video</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introduction to generation tasks</td>
+<td>[<a href="https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-311.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/rQgA09R8kSM">video</a>]</td>
+</tr>
+<tr class="even">
+<td>Evaluation of generation systems</td>
+<td>[<a href="https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-312.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/pJHmKn2FDRY">video</a>]</td>
+</tr>
+<tr class="odd">
+<td>Summarization</td>
+<td>[<a href="https://www.cse.chalmers.se/~richajo/dat450/lectures/l10/l10_1.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/EUJlrdJhBJg">video</a>]</td>
+</tr>
+<tr class="even">
+<td>Dialogue</td>
+<td>[<a href="https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-2022-232.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/jWkQLVN3ixI">video</a>]</td>
+</tr>
+</tbody>
+</table>
+<section id="reading-2" class="level3">
+<h3 class="anchored" data-anchor-id="reading-2">Reading</h3>
+<ul>
+<li><a href="https://raw.githubusercontent.com/jacobeisenstein/gt-nlp-class/master/notes/eisenstein-nlp-notes.pdf">Eisenstein</a>, chapter 19</li>
+<li>Goyal et al.&nbsp;(2022) <a href="https://arxiv.org/pdf/2209.12356">News Summarization and Evaluation in the Era of GPT-3</a></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
