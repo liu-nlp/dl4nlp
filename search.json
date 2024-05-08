@@ -1,68 +1,5 @@
 [
   {
-    "objectID": "modules/module1/meeting1.html",
-    "href": "modules/module1/meeting1.html",
-    "title": "Meeting 1",
-    "section": "",
-    "text": "The first meeting will take place 11–12 April in Linköping."
-  },
-  {
-    "objectID": "modules/module1/meeting1.html#schedule",
-    "href": "modules/module1/meeting1.html#schedule",
-    "title": "Meeting 1",
-    "section": "Schedule",
-    "text": "Schedule\nThe meeting will start with lunch at 12:00 on Thursday, 11 April and end at 15:00 on Friday, 12 April. Here is a rough schedule:\n\n\n\nTime\nActivity\n\n\n\n\nThursday\n\n\n\n12:00–13:00\nLunch at Kårallen, Gästmatsalen\n\n\n13:00–13:30\nWelcome. Course logistics\n\n\n13:30–14:30\nDiscussion: Word and document representations\n\n\n14:30–15:00\nFika in Ljusgården\n\n\n15:00–17:00\nExercise 1-1: Simple neural NLP models from scratch (notebook, solution)\n\n\n18:30–21:00\nDinner at Olympia Da Vinci\n\n\nFriday\n\n\n\n09:00–09:30\nDiscussion: Attention (blog post)\n\n\n09:30–10:00\nDiscussion: Bias in NLP models (paper by Garg et al.)\n\n\n10:00–10:30\nFika in Ljusgården\n\n\n10:30–12:00\nExercise 1-2: Using pre-trained NLP models from Hugging Face (notebook, solution)\n\n\n12:00–13:00\nLunch at Universitetsklubben\n\n\n13:00–14:00\nIntroduction to the project\n\n\n14:00–15:00\nIntroduction to Assignment 1: Language models"
-  },
-  {
-    "objectID": "modules/module1/meeting1.html#practical-information",
-    "href": "modules/module1/meeting1.html#practical-information",
-    "title": "Meeting 1",
-    "section": "Practical information",
-    "text": "Practical information\nMeeting venue. We will be at Linköping University, in B-huset, Campus Valla. Most sessions will be in lecture hall Nobel. Friday afternoon, we will be in lecture hall Ada Lovelace. For fikas we will walk over to Ljusgården. Lunches will be in Kårallen (Thursday) and Universitetsklubben (Friday).\nPublic transport. You can choose between two bus lines to get to B-huset from the city center using public transport (Östgötatrafiken). The specified travel times include a final walk from the bus stop to the meeting room.\n\nBus no. 4 to Lambohov, get off at Nobeltorget (25 minutes)\nBus no. 12 to Lambohov, get off at Universitetet or Mästar Mattias väg (20 minutes)\n\nDinner. On the first day of the meeting (11 April), we will have a joint dinner at Olympia Da Vinci. You registered for the dinner when registering for the course. Address: Bielkegatan 1, 582 21 Linköping (map)\nHotels. We can recommend Scandic Frimurarhotellet and Scandic Linköping City. Both of them are located close to the city centre and train station."
-  },
-  {
-    "objectID": "modules/module0/Introduction_to_PyTorch.html",
-    "href": "modules/module0/Introduction_to_PyTorch.html",
-    "title": "Introduction to PyTorch",
-    "section": "",
-    "text": "The purpose of this notebook is to introduce you to the basics of PyTorch, the deep learning framework that we will be using for the labs.\nMany good introductions to PyTorch are available online, including the 60 Minute Blitz on the official PyTorch website. This notebook is designed to put focus on those basics that you will encounter in the labs. Beyond the notebook, you will also need to get comfortable with the PyTorch documentation.\nWe start by importing the PyTorch module:\nimport torch\nThe following code prints the current version of the module:\nprint(torch.__version__)\nThe version of PyTorch at the time of writing this notebook was 1.10.1."
-  },
-  {
-    "objectID": "modules/module0/Introduction_to_PyTorch.html#tensors",
-    "href": "modules/module0/Introduction_to_PyTorch.html#tensors",
-    "title": "Introduction to PyTorch",
-    "section": "Tensors",
-    "text": "Tensors\nThe fundamental data structure in PyTorch is the tensor, a multi-dimensional matrix containing elements of a single numerical data type. Tensors are similar to arrays as you may know them from NumPy or MATLAB.\n\nCreating tensors\nOne way to create a tensor is to call the function torch.tensor() on a Python list or NumPy array.\nThe code in the following cell creates a 2-dimensional tensor with 4 elements.\n\nx = torch.tensor([[0, 1], [2, 3]])\nx\n\nEach tensor has a shape, which specifies the number and sizes of its dimensions:\n\nx.shape\n\nEach tensor also has a data type for its elements. More information about data types\n\nx.dtype\n\nWhen creating a tensor, you can explicitly pass the intended data type as a keyword argument:\n\ny = torch.tensor([[0, 1], [2, 3]], dtype=torch.float)\ny.dtype\n\nFor many data types, there also exists a specialised constructor:\n\nz = torch.FloatTensor([[0, 1], [2, 3]])\nz.dtype\n\n\n\nMore creation operations\nCreate a 3D-tensor of the specified shape filled with the scalar value zero:\n\nx = torch.zeros(2, 3, 5)\nx\n\nCreate a 3D-tensor filled with random values:\n\nx = torch.rand(2, 3, 5)\nx\n\nCreate a tensor with the same shape as another one, but filled with ones:\n\ny = torch.ones_like(x)\ny    # shape: [2, 3, 5]\n\nFor a complete list of tensor-creating operations, see Creation ops.\n\n\nEmbrace vectorisation!\nIteration is of one the most useful techniques for processing data in Python. However, you should not loop over tensors. Instead, you should be looking at vectorising any operations. This is because looping over tensors is slow, while vectorised operations on tensors are fast (and can be made even faster when the code is run on a GPU). To illustrate this point, let us create a 1D-tensor containing the first 1M integers:\n\nx = torch.arange(1000000)\nx\n\nSumming up the elements of the tensor using a loop is relatively slow:\n\nsum(i for i in x)\n\nDoing the same thing using a tensor operation is much faster:\n\nx.sum()\n\n\n\nIndexing and slicing\nTo access the contents of a tensor, you can use an extended version of Python’s syntax for indexing and slicing. Essentially the same syntax is used by NumPy. For more information, see Indexing on ndarrays.\nTo illustrate this, we create a 3D-tensor with random numbers:\n\nx = torch.rand(2, 3, 5)\nx\n\nIndex an element by a 3D-coordinate; this gives a 0D-tensor:\n\nx[0,1,2]\n\n(If you want the result as a non-tensor, use the method item().)\nIndex the second element; this gives a 2D-tensor:\n\nx[1]\n\nIndex the second-to-last element:\n\nx[-2]\n\nSlice out the sub-tensor with elements from index 1 onwards; this gives a 3D-tensor:\n\nx[1:]\n\nHere is a more complex example of slicing. As in Python, the colon : selects all indices of a dimension.\n\nx[:,:,2:4]\n\nThe syntax for indexing and slicing is very powerful. For example, the same effect as in the previous cell can be obtained with the following code, which uses the ellipsis (...) to match all dimensions but the ones explicitly mentioned:\n\nx[...,2:4]\n\n\n\nCreating views\nYou will sometimes want to use a tensor with a different shape than its initial shape. In these situations, you can re-shape the tensor or create a view of the tensor. The latter is preferable because views can share the same data as their base tensors and thus do not require copying.\nWe create a 3D-tensor of 12 random values:\n\nx = torch.rand(2, 3, 2)\nx\n\nCreate a view of this tensor as a 2D-tensor:\n\nx.view(3, 4)\n\nWhen creating a view, the special size -1 is inferred from the other sizes:\n\nx.view(3, -1)\n\nModifying a view affects the data in the base tensor:\n\ny = torch.rand(2, 3, 2)\nz = y.view(3, 4)\nz[2, 3] = 42\ny\n\n\n\nMore viewing operations\nThere are a few other useful methods that create views. More information about views\n\nx = torch.rand(2, 3, 5)\nx\n\nThe permute() method returns a view of the base tensor with some of its dimensions permuted. In the example, we maintain the first dimension but swap the second and the third dimension:\n\ny = x.permute(0, 2, 1)\nprint(y)\ny.shape\n\nThe unsqueeze() method returns a tensor with a dimension of size one inserted at the specified position. This is useful e.g. in the training of neural networks when you want to create a batch with just one example.\n\ny = x.unsqueeze(0)\nprint(y)\ny.shape\n\nThe inverse operation to unsqueeze() is squeeze():\n\ny = y.squeeze(0)\nprint(y)\ny.shape\n\n\n\nRe-shaping a tensor\nThere are some cases where you cannot create a view and need to explicitly re-shape a tensor. In particular, this happens when the data in the base tensor and the view are not in contiguous regions of memory.\n\nx = torch.rand(2, 3, 5)\nx\n\nWe permute the tensor x to create a new tensor y in which the data is no longer consecutive in memory:\n\ny = x.permute(0, 2, 1)\n# y = y.view(-1)    # raises a runtime error\ny\n\nIn such a case, you can explicitly re-shape the tensor, which will copy the data if necessary:\n\ny = x.permute(0, 2, 1)\ny = y.reshape(-1)\ny\n\nModifying a reshaped tensor will not necessarily change the data in the base tensor. This depends on whether the reshaped tensor is able to share the data with the base tensor.\n\ny = torch.rand(2, 3, 2)\ny = y.permute(0, 2, 1)    # if commented out, data can be shared\nz = y.reshape(-1)\nz[0] = 42\ny"
-  },
-  {
-    "objectID": "modules/module0/Introduction_to_PyTorch.html#computing-with-tensors",
-    "href": "modules/module0/Introduction_to_PyTorch.html#computing-with-tensors",
-    "title": "Introduction to PyTorch",
-    "section": "Computing with tensors",
-    "text": "Computing with tensors\n\nElement-wise operations\nUnary mathematical operations defined on numbers can be ‘lifted’ to tensors by applying them element-wise. This includes multiplication by a constant, exponentiation (**), taking roots (torch.sqrt()), and the logarithm (torch.log()).\n\nx = torch.rand(2, 3)\nprint(x)\nx * 2    # element-wise multiplication with 2\n\nSimilarly, we can do binary mathematical operations on tensors with the same shape. For example, the Hadamard product of two tensors \\(X\\) and \\(Y\\) is the tensor \\(X \\odot Y\\) obtained by the element-wise multiplication of the elements of \\(X\\) and \\(Y\\).\n\nx = torch.rand(2, 3)\ny = torch.rand(2, 3)\ntorch.mul(x, y)    # shape: [2, 3]\n\nThe Hadamard product can be written more succinctly as follows:\n\nx * y\n\n\n\nMatrix product\nWhen computing the matrix product between two tensors \\(X\\) and \\(Y\\), the sizes of the last dimension of \\(X\\) and the first dimension of \\(Y\\) must match. The shape of the resulting tensor is the concatenation of the shapes of \\(X\\) and \\(Y\\), with the last dimension of \\(X\\) and the first dimension of \\(Y\\) removed.\n\nx = torch.rand(2, 3)\ny = torch.rand(3, 5)\ntorch.matmul(x, y)    # shape: [2, 5]\n\nThe matrix product can be written more succinctly as follows:\n\nx @ y\n\n\n\nSum and argmax\nLet us define a tensor of random numbers:\n\nx = torch.rand(2, 3, 5)\nx\n\nYou have already seen that we can compute the sum of a tensor:\n\ntorch.sum(x)\n\nThere is a second form of the sum operation where we can specify the dimension along which the sum should be computed. This will return a tensor with the specified dimension removed.\n\ntorch.sum(x, dim=0)    # shape: [3, 5]\n\n\ntorch.sum(x, dim=1)   # shape: [2, 5]\n\nThe same idea also applies to the operation argmax() which returns the index of the component with the maximal value along the specified dimension.\n\ntorch.argmax(x)    # index of the highest component across all dimensions, numbered in consecutive order\n\n\ntorch.argmax(x, dim=0)   # index of the highest component across the first dimension\n\n\n\nConcatenating tensors\nA list of tensors can be combined into one long tensor by concatenation.\n\nx = torch.rand(2, 3)\ny = torch.rand(3, 3)\nz = torch.cat([x, y])\nprint(z)\nz.shape\n\nYou can also concatenate along a specific dimension:\n\nx = torch.rand(2, 2)\ny = torch.rand(2, 2)\nprint(x)\nprint(y)\nprint(torch.cat([x, y], dim=0))\nprint(torch.cat([x, y], dim=1))\n\n\n\nBroadcasting\nThe term broadcasting describes how PyTorch treats tensors with different shapes. Subject to certain constraints, the ‘smaller’ tensor is ‘broadcast’ across the larger tensor so that they have compatible shapes. Broadcasting is a way to avoid looping. In short, if a PyTorch operation supports broadcasting, then its Tensor arguments can be automatically expanded to be of equal sizes (without making copies of the data).\nIn the simplest case, two tensors have the same shapes. This is the case for the matrix x @ W and the bias vector b in the linear model below:\n\nx = torch.rand(1, 2)\nW = torch.rand(2, 3)\nb = torch.rand(1, 3)\nz = x @ W    # shape: [1, 3]\nz = z + b    # shape: [1, 3]\nprint(z)\nz.shape\n\nNow suppose that we have a whole batch of inputs. Watch what happens when adding the bias vector b:\n\nX = torch.rand(5, 2)\nZ = X @ W    # shape: [5, 3]\nZ = Z + b    # shape: [5, 3]    Broadcasting happens here!\nprint(Z)\nZ.shape\n\nIn the example, broadcasting expands the shape of b from \\([1, 3]\\) into \\([5, 3]\\). The matrix Z is formed by effectively adding b to each row of X. However, this is not implemented by a Python loop but happens implicitly through broadcasting.\nPyTorch uses the same broadcasting semantics as NumPy. More information about broadcasting\nTo be expanded!"
-  },
-  {
-    "objectID": "modules/module2/meeting2.html",
-    "href": "modules/module2/meeting2.html",
-    "title": "Meeting 2",
-    "section": "",
-    "text": "The second meeting will take place 16–17 May at Chalmers, Gothenburg."
-  },
-  {
-    "objectID": "modules/module2/meeting2.html#schedule",
-    "href": "modules/module2/meeting2.html#schedule",
-    "title": "Meeting 2",
-    "section": "Schedule",
-    "text": "Schedule\nThe meeting will start with lunch at 12:00 on Thursday, 16 May and end at 15:00 on Friday, 17 May.\nWe will publish details about the schedule and venue later."
-  },
-  {
-    "objectID": "modules/module2/meeting2.html#practical-information",
-    "href": "modules/module2/meeting2.html#practical-information",
-    "title": "Meeting 2",
-    "section": "Practical information",
-    "text": "Practical information\nFor the sessions, we will use the room SB-L200, located at Sven Hultins gata 6. At the entrance, walk right and take the first staircase to SB-L200.\nThe Chalmers tram and bus stop is located a short distance from the venue.\nFrom the train station, you can walk a short distance to Brunnsparken, from which the following two lines can be taken directly to Chalmers.\n\nTram 10 (towards Guldheden)\nBus 16 (towards Högsbohöjd)\n\nYou can use the Västtrafik app or pay with a credit card for a single ticket."
-  },
-  {
     "objectID": "modules/module3/index.html",
     "href": "modules/module3/index.html",
     "title": "Website",
@@ -70,11 +7,214 @@
     "text": "This is a Quarto website. Test.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
+    "objectID": "modules/module1/index.html",
+    "href": "modules/module1/index.html",
+    "title": "Module 1",
+    "section": "",
+    "text": "This module introduces one of the most fundamental ideas in modern NLP: the idea that words can be represented as vectors which can be learned from text data. On the application side of things, we focus on one of the most fundamental NLP tasks: text categorization.\nBefore working with the material in this module, you may want to have a look at the following:\nWe will discuss the material during the first course meeting. Please see the meeting page for details."
+  },
+  {
+    "objectID": "modules/module1/index.html#unit-1-1-introduction-to-representations-of-words-and-documents",
+    "href": "modules/module1/index.html#unit-1-1-introduction-to-representations-of-words-and-documents",
+    "title": "Module 1",
+    "section": "Unit 1-1: Introduction to representations of words and documents",
+    "text": "Unit 1-1: Introduction to representations of words and documents\nIn the first unit, we introduce the idea of word representations: the basic building block that we use to build deep learning models that process language. Specifically, we look at word embeddings and how they can be trained. We also discuss some challenges in representing words that can be solved by working with lower-level subword units.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to word representations\n[slides]\n[video]\n\n\nLearning word embeddings with neural networks\n[slides]\n[video]\n\n\nSubword models\n[slides]\n[video]"
+  },
+  {
+    "objectID": "modules/module1/index.html#unit-1-2-language-modelling-and-contextualized-embeddings",
+    "href": "modules/module1/index.html#unit-1-2-language-modelling-and-contextualized-embeddings",
+    "title": "Module 1",
+    "section": "Unit 1-2: Language modelling and contextualized embeddings",
+    "text": "Unit 1-2: Language modelling and contextualized embeddings\nThis unit begins with an overview of language modelling. It highlights the historical significance of n-gram models in NLP, which laid the foundation for the transition to neural language models. We continue with an exploration of pre-Transformer neural architectures, specifically focusing on recurrent neural networks (RNNs) and the pivotal Long Short-Term Memory (LSTM) architecture. At the end of the unit, we explore the use of RNNs as language models and introduce the concept of contextualised embeddings, which recognize the varying meanings of words across different contexts.\n\nLecture videos\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to language modelling\n[slides]\n[video] (14:49)\n\n\nN-gram language models\n[slides]\n[video] (14:46)\n\n\nNeural language models\n[slides]\n[video] (14:49)\n\n\nRecurrent neural networks\n[slides]\n[video] (14:47)\n\n\nThe LSTM architecture\n[slides]\n[video] (14:45)\n\n\nRNN language models\n[slides]\n[video] (14:32)\n\n\nContextualized word embeddings\n[slides]\n[video] (14:48)"
+  },
+  {
+    "objectID": "modules/module1/index.html#unit-1-3-transformer-based-language-models",
+    "href": "modules/module1/index.html#unit-1-3-transformer-based-language-models",
+    "title": "Module 1",
+    "section": "Unit 1-3: Transformer-based language models",
+    "text": "Unit 1-3: Transformer-based language models\nThis unit explores the evolution of transformer-based language models, starting with the sequence-to-sequence or encoder–decoder architecture for neural machine translation. We then delve into the concept of attention, followed by the Transformer architecture as such, which sets a benchmark in machine translation and various natural language processing applications. We go through Transformer-based models, specifically the GPT family, which derives from the Transformer’s decoder side, and BERT, which utilizes the encoder side. The unit ends by discussing text generation algorithms, including beam search generation.\n\nLecture videos\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nNeural machine translation\n[slides]\n[video] (14:48)\n\n\nAttention\n[slides]\n[video] (14:49)\n\n\nThe Transformer architecture\n[slides]\n[video] (14:45)\n\n\nDecoder-based language models (GPT)\n[slides]\n[video] (14:50)\n\n\nEncoder-based language models (BERT)\n[slides]\n[video] (14:44)\n\n\nGeneration algorithms\n[slides]\n[video] (26:42)\n\n\n\n\n\nReading\n\nCheng et al. (2016)\nVaswani et al. (2017)\nSerrano and Smith (2019)\nRadford et al. (2018)\nDevlin et al. (2019)"
+  },
+  {
+    "objectID": "modules/module0/index.html",
+    "href": "modules/module0/index.html",
+    "title": "Review",
+    "section": "",
+    "text": "This page collects review material for the course."
+  },
+  {
+    "objectID": "modules/module0/index.html#entry-requirements",
+    "href": "modules/module0/index.html#entry-requirements",
+    "title": "Review",
+    "section": "Entry requirements",
+    "text": "Entry requirements\nAs stated in the course syllabus, we assume you have a background in mathematics corresponding to the contents of the WASP course “Mathematics and Machine Learning”.\nYou will need solid programming experience in a high-level language; the programming assignments will use Python.\nYou should be comfortable with modern deep learning techniques and frameworks, for instance as taught by the WASP course “Deep Learning and GANs”. We do not assume previous knowledge of NLP."
+  },
+  {
+    "objectID": "modules/module0/index.html#linguistics",
+    "href": "modules/module0/index.html#linguistics",
+    "title": "Review",
+    "section": "Linguistics",
+    "text": "Linguistics\nWe do not expect you to have any background in linguistics, but will often use linguistic terminology. (No natural language processing without language!) The following video provides a compact, 30-minute introduction to some of the essentials of linguistics that you may encounter in the course.\nEssentials of linguistics"
+  },
+  {
+    "objectID": "modules/module0/index.html#basic-text-processing",
+    "href": "modules/module0/index.html#basic-text-processing",
+    "title": "Review",
+    "section": "Basic text processing",
+    "text": "Basic text processing\nThe exercises and assignments in this course require solid programming experience. In particular, you will benefit from previous experience with text processing in Python. If you need to get up to speed on this, we have a notebook that introduces some basic concepts and techniques for processing text data.\nBasic text processing"
+  },
+  {
+    "objectID": "modules/module0/index.html#pytorch",
+    "href": "modules/module0/index.html#pytorch",
+    "title": "Review",
+    "section": "PyTorch",
+    "text": "PyTorch\nAs our deep learning framework, we will use PyTorch. Many good introductions to PyTorch are available online. The notebook we provide here is focused on those concepts and techniques that you will encounter in the exercises and assignments.\nIntroduction to PyTorch"
+  },
+  {
+    "objectID": "modules/module0/index.html#using-colab",
+    "href": "modules/module0/index.html#using-colab",
+    "title": "Review",
+    "section": "Using Colab",
+    "text": "Using Colab\nMost of the assignments and exercises will require you to use a GPU-based machine. If you do not have easy access to such a machine at your institution, using Google’s free Colab service may be an alternative. We have written some instructions describing the basics of how to work with Colab.\nUsing Colab"
+  },
+  {
+    "objectID": "modules/module2/index.html",
+    "href": "modules/module2/index.html",
+    "title": "Module 2",
+    "section": "",
+    "text": "This module will dive deeper in the techniques used to train modern language models. In addition, we will discuss applications and methodologies in text generation.\nWhen comparing the material for this module with that for Module 1, you will notice an increased share of material from external sources, such as video recordings and research articles. We have selected these to provide you with an up-to-date overview of this fast-developing field. If you want to know more, feel free to search for more detailed video lectures and articles from other sources.\nWe will discuss this module during the second course meeting in Gothenburg. Please see the meeting page for details."
+  },
+  {
+    "objectID": "modules/module2/index.html#unit-2-1-modern-large-language-models",
+    "href": "modules/module2/index.html#unit-2-1-modern-large-language-models",
+    "title": "Module 2",
+    "section": "Unit 2-1: Modern large language models",
+    "text": "Unit 2-1: Modern large language models\nThis unit reviews some of the central topics related to modern language models (LLMs), notably from the GPT family. We examine their emergent capabilities like zero-shot learning and in-context learning and explore methods for aligning LLMs with human instructions and preferences. Finally, the lectures address the crucial aspect of evaluating general-purpose language models, offering insights into their effectiveness and applicability across various tasks and domains.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to modern language models\n[slides]\n[video]\n\n\nEmergent abilities of LLMs\n[slides]\n[video]\n\n\nLLM alignment\n[slides]\n[video]\n\n\nEvaluating LLMs\n[slides]\n[video]\n\n\n\n\nReading\n\nBrown et al. (2020): Language Models are Few-Shot Learners\nOuyang et al. (2022): Aligning language models to follow instructions\n\n\n\nSurveys and other optional material\n\nKaddour et al. (2023): Challenges and Applications of Large Language Models\nLiu et al. (2023): Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing\nMinaee et al. (2024): Large Language Models: A Survey\nZheng et al. (2023): Secrets of RLHF in Large Language Models Part I: PPO\n\n\n\nSoftware resources\n\nTRL – Transformer Reinforcement Learning\nOpenAI Python API library"
+  },
+  {
+    "objectID": "modules/module2/index.html#unit-2-2-working-with-open-large-language-models",
+    "href": "modules/module2/index.html#unit-2-2-working-with-open-large-language-models",
+    "title": "Module 2",
+    "section": "Unit 2-2: Working with open large language models",
+    "text": "Unit 2-2: Working with open large language models\nThe lectures in this unit present various techniques that collectively empower users to maximize the utility and efficiency of open large language models in various applications and scenarios. They explore efficient fine-tuning methods and quantization techniques to optimize model performance during training and deployment. The final lecture discusses retrieval augmentation, a strategy to enrich LLMs’ responses by incorporating additional information from retrieval systems.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nOpen LLMs\n\n[video]\n\n\nEfficient fine-tuning techniques\n[slides]\n[video]\n\n\nQuantization\n\n[video]\n\n\nQuantized fine-tuning\n\n[video]\n\n\nRetrieval augmentation\n\n[video]\n\n\n\n\nReading\n\nDettmers et al. (2023): QLORA: Efficient Finetuning of Quantized LLMs\nRam et al. (2023): In-Context Retrieval-Augmented Language Models\n\n\n\nSurveys and other optional material\n\nChen et al. (2023): ChatGPT’s One-year Anniversary: Are Open-Source Large Language Models Catching up?\nLialin et al. (2023): Scaling Down to Scale Up: A Guide to Parameter-Efficient Fine-Tuning\nWan et al. (2023): Efficient Large Language Models: A Survey\nGao et al. (2023): Retrieval-Augmented Generation for Large Language Models: A Survey\nRetrieval augmentation video by Douwe Kiela, part of a Stanford course\n\n\n\nSoftware resources\n\nbitsandbytes\npeft\naccelerate\nOllama\nLlamaindex\nSome accessible models: Llama 3, Mistral, Falcon"
+  },
+  {
+    "objectID": "modules/module2/index.html#unit-2-3-generating-text-applications-and-methodology",
+    "href": "modules/module2/index.html#unit-2-3-generating-text-applications-and-methodology",
+    "title": "Module 2",
+    "section": "Unit 2-3: Generating text: Applications and methodology",
+    "text": "Unit 2-3: Generating text: Applications and methodology\nThe third unit explores applications of large language models (LLMs) in various generation tasks. Specific tasks covered include summarization, condensing information effectively, and dialogue generation, facilitating natural and engaging conversations. The unit also introduces evaluation methods for assessing the efficacy of generation systems.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to generation tasks\n[slides]\n[video]\n\n\nEvaluation of generation systems\n[slides]\n[video]\n\n\nSummarization\n[slides]\n[video]\n\n\nDialogue\n[slides]\n[video]\n\n\n\n\nReading\n\nEisenstein, chapter 19\nGoyal et al. (2022) News Summarization and Evaluation in the Era of GPT-3"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "assignments/assignment2/index.html",
+    "href": "assignments/assignment2/index.html",
+    "title": "Assignment 2",
+    "section": "",
+    "text": "This is a placeholder for the second assignment."
+  },
+  {
+    "objectID": "assignments/assignment1/assignment-1.html",
+    "href": "assignments/assignment1/assignment-1.html",
+    "title": "Assignment 1: Language modelling",
+    "section": "",
+    "text": "In this assignment you will implement and train two or three neural language models: the fixed-window model, the recurrent neural network model from Unit 1-2, and optionally a model based on the Transformer architecture from Unit 1-3. You will evaluate these models by computing their perplexity on a benchmark dataset.\nimport torch\nFor this lab, you should use the GPU if you have one:\n# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')    # NVIDIA\n# device = torch.device('mps')    # Apple Silicon"
+  },
+  {
+    "objectID": "assignments/assignment1/assignment-1.html#data",
+    "href": "assignments/assignment1/assignment-1.html#data",
+    "title": "Assignment 1: Language modelling",
+    "section": "Data",
+    "text": "Data\nThe data for this assignment is WikiText, a collection of more than 100 million tokens extracted from the “Good” and “Featured” articles on Wikipedia. We will use the small version of the dataset, which contains slightly more than 2.5 million tokens.\nThe next cell contains code for an object that will act as a container for the “training” and the “validation” section of the data. We fill this container by reading the corresponding text files. The only processing we do is to whitespace-tokenise and to replace each newline with an end-of-sentence token.\n\nclass WikiText(object):\n\n    def __init__(self):\n        self.word2idx = {}\n        self.idx2word = []\n        self.train = self.read_data('wiki.train.tokens')\n        self.valid = self.read_data('wiki.valid.tokens')\n\n    def read_data(self, path):\n        ids = []\n        with open(path, encoding='utf-8') as source:\n            for line in source:\n                for word in line.split() + ['&lt;eos&gt;']:\n                    if word not in self.word2idx:\n                        self.word2idx[word] = len(self.word2idx)\n                        self.idx2word.append(word)\n                    ids.append(self.word2idx[word])\n        return ids\n\nThe cell below loads the data and prints the total number of tokens and the size of the vocabulary.\n\nwikitext = WikiText()\n\nprint('Tokens in train:', len(wikitext.train))\nprint('Tokens in valid:', len(wikitext.valid))\nprint('Vocabulary size:', len(wikitext.word2idx))"
+  },
+  {
+    "objectID": "assignments/assignment1/assignment-1.html#problem-1-fixed-window-model",
+    "href": "assignments/assignment1/assignment-1.html#problem-1-fixed-window-model",
+    "title": "Assignment 1: Language modelling",
+    "section": "Problem 1: Fixed-window model",
+    "text": "Problem 1: Fixed-window model\nIn this section, you will implement and train the fixed-window neural language model proposed by Bengio et al. (2003) and presented in the lectures. Recall that an input to the network takes the form of a vector of \\(n-1\\) integers representing the preceding words. Each integer is mapped to a vector via an embedding layer. (All positions share the same embedding.) The embedding vectors are then concatenated and sent through a two-layer feed-forward network with a non-linearity in the form of a rectified linear unit (ReLU) and a final softmax layer.\n\nProblem 1.1: Vectorise the data\nYour first task is to write code for transforming the data in the WikiText container into a vectorised form that can be fed to the fixed-window model. Concretely, you will implement a collate function in the form of a callable vectoriser object. Complete the skeleton code in the cell below:\n\nclass FixedWindowVectorizer(object):\n    def __init__(self, n):\n        self.n = n\n\n    def __call__(self, data):\n        # TODO: Replace the following line with your own code\n        return None, None\n\nYour code should implement the following specification:\ninit (self, n)\n\nCreates a new vectoriser with n-gram order \\(n\\). Your code should be able to handle arbitrary n-gram orders \\(n \\geq 1\\).\n\ncall (self, data)\n\nTransforms WikiText data (a list of word ids) into a pair of tensors \\(\\mathbf{X}\\), \\(\\mathbf{y}\\) that can be used to train the fixed-window model. Let \\(N\\) be the total number of \\(n\\)-grams from the token list; then \\(\\mathbf{X}\\) is a matrix with shape \\((N, n-1)\\) and \\(\\mathbf{y}\\) is a vector with length \\(N\\).\n\n\n🤞 Test your code\nTest your implementation by running the code in the next cell. Does the output match your expectation?\n\nvalid_x, valid_y = FixedWindowVectorizer(3)(wikitext.valid)\n\nprint(valid_x.size(), valid_y.size())\n\n\n\n\nProblem 1.2: Implement the model\nYour next task is to implement the fixed-window model based on the graphical specification given in the lecture.\n\nimport torch.nn as nn\n\nclass FixedWindowModel(nn.Module):\n\n    def __init__(self, n, n_words, embedding_dim=64, hidden_dim=64):\n        super().__init__()\n        # TODO: Add your own code\n\n    def forward(self, x):\n        # TODO: Replace the next line with your own code\n        raise NotImplemented\n\nHere is the specification of the two methods:\ninit (self, n, n_words, embedding_dim=64, hidden_dim=64)\n\nCreates a new fixed-window neural language model. The argument n specifies the model’s \\(n\\)-gram order. The argument n_words is the number of words in the vocabulary. The arguments embedding_dim and hidden_dim specify the dimensionalities of the embedding layer and the hidden layer of the feedforward network, respectively; their default value is 64.\n\nforward (self, x)\n\nComputes the network output on an input batch x. The shape of x is \\((B, n-1)\\), where \\(B\\) is the batch size. The output of the forward pass is a tensor of shape \\((B, V)\\) where \\(V\\) is the number of words in the vocabulary.\n\n\n🤞 Test your code\nTest your code by instantiating the model and feeding it a batch of examples from the training data.\n\n\n\nProblem 1.3: Train the model\nNext, write code to train the fixed-window model using minibatch gradient descent and the cross-entropy loss function. This should be a straightforward generalisation of the training loops that you have seen so far. Complete the skeleton code in the cell below:\n\ndef train_fixed_window(n, n_epochs=2, batch_size=3072, lr=1e-2):\n    # TODO: Replace the following line with your own code\n    return None\n\nHere is the specification of the training function:\ntrain_fixed_window (n, n_epochs = 2, batch_size = 3072, lr = 0.01)\n\nTrains a fixed-window neural language model of order n using minibatch gradient descent and returns it. The parameters n_epochs and batch_size specify the number of training epochs and the minibatch size, respectively. Training uses the cross-entropy loss function and the Adam optimizer with learning rate lr. After each epoch, prints the perplexity of the model on the validation data.\n\nThe code in the cell below trains a trigram model.\n\nmodel_fixed_window = train_fixed_window(3)\n\n\nPerformance goal\nYour submitted notebook must contain output demonstrating a validation perplexity of at most 360 after training for two epochs with the default parameters.\n⚠️ Computing the validation perplexity in one go (for the full validation set) will most probably exhaust your computer’s memory and/or take a lot of time. Instead, do the computation at the minibatch level and aggregate the results.\n\n\n🤞 Test your code\nTo see whether your network is learning something, print or plot the loss and/or the perplexity on the training data. If the two values do not decrease during training, try to find the problem before wasting time (and electricity) on useless computation.\nTraining and even evaluation will take some time – on a CPU, you should expect several minutes per epoch, depending on hardware. Our reference implementation uses a GPU and runs in 45 seconds on a MacBook Pro (2023)."
+  },
+  {
+    "objectID": "assignments/assignment1/assignment-1.html#problem-2-recurrent-neural-network-model",
+    "href": "assignments/assignment1/assignment-1.html#problem-2-recurrent-neural-network-model",
+    "title": "Assignment 1: Language modelling",
+    "section": "Problem 2: Recurrent neural network model",
+    "text": "Problem 2: Recurrent neural network model\nIn this section, you will implement the recurrent neural network language model. Recall that an input to this model is a vector of word ids. Each integer is mapped to an embedding vector. The sequence of embedded vectors is then fed into an unrolled LSTM. At each position \\(i\\) in the sequence, the hidden state of the LSTM at that position is sent through a linear transformation into a final softmax layer representing the probability distribution over the words at position \\(i+1\\). In theory, the input vector could represent the complete training data; for practical reasons, however, we will truncate the input to some fixed value bptt_len. This length is called the backpropagation-through-time horizon.\n\nProblem 2.1: Vectorise the data\nAs in the previous problem, your first task is to transform the data in the WikiText container into a vectorised form that can be fed to the model.\n\nclass RNNVectorizer(object):\n    def __init__(self, bptt_len):\n        self.bptt_len = bptt_len\n\n    def __call__(self, data):\n        # TODO: Replace the following line with your own code\n        return None, None\n\nYour vectoriser should meet the following specification:\ninit (self, bptt_len)\n\nCreates a new vectoriser. The parameter bptt_len specifies the backpropagation-through-time horizon.\n\ncall (self, data)\n\nTransforms a list of token indexes data into a pair of tensors \\(\\mathbf{X}\\), \\(\\mathbf{Y}\\) that can be used to train the recurrent neural language model. The rows of both tensors represent contiguous subsequences of token indexes of length bptt_len. Compared to the sequences in \\(\\mathbf{X}\\), the corresponding sequences in \\(\\mathbf{Y}\\) are shifted one position to the right. More precisely, if the \\(i\\)th row of \\(\\mathbf{X}\\) is the sequence that starts at token position \\(j\\), then the same row of \\(\\mathbf{Y}\\) is the sequence that starts at position \\(j+1\\).\n\n\n🤞 Test your code\nTest your implementation by running the following code:\n\nvalid_x, valid_y = RNNVectorizer(32)(wikitext.valid)\n\nprint(valid_x.size(), valid_y.size())\n\n\n\n\nProblem 2.2: Implement the model\nYour next task is to implement the recurrent neural network model based on the graphical specification.\n\nimport torch.nn as nn\n\nclass RNNModel(nn.Module):\n    \n    def __init__(self, n_words, embedding_dim=64, hidden_dim=64):\n        super().__init__()\n        # TODO: Add your own code\n\n    def forward(self, x):\n        # TODO: Replace the next line with your own code\n        raise NotImplemented\n\nYour implementation should follow this specification:\ninit (self, n_words, embedding_dim = 64, hidden_dim = 64)\n\nCreates a new recurrent neural network language model based on an LSTM. The argument n_words is the number of words in the vocabulary. The arguments embedding_dim and hidden_dim specify the dimensionalities of the embedding layer and the LSTM hidden layer, respectively; their default value is 64.\n\nforward (self, x)\n\nComputes the network output on an input batch x. The shape of x is \\((B, H)\\), where \\(B\\) is the batch size and \\(H\\) is the length of each input sequence. The shape of the output tensor is \\((B, H, V)\\), where \\(V\\) is the size of the vocabulary.\n\n\n🤞 Test your code\nTest your code by instantiating the model and feeding it a batch of examples from the training data.\n\n\n\nProblem 2.3: Train the model\nThe training loop for the recurrent neural network model is essentially identical to the loop that you wrote for the feed-forward model. The only thing to note is that the cross-entropy loss function expects its input to be a two-dimensional tensor; you will therefore have to re-shape the output tensor from the LSTM as well as the gold-standard output tensor in a suitable way. The most efficient way to do so is to use the view() method.\n\ndef train_rnn(n_epochs=2, batch_size=3072, bptt_len=32, lr=1e-2):\n    # TODO: Replace the next line with your own code\n    return None\n\nHere is the specification of the training function:\ntrain_rnn (n_epochs = 2, batch_size = 3072, bptt_len = 32, lr = 0.01)\n\nTrains a recurrent neural network language model on the WikiText data using minibatch gradient descent and returns it. The parameters n_epochs and batch_size specify the number of training epochs and the minibatch size, respectively. The parameter bptt_len specifies the length of the backpropagation-through-time horizon, that is, the length of the input and output sequences. Training uses the cross-entropy loss function and the Adam optimizer with learning rate lr. After each epoch, prints the perplexity of the model on the validation data.\n\nEvaluate your model by running the following code cell:\n\nmodel_rnn = train_rnn()\n\n\nPerformance goal\nYour submitted notebook must contain output demonstrating a validation perplexity of at most 280 after training for two epochs with the default hyperparameters."
+  },
+  {
+    "objectID": "assignments/assignment1/assignment-1.html#problem-3-transformer-model-optional",
+    "href": "assignments/assignment1/assignment-1.html#problem-3-transformer-model-optional",
+    "title": "Assignment 1: Language modelling",
+    "section": "Problem 3: Transformer model (optional)",
+    "text": "Problem 3: Transformer model (optional)\nIf you are up for a challenge, try implementing a Transformer-based language model. The required vectoriser is identical to the vectoriser for the RNN model. For the model itself, you can use the Pytorch modules nn.TransformerEncoder and nn.TransformerEncoderLayer. To represent positional information, follow the approach from the original Transformer paper and use sine and cosine functions of different frequencies (details), or learn position-specific embeddings. Can you get a lower perplexity than for the RNN model?"
+  },
+  {
+    "objectID": "assignments/assignment1/assignment-1.html#problem-4-generation",
+    "href": "assignments/assignment1/assignment-1.html#problem-4-generation",
+    "title": "Assignment 1: Language modelling",
+    "section": "Problem 4: Generation",
+    "text": "Problem 4: Generation\nIn this section, you will implement a simple generation mechanism for the language models you have implemented.\nRecall that one way to generate text with a language model is to repeatedly sample from the model’s output distribution, conditioning on some context. More specifically, this involves treating the softmax-normalised logits of the model as a multinomial distribution. The “creativeness” of the generation can be controlled with the temperature parameter of the softmax distribution.\nTo implement this recipe, we first ask you to extend each model with a generate method according to the following specification:\ngenerate (self, context, n_tokens = 10, temperature = 1.0)\n\nTakes a batch of context tokens context and extends it by sampling n_tokens new tokens from the model’s output distribution, scaled with the temperature temperature. Returns the extended context.\n\nIn a second stage, you should implement a convenience function generate that allows you to easily generate text with different models, like this:\ngenerate(model_fixed_window, 'i like', max_tokens=10, temperature=1.5)\n\ndef generate(model, context, max_tokens=3, temperature=1.0):\n    # TODO: Replace the next line with your own code\n    return context\n\nHere is the specification of the convenience function:\ngenerate (model, context, max_tokens = 10, temperature = 1.0)\n\nTakes a context sentence context, tokenises and vectorises it, and passes it to the specified model to generate new text. The new text consists of at most max_tokens, but is cut off at the first &lt;eos&gt; token. Returns the generated text (including the context)."
+  },
+  {
+    "objectID": "assignments/assignment1/assignment-1.html#problem-5-parameter-initialisation",
+    "href": "assignments/assignment1/assignment-1.html#problem-5-parameter-initialisation",
+    "title": "Assignment 1: Language modelling",
+    "section": "Problem 5: Parameter initialisation",
+    "text": "Problem 5: Parameter initialisation\nThe error surfaces explored when training neural networks can be very complex. Because of this, it is important to choose “good” initial values for the parameters. In PyTorch, the weights of the embedding layer are initialised by sampling from the standard normal distribution \\(\\mathcal{N}(0, 1)\\). Test how changing the initialisation affects the perplexity of your language models. Find research articles that propose different initialisation strategies.\nWrite a short (150 words) report about your experiments and literature search. Use the following prompts:\n\nWhat different initialisation did you try? What results did you get?\nHow do your results compare to what was suggested by the research articles?\nWhat did you learn? How, exactly, did you learn it? Why does this learning matter?\n\nTODO: Enter your text here"
+  },
+  {
+    "objectID": "assignments/assignment3/index.html",
+    "href": "assignments/assignment3/index.html",
+    "title": "Assignment 3",
+    "section": "",
+    "text": "This is a placeholder for the third assignment."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Deep Learning for Natural Language Processing",
+    "section": "",
+    "text": "This is the website for the WASP course “Deep Learning for Natural Language Processing”, taught by Marco Kuhlmann (Linköping University) and Richard Johansson (Chalmers University of Technology)."
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "Deep Learning for Natural Language Processing",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\nNatural Language Processing (NLP) develops methods for making human language accessible to computers. The goal of this course is to provide students with a theoretical understanding of and practical experience with the advanced algorithms that power modern NLP. The course focuses on methods based on deep neural networks.\nOn completion of the course, you will be able to\n\nexplain and analyze state-of-the-art deep learning architectures for NLP\nimplement such architectures and apply them to practical problems\ndesign and carry out evaluations of deep learning architectures for NLP\nuse current approaches to NLP in your own field of research"
+  },
+  {
+    "objectID": "index.html#course-literature",
+    "href": "index.html#course-literature",
+    "title": "Deep Learning for Natural Language Processing",
+    "section": "Course literature",
+    "text": "Course literature\nMuch of the content of the course is not described in a book, so we will mostly give pointers to research papers and survey articles when needed. If you prefer textbook-style introductions, you can have a look\nJacob Eisenstein, Natural Language Processing. MIT Press, 2019. Pre-print version"
+  },
+  {
+    "objectID": "index.html#teaching",
+    "href": "index.html#teaching",
+    "title": "Deep Learning for Natural Language Processing",
+    "section": "Teaching",
+    "text": "Teaching\nThe course uses a flipped classroom format where the central concepts and methods are presented in pre-recorded video lectures. The physical meetings will focus on discussions of the important points in the recorded material, practical exercises, and reflections.\nThe teaching is divided into three two-day meetings, each of which covers one module:\n\nMeeting 1: 11–12 April (Linköping)\nMeeting 2: 16–17 May (Gothenburg)\nMeeting 3: 3–4 June (Linköping)\n\nEach meeting will start with a lunch at 12:00 and end at 15:00 on the second day."
+  },
+  {
+    "objectID": "index.html#modules",
+    "href": "index.html#modules",
+    "title": "Deep Learning for Natural Language Processing",
+    "section": "Modules",
+    "text": "Modules\nThe course consists of three thematic modules and a final project. The content of each module consists of\n\nvideo lectures introducing the important topics\npointers to literature, some of which is fundamental and some optional\na set of programming exercises\na set of discussion tasks\nan assignment where you implement a model\n\nDetailed information about the modules is available on the module pages, which you can find in the menu at the top of this page."
+  },
+  {
+    "objectID": "index.html#project",
+    "href": "index.html#project",
+    "title": "Deep Learning for Natural Language Processing",
+    "section": "Project",
+    "text": "Project\nIn the project, you apply your learning in the course to your own field of research."
   },
   {
     "objectID": "assignments/assignment3/Assignment3.html",
@@ -133,6 +273,13 @@
     "text": "Evaluation\nThe parser is evaluated using unlabelled attachment score (UAS), which is the percentage of words that have been assigned their correct heads. Note that pseudo-words corresponding to padding (which we marked with the special head index −100 above) must be excluded from this calculation.\n\nDEV_DATA = ParserDataset('en_ewt-ud-dev.jsonl')\n\n\nimport torch\n\ndef evaluate(model, dataset, batch_size=8):\n    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')\n    data_loader = DataLoader(DEV_DATA, batch_size=batch_size, collate_fn=ParserBatcher(tokenizer, device=DEVICE))\n    n_correct = 0\n    n_total = 0\n    model.eval()\n    with tqdm(total=len(dataset)) as pbar:\n        for encoded_input, token_spans, gold_heads in data_loader:\n            with torch.no_grad():\n                head_scores = model.forward(encoded_input, token_spans)\n                pred_heads = torch.argmax(head_scores, dim=-1)\n            mask = gold_heads.ne(-100)\n            n_correct += torch.sum(pred_heads[mask] == gold_heads[mask])\n            n_total += torch.sum(mask)\n            pbar.update(len(token_spans))\n    return n_correct / n_total\n\n\nevaluate(PARSING_MODEL, DEV_DATA)\n\nYour notebook must contain output demonstrating at least 88% UAS on the development data.\nThat’s it! Congratulations on finishing the last assignment of this course! 🥳"
   },
   {
+    "objectID": "assignments/assignment1/index.html",
+    "href": "assignments/assignment1/index.html",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "In this assignment you will implement and train two or three neural language models: the fixed-window model, the recurrent neural network model from Unit 1-2, and optionally a model based on the Transformer architecture from Unit 1-3. You will evaluate these models by computing their perplexity on a benchmark dataset.\nLink to the assignment\nDeadline: 2024-05-03 (submit via Canvas)"
+  },
+  {
     "objectID": "assignments/assignment2/Assignment2.html",
     "href": "assignments/assignment2/Assignment2.html",
     "title": "Assignment 2: Machine translation",
@@ -182,118 +329,6 @@
     "text": "Problem 4: Visualising attention (reflection)\nFigure 3 in the paper by Bahdanau et al. (2015) shows some heatmaps of attention weights in selected sentences. In the last problem of this lab, we ask you to inspect attention weights for your trained translation system. We define a function plot_attention that visualizes the attention weights. The x axis corresponds to the words in the source sentence (German) and the y axis to the generated target sentence (English). The heatmap colors represent the strengths of the attention weights.\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n%config InlineBackend.figure_format = 'svg'\n\nplt.style.use('seaborn')\n\ndef plot_attention(translator, sentence):\n    translation, weights = translator.translate_with_attention([sentence])[0]\n    weights = np.array(weights)\n\n    fig, ax = plt.subplots()\n    heatmap = ax.pcolor(weights, cmap='Blues_r')\n\n    ax.set_xticklabels(sentence.split(), minor=False, rotation='vertical')\n    ax.set_yticklabels(translation.split(), minor=False)\n\n    ax.xaxis.tick_top()\n    ax.set_xticks(np.arange(weights.shape[1]) + 0.5, minor=False)\n    ax.set_yticks(np.arange(weights.shape[0]) + 0.5, minor=False)\n    ax.invert_yaxis()\n\n    plt.colorbar(heatmap)\n\nHere is an example:\n\nplot_attention(translator, 'das haus ist klein .')\n\nUse these heatmaps to inspect the attention patterns for selected German sentences. Try to find sentences for which the model produces reasonably good English translations. If your German is a bit rusty (or non-existent), use sentences from the validation data. It might be interesting to look at examples where the German and the English word order differ substantially. Document your exploration in a short reflection piece (ca. 150 words). Respond to the following prompts:\n\nWhat sentences did you try out? What patterns did you spot? Include example heatmaps in your notebook.\nBased on what you know about attention, did you expect your results? Was there anything surprising in them?"
   },
   {
-    "objectID": "assignments/assignment1/index.html",
-    "href": "assignments/assignment1/index.html",
-    "title": "Assignment 1",
-    "section": "",
-    "text": "In this assignment you will implement and train two or three neural language models: the fixed-window model, the recurrent neural network model from Unit 1-2, and optionally a model based on the Transformer architecture from Unit 1-3. You will evaluate these models by computing their perplexity on a benchmark dataset.\nLink to the assignment\nDeadline: 2024-05-03 (submit via Canvas)"
-  },
-  {
-    "objectID": "assignments/assignment1/assignment-1.html",
-    "href": "assignments/assignment1/assignment-1.html",
-    "title": "Assignment 1: Language modelling",
-    "section": "",
-    "text": "In this assignment you will implement and train two or three neural language models: the fixed-window model, the recurrent neural network model from Unit 1-2, and optionally a model based on the Transformer architecture from Unit 1-3. You will evaluate these models by computing their perplexity on a benchmark dataset.\nimport torch\nFor this lab, you should use the GPU if you have one:\n# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')    # NVIDIA\n# device = torch.device('mps')    # Apple Silicon"
-  },
-  {
-    "objectID": "assignments/assignment1/assignment-1.html#data",
-    "href": "assignments/assignment1/assignment-1.html#data",
-    "title": "Assignment 1: Language modelling",
-    "section": "Data",
-    "text": "Data\nThe data for this assignment is WikiText, a collection of more than 100 million tokens extracted from the “Good” and “Featured” articles on Wikipedia. We will use the small version of the dataset, which contains slightly more than 2.5 million tokens.\nThe next cell contains code for an object that will act as a container for the “training” and the “validation” section of the data. We fill this container by reading the corresponding text files. The only processing we do is to whitespace-tokenise and to replace each newline with an end-of-sentence token.\n\nclass WikiText(object):\n\n    def __init__(self):\n        self.word2idx = {}\n        self.idx2word = []\n        self.train = self.read_data('wiki.train.tokens')\n        self.valid = self.read_data('wiki.valid.tokens')\n\n    def read_data(self, path):\n        ids = []\n        with open(path, encoding='utf-8') as source:\n            for line in source:\n                for word in line.split() + ['&lt;eos&gt;']:\n                    if word not in self.word2idx:\n                        self.word2idx[word] = len(self.word2idx)\n                        self.idx2word.append(word)\n                    ids.append(self.word2idx[word])\n        return ids\n\nThe cell below loads the data and prints the total number of tokens and the size of the vocabulary.\n\nwikitext = WikiText()\n\nprint('Tokens in train:', len(wikitext.train))\nprint('Tokens in valid:', len(wikitext.valid))\nprint('Vocabulary size:', len(wikitext.word2idx))"
-  },
-  {
-    "objectID": "assignments/assignment1/assignment-1.html#problem-1-fixed-window-model",
-    "href": "assignments/assignment1/assignment-1.html#problem-1-fixed-window-model",
-    "title": "Assignment 1: Language modelling",
-    "section": "Problem 1: Fixed-window model",
-    "text": "Problem 1: Fixed-window model\nIn this section, you will implement and train the fixed-window neural language model proposed by Bengio et al. (2003) and presented in the lectures. Recall that an input to the network takes the form of a vector of \\(n-1\\) integers representing the preceding words. Each integer is mapped to a vector via an embedding layer. (All positions share the same embedding.) The embedding vectors are then concatenated and sent through a two-layer feed-forward network with a non-linearity in the form of a rectified linear unit (ReLU) and a final softmax layer.\n\nProblem 1.1: Vectorise the data\nYour first task is to write code for transforming the data in the WikiText container into a vectorised form that can be fed to the fixed-window model. Concretely, you will implement a collate function in the form of a callable vectoriser object. Complete the skeleton code in the cell below:\n\nclass FixedWindowVectorizer(object):\n    def __init__(self, n):\n        self.n = n\n\n    def __call__(self, data):\n        # TODO: Replace the following line with your own code\n        return None, None\n\nYour code should implement the following specification:\ninit (self, n)\n\nCreates a new vectoriser with n-gram order \\(n\\). Your code should be able to handle arbitrary n-gram orders \\(n \\geq 1\\).\n\ncall (self, data)\n\nTransforms WikiText data (a list of word ids) into a pair of tensors \\(\\mathbf{X}\\), \\(\\mathbf{y}\\) that can be used to train the fixed-window model. Let \\(N\\) be the total number of \\(n\\)-grams from the token list; then \\(\\mathbf{X}\\) is a matrix with shape \\((N, n-1)\\) and \\(\\mathbf{y}\\) is a vector with length \\(N\\).\n\n\n🤞 Test your code\nTest your implementation by running the code in the next cell. Does the output match your expectation?\n\nvalid_x, valid_y = FixedWindowVectorizer(3)(wikitext.valid)\n\nprint(valid_x.size(), valid_y.size())\n\n\n\n\nProblem 1.2: Implement the model\nYour next task is to implement the fixed-window model based on the graphical specification given in the lecture.\n\nimport torch.nn as nn\n\nclass FixedWindowModel(nn.Module):\n\n    def __init__(self, n, n_words, embedding_dim=64, hidden_dim=64):\n        super().__init__()\n        # TODO: Add your own code\n\n    def forward(self, x):\n        # TODO: Replace the next line with your own code\n        raise NotImplemented\n\nHere is the specification of the two methods:\ninit (self, n, n_words, embedding_dim=64, hidden_dim=64)\n\nCreates a new fixed-window neural language model. The argument n specifies the model’s \\(n\\)-gram order. The argument n_words is the number of words in the vocabulary. The arguments embedding_dim and hidden_dim specify the dimensionalities of the embedding layer and the hidden layer of the feedforward network, respectively; their default value is 64.\n\nforward (self, x)\n\nComputes the network output on an input batch x. The shape of x is \\((B, n-1)\\), where \\(B\\) is the batch size. The output of the forward pass is a tensor of shape \\((B, V)\\) where \\(V\\) is the number of words in the vocabulary.\n\n\n🤞 Test your code\nTest your code by instantiating the model and feeding it a batch of examples from the training data.\n\n\n\nProblem 1.3: Train the model\nNext, write code to train the fixed-window model using minibatch gradient descent and the cross-entropy loss function. This should be a straightforward generalisation of the training loops that you have seen so far. Complete the skeleton code in the cell below:\n\ndef train_fixed_window(n, n_epochs=2, batch_size=3072, lr=1e-2):\n    # TODO: Replace the following line with your own code\n    return None\n\nHere is the specification of the training function:\ntrain_fixed_window (n, n_epochs = 2, batch_size = 3072, lr = 0.01)\n\nTrains a fixed-window neural language model of order n using minibatch gradient descent and returns it. The parameters n_epochs and batch_size specify the number of training epochs and the minibatch size, respectively. Training uses the cross-entropy loss function and the Adam optimizer with learning rate lr. After each epoch, prints the perplexity of the model on the validation data.\n\nThe code in the cell below trains a trigram model.\n\nmodel_fixed_window = train_fixed_window(3)\n\n\nPerformance goal\nYour submitted notebook must contain output demonstrating a validation perplexity of at most 360 after training for two epochs with the default parameters.\n⚠️ Computing the validation perplexity in one go (for the full validation set) will most probably exhaust your computer’s memory and/or take a lot of time. Instead, do the computation at the minibatch level and aggregate the results.\n\n\n🤞 Test your code\nTo see whether your network is learning something, print or plot the loss and/or the perplexity on the training data. If the two values do not decrease during training, try to find the problem before wasting time (and electricity) on useless computation.\nTraining and even evaluation will take some time – on a CPU, you should expect several minutes per epoch, depending on hardware. Our reference implementation uses a GPU and runs in 45 seconds on a MacBook Pro (2023)."
-  },
-  {
-    "objectID": "assignments/assignment1/assignment-1.html#problem-2-recurrent-neural-network-model",
-    "href": "assignments/assignment1/assignment-1.html#problem-2-recurrent-neural-network-model",
-    "title": "Assignment 1: Language modelling",
-    "section": "Problem 2: Recurrent neural network model",
-    "text": "Problem 2: Recurrent neural network model\nIn this section, you will implement the recurrent neural network language model. Recall that an input to this model is a vector of word ids. Each integer is mapped to an embedding vector. The sequence of embedded vectors is then fed into an unrolled LSTM. At each position \\(i\\) in the sequence, the hidden state of the LSTM at that position is sent through a linear transformation into a final softmax layer representing the probability distribution over the words at position \\(i+1\\). In theory, the input vector could represent the complete training data; for practical reasons, however, we will truncate the input to some fixed value bptt_len. This length is called the backpropagation-through-time horizon.\n\nProblem 2.1: Vectorise the data\nAs in the previous problem, your first task is to transform the data in the WikiText container into a vectorised form that can be fed to the model.\n\nclass RNNVectorizer(object):\n    def __init__(self, bptt_len):\n        self.bptt_len = bptt_len\n\n    def __call__(self, data):\n        # TODO: Replace the following line with your own code\n        return None, None\n\nYour vectoriser should meet the following specification:\ninit (self, bptt_len)\n\nCreates a new vectoriser. The parameter bptt_len specifies the backpropagation-through-time horizon.\n\ncall (self, data)\n\nTransforms a list of token indexes data into a pair of tensors \\(\\mathbf{X}\\), \\(\\mathbf{Y}\\) that can be used to train the recurrent neural language model. The rows of both tensors represent contiguous subsequences of token indexes of length bptt_len. Compared to the sequences in \\(\\mathbf{X}\\), the corresponding sequences in \\(\\mathbf{Y}\\) are shifted one position to the right. More precisely, if the \\(i\\)th row of \\(\\mathbf{X}\\) is the sequence that starts at token position \\(j\\), then the same row of \\(\\mathbf{Y}\\) is the sequence that starts at position \\(j+1\\).\n\n\n🤞 Test your code\nTest your implementation by running the following code:\n\nvalid_x, valid_y = RNNVectorizer(32)(wikitext.valid)\n\nprint(valid_x.size(), valid_y.size())\n\n\n\n\nProblem 2.2: Implement the model\nYour next task is to implement the recurrent neural network model based on the graphical specification.\n\nimport torch.nn as nn\n\nclass RNNModel(nn.Module):\n    \n    def __init__(self, n_words, embedding_dim=64, hidden_dim=64):\n        super().__init__()\n        # TODO: Add your own code\n\n    def forward(self, x):\n        # TODO: Replace the next line with your own code\n        raise NotImplemented\n\nYour implementation should follow this specification:\ninit (self, n_words, embedding_dim = 64, hidden_dim = 64)\n\nCreates a new recurrent neural network language model based on an LSTM. The argument n_words is the number of words in the vocabulary. The arguments embedding_dim and hidden_dim specify the dimensionalities of the embedding layer and the LSTM hidden layer, respectively; their default value is 64.\n\nforward (self, x)\n\nComputes the network output on an input batch x. The shape of x is \\((B, H)\\), where \\(B\\) is the batch size and \\(H\\) is the length of each input sequence. The shape of the output tensor is \\((B, H, V)\\), where \\(V\\) is the size of the vocabulary.\n\n\n🤞 Test your code\nTest your code by instantiating the model and feeding it a batch of examples from the training data.\n\n\n\nProblem 2.3: Train the model\nThe training loop for the recurrent neural network model is essentially identical to the loop that you wrote for the feed-forward model. The only thing to note is that the cross-entropy loss function expects its input to be a two-dimensional tensor; you will therefore have to re-shape the output tensor from the LSTM as well as the gold-standard output tensor in a suitable way. The most efficient way to do so is to use the view() method.\n\ndef train_rnn(n_epochs=2, batch_size=3072, bptt_len=32, lr=1e-2):\n    # TODO: Replace the next line with your own code\n    return None\n\nHere is the specification of the training function:\ntrain_rnn (n_epochs = 2, batch_size = 3072, bptt_len = 32, lr = 0.01)\n\nTrains a recurrent neural network language model on the WikiText data using minibatch gradient descent and returns it. The parameters n_epochs and batch_size specify the number of training epochs and the minibatch size, respectively. The parameter bptt_len specifies the length of the backpropagation-through-time horizon, that is, the length of the input and output sequences. Training uses the cross-entropy loss function and the Adam optimizer with learning rate lr. After each epoch, prints the perplexity of the model on the validation data.\n\nEvaluate your model by running the following code cell:\n\nmodel_rnn = train_rnn()\n\n\nPerformance goal\nYour submitted notebook must contain output demonstrating a validation perplexity of at most 280 after training for two epochs with the default hyperparameters."
-  },
-  {
-    "objectID": "assignments/assignment1/assignment-1.html#problem-3-transformer-model-optional",
-    "href": "assignments/assignment1/assignment-1.html#problem-3-transformer-model-optional",
-    "title": "Assignment 1: Language modelling",
-    "section": "Problem 3: Transformer model (optional)",
-    "text": "Problem 3: Transformer model (optional)\nIf you are up for a challenge, try implementing a Transformer-based language model. The required vectoriser is identical to the vectoriser for the RNN model. For the model itself, you can use the Pytorch modules nn.TransformerEncoder and nn.TransformerEncoderLayer. To represent positional information, follow the approach from the original Transformer paper and use sine and cosine functions of different frequencies (details), or learn position-specific embeddings. Can you get a lower perplexity than for the RNN model?"
-  },
-  {
-    "objectID": "assignments/assignment1/assignment-1.html#problem-4-generation",
-    "href": "assignments/assignment1/assignment-1.html#problem-4-generation",
-    "title": "Assignment 1: Language modelling",
-    "section": "Problem 4: Generation",
-    "text": "Problem 4: Generation\nIn this section, you will implement a simple generation mechanism for the language models you have implemented.\nRecall that one way to generate text with a language model is to repeatedly sample from the model’s output distribution, conditioning on some context. More specifically, this involves treating the softmax-normalised logits of the model as a multinomial distribution. The “creativeness” of the generation can be controlled with the temperature parameter of the softmax distribution.\nTo implement this recipe, we first ask you to extend each model with a generate method according to the following specification:\ngenerate (self, context, n_tokens = 10, temperature = 1.0)\n\nTakes a batch of context tokens context and extends it by sampling n_tokens new tokens from the model’s output distribution, scaled with the temperature temperature. Returns the extended context.\n\nIn a second stage, you should implement a convenience function generate that allows you to easily generate text with different models, like this:\ngenerate(model_fixed_window, 'i like', max_tokens=10, temperature=1.5)\n\ndef generate(model, context, max_tokens=3, temperature=1.0):\n    # TODO: Replace the next line with your own code\n    return context\n\nHere is the specification of the convenience function:\ngenerate (model, context, max_tokens = 10, temperature = 1.0)\n\nTakes a context sentence context, tokenises and vectorises it, and passes it to the specified model to generate new text. The new text consists of at most max_tokens, but is cut off at the first &lt;eos&gt; token. Returns the generated text (including the context)."
-  },
-  {
-    "objectID": "assignments/assignment1/assignment-1.html#problem-5-parameter-initialisation",
-    "href": "assignments/assignment1/assignment-1.html#problem-5-parameter-initialisation",
-    "title": "Assignment 1: Language modelling",
-    "section": "Problem 5: Parameter initialisation",
-    "text": "Problem 5: Parameter initialisation\nThe error surfaces explored when training neural networks can be very complex. Because of this, it is important to choose “good” initial values for the parameters. In PyTorch, the weights of the embedding layer are initialised by sampling from the standard normal distribution \\(\\mathcal{N}(0, 1)\\). Test how changing the initialisation affects the perplexity of your language models. Find research articles that propose different initialisation strategies.\nWrite a short (150 words) report about your experiments and literature search. Use the following prompts:\n\nWhat different initialisation did you try? What results did you get?\nHow do your results compare to what was suggested by the research articles?\nWhat did you learn? How, exactly, did you learn it? Why does this learning matter?\n\nTODO: Enter your text here"
-  },
-  {
-    "objectID": "assignments/assignment2/index.html",
-    "href": "assignments/assignment2/index.html",
-    "title": "Assignment 2",
-    "section": "",
-    "text": "This is a placeholder for the second assignment."
-  },
-  {
-    "objectID": "assignments/assignment3/index.html",
-    "href": "assignments/assignment3/index.html",
-    "title": "Assignment 3",
-    "section": "",
-    "text": "This is a placeholder for the third assignment."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Deep Learning for Natural Language Processing",
-    "section": "",
-    "text": "This is the website for the WASP course “Deep Learning for Natural Language Processing”, taught by Marco Kuhlmann (Linköping University) and Richard Johansson (Chalmers University of Technology)."
-  },
-  {
-    "objectID": "index.html#learning-outcomes",
-    "href": "index.html#learning-outcomes",
-    "title": "Deep Learning for Natural Language Processing",
-    "section": "Learning outcomes",
-    "text": "Learning outcomes\nNatural Language Processing (NLP) develops methods for making human language accessible to computers. The goal of this course is to provide students with a theoretical understanding of and practical experience with the advanced algorithms that power modern NLP. The course focuses on methods based on deep neural networks.\nOn completion of the course, you will be able to\n\nexplain and analyze state-of-the-art deep learning architectures for NLP\nimplement such architectures and apply them to practical problems\ndesign and carry out evaluations of deep learning architectures for NLP\nuse current approaches to NLP in your own field of research"
-  },
-  {
-    "objectID": "index.html#course-literature",
-    "href": "index.html#course-literature",
-    "title": "Deep Learning for Natural Language Processing",
-    "section": "Course literature",
-    "text": "Course literature\nMuch of the content of the course is not described in a book, so we will mostly give pointers to research papers and survey articles when needed. If you prefer textbook-style introductions, you can have a look\nJacob Eisenstein, Natural Language Processing. MIT Press, 2019. Pre-print version"
-  },
-  {
-    "objectID": "index.html#teaching",
-    "href": "index.html#teaching",
-    "title": "Deep Learning for Natural Language Processing",
-    "section": "Teaching",
-    "text": "Teaching\nThe course uses a flipped classroom format where the central concepts and methods are presented in pre-recorded video lectures. The physical meetings will focus on discussions of the important points in the recorded material, practical exercises, and reflections.\nThe teaching is divided into three two-day meetings, each of which covers one module:\n\nMeeting 1: 11–12 April (Linköping)\nMeeting 2: 16–17 May (Gothenburg)\nMeeting 3: 3–4 June (Linköping)\n\nEach meeting will start with a lunch at 12:00 and end at 15:00 on the second day."
-  },
-  {
-    "objectID": "index.html#modules",
-    "href": "index.html#modules",
-    "title": "Deep Learning for Natural Language Processing",
-    "section": "Modules",
-    "text": "Modules\nThe course consists of three thematic modules and a final project. The content of each module consists of\n\nvideo lectures introducing the important topics\npointers to literature, some of which is fundamental and some optional\na set of programming exercises\na set of discussion tasks\nan assignment where you implement a model\n\nDetailed information about the modules is available on the module pages, which you can find in the menu at the top of this page."
-  },
-  {
-    "objectID": "index.html#project",
-    "href": "index.html#project",
-    "title": "Deep Learning for Natural Language Processing",
-    "section": "Project",
-    "text": "Project\nIn the project, you apply your learning in the course to your own field of research."
-  },
-  {
     "objectID": "project/index.html",
     "href": "project/index.html",
     "title": "Project",
@@ -322,101 +357,66 @@
     "text": "Finding a topic\nYou can work on any project that is small and manageable enough for a short project of this kind. Ideally, try to find a topic that is relevant to your own research interests. It’s OK if you end up with preliminary results, as long as you have some tidbit to present at the end.\nIf you need help deciding on a topic, here are a few suggestions. Some of these are very easy and some more challenging, and this list is not sorted by the difficulty level.\n\nTry out a benchmark. There are some popular benchmark sets such as GLUE and the more recently released Super GLUE that are used to evaluate language understanding systems. Build a model and evaluate it on one of these benchmarks.\nCrosslingual applications. For some application, e.g. some categorization or tagging task we’ve seen in the course, investigate how well crosslingual representations such as multilingual BERT allows us to train with one language and evaluate with other languages.\nShared tasks. Every year, several NLP competitions are arranged at the SemEval conference. Get the data from some task from previous years. Additionally, there are shared tasks organized by CoNLL, BioNLP and other conferences, where datasets can often be accessed easily.\n\nAlternatively, if you don’t have an idea and you don’t like the suggested topics, just talk to Marco or Richard."
   },
   {
-    "objectID": "modules/module2/index.html",
-    "href": "modules/module2/index.html",
-    "title": "Module 2",
+    "objectID": "modules/module2/meeting2.html",
+    "href": "modules/module2/meeting2.html",
+    "title": "Meeting 2",
     "section": "",
-    "text": "This module will dive deeper in the techniques used to train modern language models. In addition, we will discuss applications and methodologies in text generation.\nWhen comparing the material for this module with that for Module 1, you will notice an increased share of material from external sources, such as video recordings and research articles. We have selected these to provide you with an up-to-date overview of this fast-developing field. If you want to know more, feel free to search for more detailed video lectures and articles from other sources.\nWe will discuss this module during the second course meeting in Gothenburg. Please see the meeting page for details."
+    "text": "The second meeting will take place 16–17 May at Chalmers, Gothenburg."
   },
   {
-    "objectID": "modules/module2/index.html#unit-2-1-modern-large-language-models",
-    "href": "modules/module2/index.html#unit-2-1-modern-large-language-models",
-    "title": "Module 2",
-    "section": "Unit 2-1: Modern large language models",
-    "text": "Unit 2-1: Modern large language models\nThis unit reviews some of the central topics related to modern language models (LLMs), notably from the GPT family. We examine their emergent capabilities like zero-shot learning and in-context learning and explore methods for aligning LLMs with human instructions and preferences. Finally, the lectures address the crucial aspect of evaluating general-purpose language models, offering insights into their effectiveness and applicability across various tasks and domains.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to modern language models\n[slides]\n[video]\n\n\nEmergent abilities of LLMs\n[slides]\n[video]\n\n\nLLM alignment\n[slides]\n[video]\n\n\nEvaluating general-purpose models\nTBA\nTBA\n\n\n\n\nReading\n\nBrown et al. (2020): Language Models are Few-Shot Learners\nOuyang et al. (2022): Aligning language models to follow instructions\n\n\n\nSurveys and other optional material\n\nKaddour et al. (2023): Challenges and Applications of Large Language Models\nLiu et al. (2023): Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing\nMinaee et al. (2024): Large Language Models: A Survey\nZheng et al. (2023): Secrets of RLHF in Large Language Models Part I: PPO\n\n\n\nSoftware resources\n\nTRL – Transformer Reinforcement Learning\nOpenAI Python API library"
+    "objectID": "modules/module2/meeting2.html#schedule",
+    "href": "modules/module2/meeting2.html#schedule",
+    "title": "Meeting 2",
+    "section": "Schedule",
+    "text": "Schedule\nThe meeting will start with lunch at 12:00 on Thursday, 16 May and end at 15:00 on Friday, 17 May.\nWe will publish details about the schedule and venue later."
   },
   {
-    "objectID": "modules/module2/index.html#unit-2-2-working-with-open-large-language-models",
-    "href": "modules/module2/index.html#unit-2-2-working-with-open-large-language-models",
-    "title": "Module 2",
-    "section": "Unit 2-2: Working with open large language models",
-    "text": "Unit 2-2: Working with open large language models\nThe lectures in this unit present various techniques that collectively empower users to maximize the utility and efficiency of open large language models in various applications and scenarios. They explore efficient fine-tuning methods and quantization techniques to optimize model performance during training and deployment. The final lecture discusses retrieval augmentation, a strategy to enrich LLMs’ responses by incorporating additional information from retrieval systems.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nOpen LLMs\n\n[video]\n\n\nEfficient fine-tuning techniques\n[slides]\n[video]\n\n\nQuantization\n\n[video]\n\n\nQuantized fine-tuning\n\n[video]\n\n\nRetrieval augmentation\n\n[video]\n\n\n\n\nReading\n\nDettmers et al. (2023): QLORA: Efficient Finetuning of Quantized LLMs\nRam et al. (2023): In-Context Retrieval-Augmented Language Models\n\n\n\nSurveys and other optional material\n\nChen et al. (2023): ChatGPT’s One-year Anniversary: Are Open-Source Large Language Models Catching up?\nLialin et al. (2023): Scaling Down to Scale Up: A Guide to Parameter-Efficient Fine-Tuning\nWan et al. (2023): Efficient Large Language Models: A Survey\nGao et al. (2023): Retrieval-Augmented Generation for Large Language Models: A Survey\nRetrieval augmentation video by Douwe Kiela, part of a Stanford course\n\n\n\nSoftware resources\n\nbitsandbytes\npeft\naccelerate\nOllama\nLlamaindex\nSome accessible models: Llama 3, Mistral, Falcon"
+    "objectID": "modules/module2/meeting2.html#practical-information",
+    "href": "modules/module2/meeting2.html#practical-information",
+    "title": "Meeting 2",
+    "section": "Practical information",
+    "text": "Practical information\nFor the sessions, we will use the room SB-L200, located at Sven Hultins gata 6. At the entrance, walk right and take the first staircase to SB-L200.\nThe Chalmers tram and bus stop is located a short distance from the venue.\nFrom the train station, you can walk a short distance to Brunnsparken, from which the following two lines can be taken directly to Chalmers.\n\nTram 10 (towards Guldheden)\nBus 16 (towards Högsbohöjd)\n\nYou can use the Västtrafik app or pay with a credit card for a single ticket."
   },
   {
-    "objectID": "modules/module2/index.html#unit-2-3-generating-text-applications-and-methodology",
-    "href": "modules/module2/index.html#unit-2-3-generating-text-applications-and-methodology",
-    "title": "Module 2",
-    "section": "Unit 2-3: Generating text: Applications and methodology",
-    "text": "Unit 2-3: Generating text: Applications and methodology\nThe third unit explores applications of large language models (LLMs) in various generation tasks. Specific tasks covered include summarization, condensing information effectively, and dialogue generation, facilitating natural and engaging conversations. The unit also introduces evaluation methods for assessing the efficacy of generation systems.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to generation tasks\n[slides]\n[video]\n\n\nEvaluation of generation systems\n[slides]\n[video]\n\n\nSummarization\n[slides]\n[video]\n\n\nDialogue\n[slides]\n[video]\n\n\n\n\nReading\n\nEisenstein, chapter 19\nGoyal et al. (2022) News Summarization and Evaluation in the Era of GPT-3"
-  },
-  {
-    "objectID": "modules/module0/index.html",
-    "href": "modules/module0/index.html",
-    "title": "Review",
+    "objectID": "modules/module0/Introduction_to_PyTorch.html",
+    "href": "modules/module0/Introduction_to_PyTorch.html",
+    "title": "Introduction to PyTorch",
     "section": "",
-    "text": "This page collects review material for the course."
+    "text": "The purpose of this notebook is to introduce you to the basics of PyTorch, the deep learning framework that we will be using for the labs.\nMany good introductions to PyTorch are available online, including the 60 Minute Blitz on the official PyTorch website. This notebook is designed to put focus on those basics that you will encounter in the labs. Beyond the notebook, you will also need to get comfortable with the PyTorch documentation.\nWe start by importing the PyTorch module:\nimport torch\nThe following code prints the current version of the module:\nprint(torch.__version__)\nThe version of PyTorch at the time of writing this notebook was 1.10.1."
   },
   {
-    "objectID": "modules/module0/index.html#entry-requirements",
-    "href": "modules/module0/index.html#entry-requirements",
-    "title": "Review",
-    "section": "Entry requirements",
-    "text": "Entry requirements\nAs stated in the course syllabus, we assume you have a background in mathematics corresponding to the contents of the WASP course “Mathematics and Machine Learning”.\nYou will need solid programming experience in a high-level language; the programming assignments will use Python.\nYou should be comfortable with modern deep learning techniques and frameworks, for instance as taught by the WASP course “Deep Learning and GANs”. We do not assume previous knowledge of NLP."
+    "objectID": "modules/module0/Introduction_to_PyTorch.html#tensors",
+    "href": "modules/module0/Introduction_to_PyTorch.html#tensors",
+    "title": "Introduction to PyTorch",
+    "section": "Tensors",
+    "text": "Tensors\nThe fundamental data structure in PyTorch is the tensor, a multi-dimensional matrix containing elements of a single numerical data type. Tensors are similar to arrays as you may know them from NumPy or MATLAB.\n\nCreating tensors\nOne way to create a tensor is to call the function torch.tensor() on a Python list or NumPy array.\nThe code in the following cell creates a 2-dimensional tensor with 4 elements.\n\nx = torch.tensor([[0, 1], [2, 3]])\nx\n\nEach tensor has a shape, which specifies the number and sizes of its dimensions:\n\nx.shape\n\nEach tensor also has a data type for its elements. More information about data types\n\nx.dtype\n\nWhen creating a tensor, you can explicitly pass the intended data type as a keyword argument:\n\ny = torch.tensor([[0, 1], [2, 3]], dtype=torch.float)\ny.dtype\n\nFor many data types, there also exists a specialised constructor:\n\nz = torch.FloatTensor([[0, 1], [2, 3]])\nz.dtype\n\n\n\nMore creation operations\nCreate a 3D-tensor of the specified shape filled with the scalar value zero:\n\nx = torch.zeros(2, 3, 5)\nx\n\nCreate a 3D-tensor filled with random values:\n\nx = torch.rand(2, 3, 5)\nx\n\nCreate a tensor with the same shape as another one, but filled with ones:\n\ny = torch.ones_like(x)\ny    # shape: [2, 3, 5]\n\nFor a complete list of tensor-creating operations, see Creation ops.\n\n\nEmbrace vectorisation!\nIteration is of one the most useful techniques for processing data in Python. However, you should not loop over tensors. Instead, you should be looking at vectorising any operations. This is because looping over tensors is slow, while vectorised operations on tensors are fast (and can be made even faster when the code is run on a GPU). To illustrate this point, let us create a 1D-tensor containing the first 1M integers:\n\nx = torch.arange(1000000)\nx\n\nSumming up the elements of the tensor using a loop is relatively slow:\n\nsum(i for i in x)\n\nDoing the same thing using a tensor operation is much faster:\n\nx.sum()\n\n\n\nIndexing and slicing\nTo access the contents of a tensor, you can use an extended version of Python’s syntax for indexing and slicing. Essentially the same syntax is used by NumPy. For more information, see Indexing on ndarrays.\nTo illustrate this, we create a 3D-tensor with random numbers:\n\nx = torch.rand(2, 3, 5)\nx\n\nIndex an element by a 3D-coordinate; this gives a 0D-tensor:\n\nx[0,1,2]\n\n(If you want the result as a non-tensor, use the method item().)\nIndex the second element; this gives a 2D-tensor:\n\nx[1]\n\nIndex the second-to-last element:\n\nx[-2]\n\nSlice out the sub-tensor with elements from index 1 onwards; this gives a 3D-tensor:\n\nx[1:]\n\nHere is a more complex example of slicing. As in Python, the colon : selects all indices of a dimension.\n\nx[:,:,2:4]\n\nThe syntax for indexing and slicing is very powerful. For example, the same effect as in the previous cell can be obtained with the following code, which uses the ellipsis (...) to match all dimensions but the ones explicitly mentioned:\n\nx[...,2:4]\n\n\n\nCreating views\nYou will sometimes want to use a tensor with a different shape than its initial shape. In these situations, you can re-shape the tensor or create a view of the tensor. The latter is preferable because views can share the same data as their base tensors and thus do not require copying.\nWe create a 3D-tensor of 12 random values:\n\nx = torch.rand(2, 3, 2)\nx\n\nCreate a view of this tensor as a 2D-tensor:\n\nx.view(3, 4)\n\nWhen creating a view, the special size -1 is inferred from the other sizes:\n\nx.view(3, -1)\n\nModifying a view affects the data in the base tensor:\n\ny = torch.rand(2, 3, 2)\nz = y.view(3, 4)\nz[2, 3] = 42\ny\n\n\n\nMore viewing operations\nThere are a few other useful methods that create views. More information about views\n\nx = torch.rand(2, 3, 5)\nx\n\nThe permute() method returns a view of the base tensor with some of its dimensions permuted. In the example, we maintain the first dimension but swap the second and the third dimension:\n\ny = x.permute(0, 2, 1)\nprint(y)\ny.shape\n\nThe unsqueeze() method returns a tensor with a dimension of size one inserted at the specified position. This is useful e.g. in the training of neural networks when you want to create a batch with just one example.\n\ny = x.unsqueeze(0)\nprint(y)\ny.shape\n\nThe inverse operation to unsqueeze() is squeeze():\n\ny = y.squeeze(0)\nprint(y)\ny.shape\n\n\n\nRe-shaping a tensor\nThere are some cases where you cannot create a view and need to explicitly re-shape a tensor. In particular, this happens when the data in the base tensor and the view are not in contiguous regions of memory.\n\nx = torch.rand(2, 3, 5)\nx\n\nWe permute the tensor x to create a new tensor y in which the data is no longer consecutive in memory:\n\ny = x.permute(0, 2, 1)\n# y = y.view(-1)    # raises a runtime error\ny\n\nIn such a case, you can explicitly re-shape the tensor, which will copy the data if necessary:\n\ny = x.permute(0, 2, 1)\ny = y.reshape(-1)\ny\n\nModifying a reshaped tensor will not necessarily change the data in the base tensor. This depends on whether the reshaped tensor is able to share the data with the base tensor.\n\ny = torch.rand(2, 3, 2)\ny = y.permute(0, 2, 1)    # if commented out, data can be shared\nz = y.reshape(-1)\nz[0] = 42\ny"
   },
   {
-    "objectID": "modules/module0/index.html#linguistics",
-    "href": "modules/module0/index.html#linguistics",
-    "title": "Review",
-    "section": "Linguistics",
-    "text": "Linguistics\nWe do not expect you to have any background in linguistics, but will often use linguistic terminology. (No natural language processing without language!) The following video provides a compact, 30-minute introduction to some of the essentials of linguistics that you may encounter in the course.\nEssentials of linguistics"
+    "objectID": "modules/module0/Introduction_to_PyTorch.html#computing-with-tensors",
+    "href": "modules/module0/Introduction_to_PyTorch.html#computing-with-tensors",
+    "title": "Introduction to PyTorch",
+    "section": "Computing with tensors",
+    "text": "Computing with tensors\n\nElement-wise operations\nUnary mathematical operations defined on numbers can be ‘lifted’ to tensors by applying them element-wise. This includes multiplication by a constant, exponentiation (**), taking roots (torch.sqrt()), and the logarithm (torch.log()).\n\nx = torch.rand(2, 3)\nprint(x)\nx * 2    # element-wise multiplication with 2\n\nSimilarly, we can do binary mathematical operations on tensors with the same shape. For example, the Hadamard product of two tensors \\(X\\) and \\(Y\\) is the tensor \\(X \\odot Y\\) obtained by the element-wise multiplication of the elements of \\(X\\) and \\(Y\\).\n\nx = torch.rand(2, 3)\ny = torch.rand(2, 3)\ntorch.mul(x, y)    # shape: [2, 3]\n\nThe Hadamard product can be written more succinctly as follows:\n\nx * y\n\n\n\nMatrix product\nWhen computing the matrix product between two tensors \\(X\\) and \\(Y\\), the sizes of the last dimension of \\(X\\) and the first dimension of \\(Y\\) must match. The shape of the resulting tensor is the concatenation of the shapes of \\(X\\) and \\(Y\\), with the last dimension of \\(X\\) and the first dimension of \\(Y\\) removed.\n\nx = torch.rand(2, 3)\ny = torch.rand(3, 5)\ntorch.matmul(x, y)    # shape: [2, 5]\n\nThe matrix product can be written more succinctly as follows:\n\nx @ y\n\n\n\nSum and argmax\nLet us define a tensor of random numbers:\n\nx = torch.rand(2, 3, 5)\nx\n\nYou have already seen that we can compute the sum of a tensor:\n\ntorch.sum(x)\n\nThere is a second form of the sum operation where we can specify the dimension along which the sum should be computed. This will return a tensor with the specified dimension removed.\n\ntorch.sum(x, dim=0)    # shape: [3, 5]\n\n\ntorch.sum(x, dim=1)   # shape: [2, 5]\n\nThe same idea also applies to the operation argmax() which returns the index of the component with the maximal value along the specified dimension.\n\ntorch.argmax(x)    # index of the highest component across all dimensions, numbered in consecutive order\n\n\ntorch.argmax(x, dim=0)   # index of the highest component across the first dimension\n\n\n\nConcatenating tensors\nA list of tensors can be combined into one long tensor by concatenation.\n\nx = torch.rand(2, 3)\ny = torch.rand(3, 3)\nz = torch.cat([x, y])\nprint(z)\nz.shape\n\nYou can also concatenate along a specific dimension:\n\nx = torch.rand(2, 2)\ny = torch.rand(2, 2)\nprint(x)\nprint(y)\nprint(torch.cat([x, y], dim=0))\nprint(torch.cat([x, y], dim=1))\n\n\n\nBroadcasting\nThe term broadcasting describes how PyTorch treats tensors with different shapes. Subject to certain constraints, the ‘smaller’ tensor is ‘broadcast’ across the larger tensor so that they have compatible shapes. Broadcasting is a way to avoid looping. In short, if a PyTorch operation supports broadcasting, then its Tensor arguments can be automatically expanded to be of equal sizes (without making copies of the data).\nIn the simplest case, two tensors have the same shapes. This is the case for the matrix x @ W and the bias vector b in the linear model below:\n\nx = torch.rand(1, 2)\nW = torch.rand(2, 3)\nb = torch.rand(1, 3)\nz = x @ W    # shape: [1, 3]\nz = z + b    # shape: [1, 3]\nprint(z)\nz.shape\n\nNow suppose that we have a whole batch of inputs. Watch what happens when adding the bias vector b:\n\nX = torch.rand(5, 2)\nZ = X @ W    # shape: [5, 3]\nZ = Z + b    # shape: [5, 3]    Broadcasting happens here!\nprint(Z)\nZ.shape\n\nIn the example, broadcasting expands the shape of b from \\([1, 3]\\) into \\([5, 3]\\). The matrix Z is formed by effectively adding b to each row of X. However, this is not implemented by a Python loop but happens implicitly through broadcasting.\nPyTorch uses the same broadcasting semantics as NumPy. More information about broadcasting\nTo be expanded!"
   },
   {
-    "objectID": "modules/module0/index.html#basic-text-processing",
-    "href": "modules/module0/index.html#basic-text-processing",
-    "title": "Review",
-    "section": "Basic text processing",
-    "text": "Basic text processing\nThe exercises and assignments in this course require solid programming experience. In particular, you will benefit from previous experience with text processing in Python. If you need to get up to speed on this, we have a notebook that introduces some basic concepts and techniques for processing text data.\nBasic text processing"
-  },
-  {
-    "objectID": "modules/module0/index.html#pytorch",
-    "href": "modules/module0/index.html#pytorch",
-    "title": "Review",
-    "section": "PyTorch",
-    "text": "PyTorch\nAs our deep learning framework, we will use PyTorch. Many good introductions to PyTorch are available online. The notebook we provide here is focused on those concepts and techniques that you will encounter in the exercises and assignments.\nIntroduction to PyTorch"
-  },
-  {
-    "objectID": "modules/module0/index.html#using-colab",
-    "href": "modules/module0/index.html#using-colab",
-    "title": "Review",
-    "section": "Using Colab",
-    "text": "Using Colab\nMost of the assignments and exercises will require you to use a GPU-based machine. If you do not have easy access to such a machine at your institution, using Google’s free Colab service may be an alternative. We have written some instructions describing the basics of how to work with Colab.\nUsing Colab"
-  },
-  {
-    "objectID": "modules/module1/index.html",
-    "href": "modules/module1/index.html",
-    "title": "Module 1",
+    "objectID": "modules/module1/meeting1.html",
+    "href": "modules/module1/meeting1.html",
+    "title": "Meeting 1",
     "section": "",
-    "text": "This module introduces one of the most fundamental ideas in modern NLP: the idea that words can be represented as vectors which can be learned from text data. On the application side of things, we focus on one of the most fundamental NLP tasks: text categorization.\nBefore working with the material in this module, you may want to have a look at the following:\nWe will discuss the material during the first course meeting. Please see the meeting page for details."
+    "text": "The first meeting will take place 11–12 April in Linköping."
   },
   {
-    "objectID": "modules/module1/index.html#unit-1-1-introduction-to-representations-of-words-and-documents",
-    "href": "modules/module1/index.html#unit-1-1-introduction-to-representations-of-words-and-documents",
-    "title": "Module 1",
-    "section": "Unit 1-1: Introduction to representations of words and documents",
-    "text": "Unit 1-1: Introduction to representations of words and documents\nIn the first unit, we introduce the idea of word representations: the basic building block that we use to build deep learning models that process language. Specifically, we look at word embeddings and how they can be trained. We also discuss some challenges in representing words that can be solved by working with lower-level subword units.\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to word representations\n[slides]\n[video]\n\n\nLearning word embeddings with neural networks\n[slides]\n[video]\n\n\nSubword models\n[slides]\n[video]"
+    "objectID": "modules/module1/meeting1.html#schedule",
+    "href": "modules/module1/meeting1.html#schedule",
+    "title": "Meeting 1",
+    "section": "Schedule",
+    "text": "Schedule\nThe meeting will start with lunch at 12:00 on Thursday, 11 April and end at 15:00 on Friday, 12 April. Here is a rough schedule:\n\n\n\nTime\nActivity\n\n\n\n\nThursday\n\n\n\n12:00–13:00\nLunch at Kårallen, Gästmatsalen\n\n\n13:00–13:30\nWelcome. Course logistics\n\n\n13:30–14:30\nDiscussion: Word and document representations\n\n\n14:30–15:00\nFika in Ljusgården\n\n\n15:00–17:00\nExercise 1-1: Simple neural NLP models from scratch (notebook, solution)\n\n\n18:30–21:00\nDinner at Olympia Da Vinci\n\n\nFriday\n\n\n\n09:00–09:30\nDiscussion: Attention (blog post)\n\n\n09:30–10:00\nDiscussion: Bias in NLP models (paper by Garg et al.)\n\n\n10:00–10:30\nFika in Ljusgården\n\n\n10:30–12:00\nExercise 1-2: Using pre-trained NLP models from Hugging Face (notebook, solution)\n\n\n12:00–13:00\nLunch at Universitetsklubben\n\n\n13:00–14:00\nIntroduction to the project\n\n\n14:00–15:00\nIntroduction to Assignment 1: Language models"
   },
   {
-    "objectID": "modules/module1/index.html#unit-1-2-language-modelling-and-contextualized-embeddings",
-    "href": "modules/module1/index.html#unit-1-2-language-modelling-and-contextualized-embeddings",
-    "title": "Module 1",
-    "section": "Unit 1-2: Language modelling and contextualized embeddings",
-    "text": "Unit 1-2: Language modelling and contextualized embeddings\nThis unit begins with an overview of language modelling. It highlights the historical significance of n-gram models in NLP, which laid the foundation for the transition to neural language models. We continue with an exploration of pre-Transformer neural architectures, specifically focusing on recurrent neural networks (RNNs) and the pivotal Long Short-Term Memory (LSTM) architecture. At the end of the unit, we explore the use of RNNs as language models and introduce the concept of contextualised embeddings, which recognize the varying meanings of words across different contexts.\n\nLecture videos\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nIntroduction to language modelling\n[slides]\n[video] (14:49)\n\n\nN-gram language models\n[slides]\n[video] (14:46)\n\n\nNeural language models\n[slides]\n[video] (14:49)\n\n\nRecurrent neural networks\n[slides]\n[video] (14:47)\n\n\nThe LSTM architecture\n[slides]\n[video] (14:45)\n\n\nRNN language models\n[slides]\n[video] (14:32)\n\n\nContextualized word embeddings\n[slides]\n[video] (14:48)"
-  },
-  {
-    "objectID": "modules/module1/index.html#unit-1-3-transformer-based-language-models",
-    "href": "modules/module1/index.html#unit-1-3-transformer-based-language-models",
-    "title": "Module 1",
-    "section": "Unit 1-3: Transformer-based language models",
-    "text": "Unit 1-3: Transformer-based language models\nThis unit explores the evolution of transformer-based language models, starting with the sequence-to-sequence or encoder–decoder architecture for neural machine translation. We then delve into the concept of attention, followed by the Transformer architecture as such, which sets a benchmark in machine translation and various natural language processing applications. We go through Transformer-based models, specifically the GPT family, which derives from the Transformer’s decoder side, and BERT, which utilizes the encoder side. The unit ends by discussing text generation algorithms, including beam search generation.\n\nLecture videos\n\n\n\nTitle\nSlides\nVideo\n\n\n\n\nNeural machine translation\n[slides]\n[video] (14:48)\n\n\nAttention\n[slides]\n[video] (14:49)\n\n\nThe Transformer architecture\n[slides]\n[video] (14:45)\n\n\nDecoder-based language models (GPT)\n[slides]\n[video] (14:50)\n\n\nEncoder-based language models (BERT)\n[slides]\n[video] (14:44)\n\n\nGeneration algorithms\n[slides]\n[video] (26:42)\n\n\n\n\n\nReading\n\nCheng et al. (2016)\nVaswani et al. (2017)\nSerrano and Smith (2019)\nRadford et al. (2018)\nDevlin et al. (2019)"
+    "objectID": "modules/module1/meeting1.html#practical-information",
+    "href": "modules/module1/meeting1.html#practical-information",
+    "title": "Meeting 1",
+    "section": "Practical information",
+    "text": "Practical information\nMeeting venue. We will be at Linköping University, in B-huset, Campus Valla. Most sessions will be in lecture hall Nobel. Friday afternoon, we will be in lecture hall Ada Lovelace. For fikas we will walk over to Ljusgården. Lunches will be in Kårallen (Thursday) and Universitetsklubben (Friday).\nPublic transport. You can choose between two bus lines to get to B-huset from the city center using public transport (Östgötatrafiken). The specified travel times include a final walk from the bus stop to the meeting room.\n\nBus no. 4 to Lambohov, get off at Nobeltorget (25 minutes)\nBus no. 12 to Lambohov, get off at Universitetet or Mästar Mattias väg (20 minutes)\n\nDinner. On the first day of the meeting (11 April), we will have a joint dinner at Olympia Da Vinci. You registered for the dinner when registering for the course. Address: Bielkegatan 1, 582 21 Linköping (map)\nHotels. We can recommend Scandic Frimurarhotellet and Scandic Linköping City. Both of them are located close to the city centre and train station."
   }
 ]
