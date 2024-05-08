@@ -17,7 +17,7 @@ This unit reviews some of the central topics related to modern language models (
 |Introduction to modern language models|[[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l12/m12_1.pdf)]|[[video](https://youtu.be/VL1ND3zmNy4)]|
 |Emergent abilities of LLMs|[[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-501.pdf)]|[[video](https://youtu.be/F5Xh4uwrl9k)]|
 |LLM alignment | [[slides](https://www.ida.liu.se/~TDDE09/lectures/unit5/nlp-2024-502.pdf)] | [[video](https://youtu.be/EaU2Aerzxzo)] |
-|Evaluating general-purpose models| TBA | TBA |
+|Evaluating LLMs| [[slides](m2_evaluation.pdf)] |[[video](https://youtu.be/OQXj8anDh-A)] |
 : {.striped}
 
 ### Reading
