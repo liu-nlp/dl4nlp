@@ -1,7 +1,8 @@
 ---
-title: "Website"
+title: "Module 3"
 ---
 
-This is a Quarto website. Test.
+This module will discuss techniques and tasks in the area of **structured prediction** in NLP.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+We will discuss this module during the third course meeting in Linköping. Please see the [meeting page](meeting3.qmd) for details.
+

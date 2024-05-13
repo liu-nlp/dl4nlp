@@ -12,6 +12,7 @@ website:
           - modules/module0/index.qmd
           - modules/module1/index.qmd
           - modules/module2/index.qmd
+          - modules/module3/index.qmd	  
       - text: "Assignments"
         menu:
           - assignments/assignment1/index.qmd
