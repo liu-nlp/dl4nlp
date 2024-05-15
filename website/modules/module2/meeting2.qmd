@@ -10,7 +10,8 @@ The second meeting will take place 16&ndash;17 May at Chalmers, Gothenburg.
 |------|----------|
 | **Thursday** | |
 | 11:30–13:00 | Lunch at [Waste](https://maps.app.goo.gl/6V9uAXxUdLLVop2Y8) |
-| 13:00–14:30 | Discussion: Large language models |
+| 13:00–13:30 | Comments about Assignment 1 |
+| 13:30–14:30 | Discussion: Large language models |
 | 14:30–15:00 | Fika |
 | 15:00–17:00 | Exercise 2-1: Efficient fine-tuning |
 | **Friday** | |
