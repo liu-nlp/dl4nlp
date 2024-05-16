@@ -2,10 +2,101 @@
 title: "Assignment 2"
 ---
 
-<!--In [the second programming assignment](https://github.com/liu-nlp/dl4nlp/tree/master/assignment2) you will implement the encoder–decoder architecture of Sutskever et al. (2014), including the attention-based extension of Bahdanau et al. (2015), and evaluate this architecture on a machine translation task.-->
+In the second assignment, we are going to use a large language model in a **retrieval-augmented** setup. As an application, we are going to consider a question answering task.
 
-<!--**Deadline: 2022-05-20**-->
+You can use any LLMs you want in this assignment, but your solution must consider at least one open model (e.g. Mistral or one of the Llama models). Optionally, you may compare to a commercial model.
 
-<!--[Assignment 2](Assignment2.ipynb)-->
+# The dataset
 
-This is a placeholder for the second assignment.
+The dataset we will use in this assignment is a simplified version of [Natural Questions](https://ai.google.com/research/NaturalQuestions/), which was compiled by Google and consists of real search engine queries about factual questions.
+
+Download the assignment dataset [here](https://www.cse.chalmers.se/~richajo/waspnlp2024/nq_simplified.val.tsv). Then load the file using Pandas as follows:
+
+```
+nq_data = pd.read_csv('nq_simplified.val.tsv', sep='\t', header=None, names=['question', 'answer', 'gold_context'], quoting=3)
+```
+
+There are three columns: the question, the answer, and part of a Wikipedia page.
+
+# Step 1: Evaluating an LLM on Natural Questions
+
+Load an LLM and explore different prompting strategies to try to make it answer the questions in the dataset. As a benchmark, you can use the ROUGE-1 precision/recall/F1 scores.
+
+```
+def rouge1(gold, predicted):
+  assert(len(gold) == len(predicted))
+  n_p = 0
+  n_g = 0
+  n_c = 0
+  for g, p in zip(gold, predicted):
+    g = set(cleanup(g).strip().split())
+    p = set(cleanup(p).strip().split())
+    n_g += len(g)
+    n_p += len(p)
+    n_c += len(p.intersection(g))
+  pr = n_c / n_p
+  re = n_c / n_g
+  if pr > 0 and re > 0:
+    f1 = 2*pr*re/(pr + re)
+  else:
+    f1 = 0.0
+  return pr, re, f1
+
+def cleanup(text):
+  text = text.replace(',', ' ')
+  text = text.replace('.', ' ')
+  return text
+```
+
+While developing, you should probably just use a small subset of the dataset.
+
+# Step 2: An idealized retrieval-augmented LLM
+
+The third column in the dataset (called `gold_context` above) contains a text fragment from a Wikipedia page, from which the answer can be deduced. Try out new prompts where you include this relevant context. How does this change the evaluation scores?
+
+# Step 3: Setting up the retriever
+
+The setup in Step 2 is idealized, because we provided a context from Wikipedia where we know that the answer is avaialable. In real-world settings, this is not going to be the case.
+
+To make this assignment work in Colab, we are going to work with a rather small set of passages. You can download these texts from [here](https://www.cse.chalmers.se/~richajo/waspnlp2024/passages.txt). For a given question, we are going to 
+search among these passages to find the best-matching passage.
+
+### Representing the passages as vectors
+
+Set up a representation model that maps a text passage to a numerical vector.
+
+For instance, some model from [SentenceTransformers](https://www.sbert.net/), such as [`all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) could be a good choice.
+
+Apply this model to all text passages.
+
+### Storing the passage vectors in a database
+
+We now create a vector database that allows us to search efficiently for the neareast neighbors in the vector space of a given query vector. We recommend the [FAISS](https://github.com/facebookresearch/faiss) library for this purpose. You can install it as follows.
+
+```
+!pip install faiss-gpu
+```
+
+To create the vector database, you can use the following code:
+```
+import faiss
+index = faiss.IndexFlatL2(embedded_passages.shape[1])
+index.add(embedded_passages)
+```
+
+To search for the nearest neighbor, we simply call `search` on the previously created database.
+```
+_, ix = index.search(embedded_question, 1)
+```
+
+As an example, which is the passage that most closely matches the question `where did the first african american air force unit train`?
+
+# Step 4: Putting the pieces together
+
+For each of the questions in the dataset we used in Steps 1&ndash;2, retrieve the best-matching passage from the vector database. Use this passage instead of the gold-standard passages you used in Step 2. Evaluate again.
+
+How does your result compare to those in Steps 1 and 2?
+
+**Hint.** While you are developing, it might be useful to run the retriever once and for all and store the result.
+
+

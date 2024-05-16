@@ -16,6 +16,7 @@ website:
       - text: "Assignments"
         menu:
           - assignments/assignment1/index.qmd
+          - assignments/assignment2/index.qmd	  
       - url: project/index.qmd
     tools:
       - icon: github
