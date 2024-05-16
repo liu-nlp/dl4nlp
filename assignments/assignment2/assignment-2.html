@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DL4NLP - Assignment 1</title>
+<title>DL4NLP - Assignment 2: Retrieval-augmented language models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,10 +119,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../assignments/assignment1/index.html">
  <span class="dropdown-text">Assignment 1</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../assignments/assignment2/index.html">
- <span class="dropdown-text">Assignment 2</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -142,14 +138,24 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link active" data-scroll-target="#the-dataset">The dataset</a></li>
+  <li><a href="#step-1-evaluating-an-llm-on-natural-questions" id="toc-step-1-evaluating-an-llm-on-natural-questions" class="nav-link" data-scroll-target="#step-1-evaluating-an-llm-on-natural-questions">Step 1: Evaluating an LLM on Natural Questions</a></li>
+  <li><a href="#step-2-an-idealized-retrieval-augmented-llm" id="toc-step-2-an-idealized-retrieval-augmented-llm" class="nav-link" data-scroll-target="#step-2-an-idealized-retrieval-augmented-llm">Step 2: An idealized retrieval-augmented LLM</a></li>
+  <li><a href="#step-3-setting-up-the-retriever" id="toc-step-3-setting-up-the-retriever" class="nav-link" data-scroll-target="#step-3-setting-up-the-retriever">Step 3: Setting up the retriever</a></li>
+  <li><a href="#step-4-putting-the-pieces-together" id="toc-step-4-putting-the-pieces-together" class="nav-link" data-scroll-target="#step-4-putting-the-pieces-together">Step 4: Putting the pieces together</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 1</h1>
+<h1 class="title">Assignment 2: Retrieval-augmented language models</h1>
 </div>
 
 
@@ -166,11 +172,68 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this assignment you will implement and train two or three neural language models: the fixed-window model, the recurrent neural network model from Unit&nbsp;1-2, and optionally a model based on the Transformer architecture from Unit&nbsp;1-3. You will evaluate these models by computing their perplexity on a benchmark dataset.</p>
-<p><a href="https://github.com/liu-nlp/dl4nlp/tree/main/website/assignments/assignment1">Link to the assignment</a></p>
-<p><strong>Deadline:</strong> 2024-05-03 (submit via Canvas)</p>
+<p>In the second assignment, we are going to use a large language model in a <strong>retrieval-augmented</strong> setup. As an application, we are going to consider a question answering task.</p>
+<p>You can use any LLMs you want in this assignment, but your solution must consider at least one open model (e.g.&nbsp;Mistral or one of the Llama models). Optionally, you may compare to a commercial model.</p>
+<section id="the-dataset" class="level1">
+<h1>The dataset</h1>
+<p>The dataset we will use in this assignment is a simplified version of <a href="https://ai.google.com/research/NaturalQuestions/">Natural Questions</a>, which was compiled by Google and consists of real search engine queries about factual questions.</p>
+<p>Download the assignment dataset <a href="https://www.cse.chalmers.se/~richajo/waspnlp2024/nq_simplified.val.tsv">here</a>. Then load the file using Pandas as follows:</p>
+<pre><code>nq_data = pd.read_csv('nq_simplified.val.tsv', sep='\t', header=None, names=['question', 'answer', 'gold_context'], quoting=3)</code></pre>
+<p>There are three columns: the question, the answer, and part of a Wikipedia page.</p>
+</section>
+<section id="step-1-evaluating-an-llm-on-natural-questions" class="level1">
+<h1>Step 1: Evaluating an LLM on Natural Questions</h1>
+<p>Load an LLM and explore different prompting strategies to try to make it answer the questions in the dataset. As a benchmark, you can use the ROUGE-1 precision/recall/F1 scores.</p>
+<pre><code>def rouge1(gold, predicted):
+  assert(len(gold) == len(predicted))
+  n_p = 0
+  n_g = 0
+  n_c = 0
+  for g, p in zip(gold, predicted):
+    g = set(cleanup(g).strip().split())
+    p = set(cleanup(p).strip().split())
+    n_g += len(g)
+    n_p += len(p)
+    n_c += len(p.intersection(g))
+  pr = n_c / n_p
+  re = n_c / n_g
+  if pr &gt; 0 and re &gt; 0:
+    f1 = 2*pr*re/(pr + re)
+  else:
+    f1 = 0.0
+  return pr, re, f1
+
+def cleanup(text):
+  text = text.replace(',', ' ')
+  text = text.replace('.', ' ')
+  return text</code></pre>
+<p>While developing, you should probably just use a small subset of the dataset.</p>
+</section>
+<section id="step-2-an-idealized-retrieval-augmented-llm" class="level1">
+<h1>Step 2: An idealized retrieval-augmented LLM</h1>
+<p>The third column in the dataset (called <code>gold_context</code> above) contains a text fragment from a Wikipedia page, from which the answer can be deduced. Try out new prompts where you include this relevant context. How does this change the evaluation scores?</p>
+</section>
+<section id="step-3-setting-up-the-retriever" class="level1">
+<h1>Step 3: Setting up the retriever</h1>
+<p>The setup in Step 2 is idealized, because we provided a context from Wikipedia where we know that the answer is avaialable. In real-world settings, this is not going to be the case.</p>
+<pre><code>!pip install faiss-gpu</code></pre>
+<p>To make this assignment work in Colab, we are going to work with a rather small set of passages. You can download these texts from <a href="https://www.cse.chalmers.se/~richajo/waspnlp2024/passages.txt">here</a>.</p>
+<p>To create the vector database, you can use the following code:</p>
+<pre><code>import faiss
+index = faiss.IndexFlatL2(embedded_passages.shape[1])
+index.add(embedded_passages)</code></pre>
+<p>To search for the nearest neighbors, we simply call <code>search</code> on the previously created database.</p>
+<pre><code>_, ix = index.search(embedded_question, 1)</code></pre>
+<p>As an example, what is the best hit for the question <code>where did the first african american air force unit train</code>?</p>
+</section>
+<section id="step-4-putting-the-pieces-together" class="level1">
+<h1>Step 4: Putting the pieces together</h1>
+<p>For each of the questions in the dataset we used in Steps 1–2, retrieve the best-matching passage from the vector database. Use this passage instead of the gold-standard passages you used in Step 2. Evaluate again.</p>
+<p>How does your result compare to those in Steps 1 and 2?</p>
+<p><strong>Hint.</strong> While you are developing, it might be useful to run the retriever once and for all and store the result.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -254,7 +317,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/liu-nlp\.github\.io\/dl4nlp\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
