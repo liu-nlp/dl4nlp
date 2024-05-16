@@ -6,6 +6,9 @@ In the second assignment, we are going to use a large language model in a **retr
 
 You can use any LLMs you want in this assignment, but your solution must consider at least one open model (e.g. Mistral or one of the Llama models). Optionally, you may compare to a commercial model.
 
+Please implement the steps described below in a Jupyter notebook. The notebook should contain text cells with brief explanations of what you are doing and why. You should also include your evaluation scores in the text cells.
+**Deadline: 31 May.** 
+
 # The dataset
 
 The dataset we will use in this assignment is a simplified version of [Natural Questions](https://ai.google.com/research/NaturalQuestions/), which was compiled by Google and consists of real search engine queries about factual questions.
