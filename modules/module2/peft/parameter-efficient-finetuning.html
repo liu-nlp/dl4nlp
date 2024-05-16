@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DL4NLP - Exercise: Parameter-efficient fine-tuning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">DL4NLP</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modules</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modules">    
+        <li>
+    <a class="dropdown-item" href="../../../modules/module0/index.html">
+ <span class="dropdown-text">Review</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../modules/module1/index.html">
+ <span class="dropdown-text">Module 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../modules/module2/index.html">
+ <span class="dropdown-text">Module 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../modules/module3/index.html">
+ <span class="dropdown-text">Module 3</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../../../assignments/assignment1/index.html">
+ <span class="dropdown-text">Assignment 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../assignments/assignment2/index.html">
+ <span class="dropdown-text">Assignment 2</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../project/index.html"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://github.com/liu-nlp/dl4nlp" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#tokeniser" id="toc-tokeniser" class="nav-link" data-scroll-target="#tokeniser">Tokeniser</a></li>
+  <li><a href="#trainer" id="toc-trainer" class="nav-link" data-scroll-target="#trainer">Trainer</a></li>
+  <li><a href="#problem-1-full-fine-tuning" id="toc-problem-1-full-fine-tuning" class="nav-link" data-scroll-target="#problem-1-full-fine-tuning">Problem 1: Full fine-tuning</a>
+  <ul class="collapse">
+  <li><a href="#count-the-number-of-trainable-parameters" id="toc-count-the-number-of-trainable-parameters" class="nav-link" data-scroll-target="#count-the-number-of-trainable-parameters">Count the number of trainable parameters</a></li>
+  <li><a href="#fine-tuning" id="toc-fine-tuning" class="nav-link" data-scroll-target="#fine-tuning">Fine-tuning</a></li>
+  <li><a href="#convenience-functions" id="toc-convenience-functions" class="nav-link" data-scroll-target="#convenience-functions">Convenience functions</a></li>
+  </ul></li>
+  <li><a href="#problem-2-tuning-the-final-layers-only" id="toc-problem-2-tuning-the-final-layers-only" class="nav-link" data-scroll-target="#problem-2-tuning-the-final-layers-only">Problem 2: Tuning the final layers only</a></li>
+  <li><a href="#problem-3-layer-surgery" id="toc-problem-3-layer-surgery" class="nav-link" data-scroll-target="#problem-3-layer-surgery">Problem 3: Layer surgery</a>
+  <ul class="collapse">
+  <li><a href="#extracting-layers" id="toc-extracting-layers" class="nav-link" data-scroll-target="#extracting-layers">Extracting layers</a></li>
+  <li><a href="#replacing-layers" id="toc-replacing-layers" class="nav-link" data-scroll-target="#replacing-layers">Replacing layers</a></li>
+  </ul></li>
+  <li><a href="#problem-4-lora" id="toc-problem-4-lora" class="nav-link" data-scroll-target="#problem-4-lora">Problem 4: LoRA</a>
+  <ul class="collapse">
+  <li><a href="#implement-the-adapter" id="toc-implement-the-adapter" class="nav-link" data-scroll-target="#implement-the-adapter">Implement the adapter</a></li>
+  <li><a href="#inject-the-adapter-into-the-pre-trained-model" id="toc-inject-the-adapter-into-the-pre-trained-model" class="nav-link" data-scroll-target="#inject-the-adapter-into-the-pre-trained-model">Inject the adapter into the pre-trained model</a></li>
+  </ul></li>
+  <li><a href="#problem-5-alternatives-to-transformer-based-models" id="toc-problem-5-alternatives-to-transformer-based-models" class="nav-link" data-scroll-target="#problem-5-alternatives-to-transformer-based-models">Problem 5: Alternatives to Transformer-based models</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exercise: Parameter-efficient fine-tuning</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Fine-tuning all parameters of pre-trained language models can be resource-intensive. Because of this, current research in natural language processing is looking into developing methods for adapting models to downstream tasks without full fine-tuning. These methods only tune a small number of model parameters while yielding performance comparable to that of a fully fine-tuned model.</p>
+<p>In this exercise, you will implement LoRA, one of the most well-known methods for parameter-efficient fine-tuning. LoRA stands for “Low-Rank Adaptation of Large Language Models” and was originally described in a research article by <a href="https://arxiv.org/abs/2106.09685">Hu et al.&nbsp;(2021)</a>.</p>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>The data for this lab comes from the <a href="https://ai.stanford.edu/~amaas/data/sentiment/">Large Movie Review Dataset</a>. The full dataset consists of 50,000 highly polar movie reviews collected from the Internet Movie Database (IMDB). Here, we use a random sample consisting of 2,000 reviews for training and 500 reviews for evaluation.</p>
+<p>To load the dataset, we use the <a href="https://huggingface.co/docs/datasets/en/index">Hugging Face Datasets</a> library.</p>
+<div id="dcf185b8" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>imdb_dataset <span class="op">=</span> load_dataset(<span class="st">'csv'</span>, data_files <span class="op">=</span> {<span class="st">'train'</span>: <span class="st">'train.csv'</span>, <span class="st">'eval'</span>: <span class="st">'eval.csv'</span>})</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>imdb_dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As we can see, each sample in the dataset is a record with three fields: an internal index (<code>index</code>, an integer), the text of the review (<code>review</code>, a string), and the sentiment label (<code>label</code>, an integer – 1&nbsp;for “positive” and 0&nbsp;for “negative” sentiment).</p>
+<p>Here is an example record:</p>
+<div id="7b5547ce" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>imdb_dataset[<span class="st">'train'</span>][<span class="dv">645</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tokeniser" class="level2">
+<h2 class="anchored" data-anchor-id="tokeniser">Tokeniser</h2>
+<p>As our pre-trained language model, we will use <a href="https://huggingface.co/docs/transformers/en/model_doc/distilbert">DistilBERT</a>, a compact encoder model with 40% less parameters than BERT base. DistilBERT is not actually a <em>large</em> language model by modern standards and thus does not benefit as much from parameter-efficient fine-tuning as other models. However, it has the benefit of being light and fast, and can be run even on consumer hardware.</p>
+<p>To feed the movie reviews to DistilBERT, we need to tokenise them and encode the resulting tokens as integers in the model vocabulary. We start by loading the DistilBERT tokeniser using the <a href="https://huggingface.co/docs/transformers/en/model_doc/auto">Auto classes</a>:</p>
+<div id="d76f2c9e" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoTokenizer</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">'distilbert-base-uncased'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then create a tokenised version of the dataset:</p>
+<div id="de583eff" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tokenize_function(batch):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tokenizer(batch[<span class="st">'review'</span>], padding<span class="op">=</span><span class="va">True</span>, truncation<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tokenized_imdb_dataset <span class="op">=</span> imdb_dataset.<span class="bu">map</span>(tokenize_function, batched<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>tokenized_imdb_dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As we can see, tokenising adds two additional fields to each review: <code>input_ids</code> is the list of token ids corresponding to the review, and <code>attention_mask</code> is the list of indices specifying which tokens the encoder should attend to.</p>
+<p>To avoid trouble when fine-tuning the model later, the next cell disables tokeniser parallelism.</p>
+<div id="70d0190e" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'TOKENIZERS_PARALLELISM'</span>] <span class="op">=</span> <span class="st">'false'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="trainer" class="level2">
+<h2 class="anchored" data-anchor-id="trainer">Trainer</h2>
+<p>In this section, we will set up our workflow for training and evaluating DistilBERT models. The central component in this workflow is the <a href="https://huggingface.co/docs/transformers/main_classes/trainer">Trainer</a>, which provides extensive configuration options. Here, we leave most of these options at their default value. Two changes we <em>do</em> make are to enable evaluation of the trained model after each epoch, and to log the training and evaluation loss after every 5&nbsp;training steps (the default is 500).</p>
+<div id="e6d2854d" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> TrainingArguments</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>training_args <span class="op">=</span> TrainingArguments(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">'tmp_trainer'</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    evaluation_strategy<span class="op">=</span><span class="st">'epoch'</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    logging_steps<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In addition to the loss, we also track classification accuracy. For this we import the <a href="https://huggingface.co/docs/evaluate/en/index">Hugging Face Evaluate</a> library and define a small helper function <code>compute_metrics()</code> that the trainer will call after each epoch.</p>
+<div id="4bafbadf" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> evaluate</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> evaluate.load(<span class="st">'accuracy'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_metrics(eval_pred):</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    logits, labels <span class="op">=</span> eval_pred</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    predictions <span class="op">=</span> logits.argmax(axis<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accuracy.compute(predictions<span class="op">=</span>predictions, references<span class="op">=</span>labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the next cell we define a convenience function <code>make_trainer()</code> that creates a readily-configured trainer for a specified model (<em>model</em>). We will use this trainer both to train the model on the training section of the tokenised review dataset, and to evaluate it on the evaluation section.</p>
+<div id="eb219812" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> Trainer</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_trainer(model):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    trainer <span class="op">=</span> Trainer(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        model<span class="op">=</span>model,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        args<span class="op">=</span>training_args,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        train_dataset<span class="op">=</span>tokenized_imdb_dataset[<span class="st">'train'</span>],</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        eval_dataset<span class="op">=</span>tokenized_imdb_dataset[<span class="st">'eval'</span>],</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        compute_metrics<span class="op">=</span>compute_metrics,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> trainer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="problem-1-full-fine-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1-full-fine-tuning">Problem 1: Full fine-tuning</h2>
+<p>In the rest of this notebook, we will work our way to the implementation of LoRA, and compare LoRA to traditional fine-tuning methods. Our first point of reference is a fully fine-tuned DistilBERT model.</p>
+<p>We start by loading the pre-trained model:</p>
+<div id="d1433800" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoModelForSequenceClassification</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pretrained_model <span class="op">=</span> AutoModelForSequenceClassification.from_pretrained(<span class="st">'distilbert-base-uncased'</span>, num_labels<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>pretrained_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The architecture of DistilBERT is that of a standard Transformer encoder with an embedding layer (<code>embeddings</code>) followed by a stack of six Transformer blocks (<code>transformer</code>) and a feedforward network with two linear layers (<code>pre_classifier</code> and <code>classifier</code>) and a final dropout layer (<code>dropout</code>).</p>
+<section id="count-the-number-of-trainable-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="count-the-number-of-trainable-parameters">Count the number of trainable parameters</h3>
+<p>One relevant measure in the context of parameter-efficient fine-tuning is the number of parameters that need to be changed when training a model. Your first task in this lab is to write a function <code>num_trainable_parameters()</code> that calculates this number for a given model.</p>
+<div id="69dc6856" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> num_trainable_parameters(model):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The function should implement the following specification:</p>
+<blockquote class="blockquote">
+<p><strong>num_trainable_parameters</strong> (<em>model</em>)</p>
+<p>Returns the number of float-valued trainable parameters in the specified <em>model</em> as an integer.</p>
+</blockquote>
+<section id="hint" class="level4">
+<h4 class="anchored" data-anchor-id="hint">👍 Hint</h4>
+<p>The term <em>parameter</em> can refer to either complete tensors or the individual elements of these tensors. For example, a linear layer created by <code>nn.Linear(3, 5)</code> has 2&nbsp;tensor-valued parameters (a weight matrix and a bias vector) and 20&nbsp;float-valued parameters (the elements of these tensors). To get the tensor-valued parameters of a model, you can use the <a href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.parameters"><code>parameters()</code></a> method. A parameter is <em>trainable</em> if it requires gradient.</p>
+</section>
+<section id="test-your-code" class="level4">
+<h4 class="anchored" data-anchor-id="test-your-code">🤞 Test your code</h4>
+<p>To test your code, apply your function to the pre-trained model. The correct number of float-valued trainable parameters for this model is 66,955,010.</p>
+</section>
+</section>
+<section id="fine-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="fine-tuning">Fine-tuning</h3>
+<p>When we load the pre-trained model, the Hugging Face Transformers library warns us that the weights of the feedforward network have not yet been trained. To do so, we pass the pre-trained model to a trainer and initiate the fine-tuning process. Because full fine-tuning is so resource-intensive, we save the fine-tuned model to disk. Alternatively, we load an already fine-tuned version of the model (provided on the course website).</p>
+<p><strong>⚠️ Please note that fine-tuning the model will take some time! ⚠️</strong></p>
+<div id="d2de10f5" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative A: Fine-tuning</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># finetuned_trainer = make_trainer(pretrained_model)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># finetuned_trainer.train()</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># finetuned_trainer.save_model('finetuned')</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative B: Load a fine-tuned model</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>finetuned_model <span class="op">=</span> AutoModelForSequenceClassification.from_pretrained(<span class="st">'finetuned'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="convenience-functions" class="level3">
+<h3 class="anchored" data-anchor-id="convenience-functions">Convenience functions</h3>
+<p>Because we will repeat the steps we just took to fine-tune the pre-trained model several times in this notebook, we define two convenience functions:</p>
+<div id="960d010b" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(model):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Number of trainable parameters:'</span>, num_trainable_parameters(model))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    trainer <span class="op">=</span> make_trainer(model)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    trainer.train()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="96208182" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(model):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    trainer <span class="op">=</span> make_trainer(model)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> trainer.evaluate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="problem-2-tuning-the-final-layers-only" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2-tuning-the-final-layers-only">Problem 2: Tuning the final layers only</h2>
+<p>If full fine-tuning marks one end of the complexity spectrum, the other end is marked by only tuning the final layers of the transformer – the <em>head</em> of the model. In the case of DistilBERT, the head consists of the <code>pre_classifier</code> and <code>classifier</code> layers.</p>
+<p>Implement the head-tuning strategy by coding the following function:</p>
+<div id="a05aae5b" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_headtuned_model():</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here is the specification of this function:</p>
+<blockquote class="blockquote">
+<p><strong>make_headtuned_model</strong> ()</p>
+<p>Returns a model that is identical to the pre-trained model, except that the head layers have been trained on the sentiment data. (The other parameters of the pre-trained model are left untouched.)</p>
+</blockquote>
+<section id="hint-1" class="level4">
+<h4 class="anchored" data-anchor-id="hint-1">👍 Hint</h4>
+<p>You freeze a parameter by setting its <code>requires_grad</code>-attribute to <code>False</code>.</p>
+<p>Once you have an implementation of the head-tuning strategy, evaluate it on the evaluation data. How much accuracy do we lose when only training the final layers of the pre-trained model, compared to full fine-tuning?</p>
+<div id="c66d73a6" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>headtuned_model <span class="op">=</span> make_headtuned_model()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="test-your-code-1" class="level4">
+<h4 class="anchored" data-anchor-id="test-your-code-1">🤞 Test your code</h4>
+<p>If you configured your model correctly, <code>num_trainable_parameters()</code> should show 592,130 trainable parameters.</p>
+<p>For future reference, we also save the head-tuned model:</p>
+<div id="59677530" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>make_trainer(headtuned_model).save_model(<span class="st">'headtuned'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="problem-3-layer-surgery" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3-layer-surgery">Problem 3: Layer surgery</h2>
+<p>LoRA works by “wrapping” frozen layers from the pre-trained Transformer model inside adapter modules. Conventionally, this wrapping is only applied to the linear layers that transform the queries and values in the self-attention mechanism. To implement the wrapping, we need functions to extract and replace layers in a model. Your task in this section is to code these functions.</p>
+<section id="extracting-layers" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-layers">Extracting layers</h3>
+<p>Code a function that extracts the query and value linear layers from a DistilBERT model:</p>
+<div id="62f17aa1" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract(model):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Implement this function to match the following specification:</p>
+<blockquote class="blockquote">
+<p><strong>extract</strong> (<em>model</em>)</p>
+<p>Takes a DistilBERT model (<em>model</em>) and extracts the query and value linear layers from each block of the Transformer. Returns a dictionary mapping the DistilBERT module names of these layers to the layers themselves (instances of <code>nn.Linear</code>).</p>
+</blockquote>
+<section id="hint-2" class="level4">
+<h4 class="anchored" data-anchor-id="hint-2">👍 Hint</h4>
+<p>As we saw earlier, the DistilBERT model consists of a hierarchy of nested submodules. Each of these can be addressed by a fully-qualified string name. Use <a href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.get_submodule"><code>get_submodule()</code></a> to retrieve a layer by name. You can hard-wire the names of the layers you want to extract.</p>
+</section>
+<section id="test-your-code-2" class="level4">
+<h4 class="anchored" data-anchor-id="test-your-code-2">🤞 Test your code</h4>
+<p>To test your code, check the number of trainable float-valued parameters in the extracted layers. This number should be 7,087,104.</p>
+</section>
+</section>
+<section id="replacing-layers" class="level3">
+<h3 class="anchored" data-anchor-id="replacing-layers">Replacing layers</h3>
+<p>The inverse of the <code>extract()</code> function replaces selected layers of a module using a dictionary of named layers.</p>
+<div id="0c7e5124" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> replace(model, named_layers):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, layer <span class="kw">in</span> named_layers.items():</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        components <span class="op">=</span> name.split(<span class="st">'.'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        submodule <span class="op">=</span> model</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> component <span class="kw">in</span> components[:<span class="op">-</span><span class="dv">1</span>]:</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>            submodule <span class="op">=</span> <span class="bu">getattr</span>(submodule, component)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">setattr</span>(submodule, components[<span class="op">-</span><span class="dv">1</span>], layer)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function has the following specification:</p>
+<blockquote class="blockquote">
+<p><strong>replace</strong> (<em>model</em>, <em>named_layers</em>)</p>
+<p>Takes a DistilBERT model (<em>model</em>) and a dictionary in the format returned by <code>extract()</code> (<em>named_layers</em>) and injects the extracted layers into the model. More specifically, suppose that <em>named_layers</em> contains a key–value pair <code>(name, layer)</code>. Then the function replaces the submodule of <em>model</em> addressed by the fully-qualified string name <code>name</code> by the layer <code>layer</code>. Returns the modified model.</p>
+</blockquote>
+<section id="test-your-code-3" class="level4">
+<h4 class="anchored" data-anchor-id="test-your-code-3">🤞 Test your code</h4>
+<p>To test your implementation, write code that (1)&nbsp;extracts the query and value linear layers from the fine-tuned model; (2)&nbsp;replaces these layers with clones with random weights; and (3)&nbsp;replaces these layers again with the original versions. Evaluating the modified model after step&nbsp;(2) should yield a near-random accuracy. Evaluating it again after step&nbsp;(3) should yield the original accuracy.</p>
+<p>The following function should be helpful. It clones a linear layer, copying the weights and the bias from the original.</p>
+<div id="851b2937" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clone_linear(original):</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    out_features, in_features <span class="op">=</span> original.weight.shape</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    copy <span class="op">=</span> nn.Linear(in_features, out_features)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    copy.load_state_dict(original.state_dict())</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> copy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="problem-4-lora" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4-lora">Problem 4: LoRA</h2>
+<p>In this section, you will implement the LoRA adapters and fine-tune the adapted model.</p>
+<p>Recall that the basic idea behind LoRA is to conceptualise fine-tuned weights as a sum <span class="math inline">\(W_0 + \Delta W\)</span> of the weights from the pre-trained model, <span class="math inline">\(W_0\)</span>, and a low-rank update matrix <span class="math inline">\(\Delta W\)</span>. The goal of fine-tuning, then, is to learn the update matrix; this happens in the adapter layers.</p>
+<section id="implement-the-adapter" class="level3">
+<h3 class="anchored" data-anchor-id="implement-the-adapter">Implement the adapter</h3>
+<p>A LoRA adapter implements the forward function</p>
+<p><span class="math display">\[
+y = x W_0 + x \Delta W = x W_0 + x A B
+\]</span></p>
+<p>where <span class="math inline">\(W_0\)</span> is a linear transformation from the pre-trained model and <span class="math inline">\(\Delta W\)</span> is a learned update matrix, deconstructed into the product <span class="math inline">\(AB\)</span> of two rank-<span class="math inline">\(r\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. LoRA scales the update matrix <span class="math inline">\(\Delta W\)</span> by a factor of <span class="math inline">\(\alpha / r\)</span>, where <span class="math inline">\(\alpha\)</span> is a hyperparameter. (To keep the formula tidy, we ignore the fact that the linear transformation in the pre-trained model may additionally include a bias.)</p>
+<div id="f91ec802" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LoRA(nn.Module):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, pretrained, rank<span class="op">=</span><span class="dv">12</span>, alpha<span class="op">=</span><span class="dv">24</span>):</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Add your code here</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Your code must comply with the following specification:</p>
+<p><strong><strong>init</strong></strong> (<em>self</em>, <em>pretrained</em>, <em>rank</em> = 12, <em>alpha</em> = 24)</p>
+<blockquote class="blockquote">
+<p>Initialises the LoRA adapter. This sets up the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> from the equation above. The matrix <span class="math inline">\(A\)</span> is initialised with random weights from a standard normal distribution; the matrix <span class="math inline">\(B\)</span> is initialised with zeros. The argument <em>pretrained</em> is the linear layer from the pre-trained model that should be adapted. The arguments <em>rank</em> and <em>alpha</em> are the rank <span class="math inline">\(r\)</span> and the hyperparameter <span class="math inline">\(\alpha\)</span> in the equation above.</p>
+</blockquote>
+<p><strong>forward</strong> (<em>self</em>, <em>x</em>)</p>
+<blockquote class="blockquote">
+<p>Sends an input <em>x</em> through the adapter, implementing the equation above.</p>
+</blockquote>
+</section>
+<section id="inject-the-adapter-into-the-pre-trained-model" class="level3">
+<h3 class="anchored" data-anchor-id="inject-the-adapter-into-the-pre-trained-model">Inject the adapter into the pre-trained model</h3>
+<p>The final step is to construct an adapted model by injecting the LoRA adapters into the pre-trained model.</p>
+<div id="16d4f05c" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_lora_model(rank):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Implement the function to match the following specification:</p>
+<blockquote class="blockquote">
+<p><strong>make_lora_model</strong> (<em>rank</em>)</p>
+<p>Returns a model that is identical to the pre-trained model, except that the query and value linear layers have been wrapped in LoRA adapters, and the LoRA adapters and the head layers of the pre-trained model have been trained on the sentiment data. (The other parameters of the pre-trained model are left untouched.) The rank of the adapters is specified by the argument <em>rank</em>. The <em>alpha</em> value of the adapters is set to twice the rank (a common rule of thumb).</p>
+</blockquote>
+<p>Run the next cell to evaluate your model for <span class="math inline">\(r = 6\)</span> and <span class="math inline">\(\alpha = 12\)</span>. How many trainable parameters does the adapted model have? What accuracy do you get? How do these value relate to the number of trainable parameters and accuracy of the fully fine-tuned model, in terms of percentages?</p>
+<div id="2538e3dc" class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lora_model <span class="op">=</span> make_lora_model(<span class="dv">6</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>evaluate(lora_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="problem-5-alternatives-to-transformer-based-models" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5-alternatives-to-transformer-based-models">Problem 5: Alternatives to Transformer-based models</h2>
+<p>Even with methods for parameter-efficient fine-tuning, applying DistilBERT and other Transformer-based models comes at a significant cost – an investment that does not always pay off. In the final problem of this lab, we ask you to explore a more traditional approach to classification and contrast it with the pre-training/fine-tuning approach of neural language models.</p>
+<p>Browse the web to find a tutorial on how to apply a classifier from the <a href="https://scikit-learn.org/stable/">scikit-learn</a> library to the problem of sentiment classification and implement the method here in this notebook. We suggest you use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html">multinomial Naive Bayes</a> or <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">logistic regression</a>. (Once you have code for one method, it is easy to switch to the other.) Evaluate your chosen classifier on the IMDB dataset.</p>
+<ul>
+<li>Which classifier did you try? What results did you get? How long did it take you to train and run the classifier?</li>
+<li>What is your perspective on the trade-off between accuracy and resource requirements between the two approaches?</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/liu-nlp\.github\.io\/dl4nlp\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
