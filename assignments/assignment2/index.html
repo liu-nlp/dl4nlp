@@ -119,6 +119,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../assignments/assignment1/index.html">
  <span class="dropdown-text">Assignment 1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignments/assignment2/index.html">
+ <span class="dropdown-text">Assignment 2</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -138,7 +142,21 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link active" data-scroll-target="#the-dataset">The dataset</a></li>
+  <li><a href="#step-1-evaluating-an-llm-on-natural-questions" id="toc-step-1-evaluating-an-llm-on-natural-questions" class="nav-link" data-scroll-target="#step-1-evaluating-an-llm-on-natural-questions">Step 1: Evaluating an LLM on Natural Questions</a></li>
+  <li><a href="#step-2-an-idealized-retrieval-augmented-llm" id="toc-step-2-an-idealized-retrieval-augmented-llm" class="nav-link" data-scroll-target="#step-2-an-idealized-retrieval-augmented-llm">Step 2: An idealized retrieval-augmented LLM</a></li>
+  <li><a href="#step-3-setting-up-the-retriever" id="toc-step-3-setting-up-the-retriever" class="nav-link" data-scroll-target="#step-3-setting-up-the-retriever">Step 3: Setting up the retriever</a>
+  <ul class="collapse">
+  <li><a href="#representing-the-passages-as-vectors" id="toc-representing-the-passages-as-vectors" class="nav-link" data-scroll-target="#representing-the-passages-as-vectors">Representing the passages as vectors</a></li>
+  <li><a href="#storing-the-passage-vectors-in-a-database" id="toc-storing-the-passage-vectors-in-a-database" class="nav-link" data-scroll-target="#storing-the-passage-vectors-in-a-database">Storing the passage vectors in a database</a></li>
+  </ul></li>
+  <li><a href="#step-4-putting-the-pieces-together" id="toc-step-4-putting-the-pieces-together" class="nav-link" data-scroll-target="#step-4-putting-the-pieces-together">Step 4: Putting the pieces together</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -162,12 +180,78 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--In [the second programming assignment](https://github.com/liu-nlp/dl4nlp/tree/master/assignment2) you will implement the encoder–decoder architecture of Sutskever et al. (2014), including the attention-based extension of Bahdanau et al. (2015), and evaluate this architecture on a machine translation task.-->
-<!--**Deadline: 2022-05-20**-->
-<!--[Assignment 2](Assignment2.ipynb)-->
-<p>This is a placeholder for the second assignment.</p>
+<p>In the second assignment, we are going to use a large language model in a <strong>retrieval-augmented</strong> setup. As an application, we are going to consider a question answering task.</p>
+<p>You can use any LLMs you want in this assignment, but your solution must consider at least one open model (e.g.&nbsp;Mistral or one of the Llama models). Optionally, you may compare to a commercial model.</p>
+<section id="the-dataset" class="level1">
+<h1>The dataset</h1>
+<p>The dataset we will use in this assignment is a simplified version of <a href="https://ai.google.com/research/NaturalQuestions/">Natural Questions</a>, which was compiled by Google and consists of real search engine queries about factual questions.</p>
+<p>Download the assignment dataset <a href="https://www.cse.chalmers.se/~richajo/waspnlp2024/nq_simplified.val.tsv">here</a>. Then load the file using Pandas as follows:</p>
+<pre><code>nq_data = pd.read_csv('nq_simplified.val.tsv', sep='\t', header=None, names=['question', 'answer', 'gold_context'], quoting=3)</code></pre>
+<p>There are three columns: the question, the answer, and part of a Wikipedia page.</p>
+</section>
+<section id="step-1-evaluating-an-llm-on-natural-questions" class="level1">
+<h1>Step 1: Evaluating an LLM on Natural Questions</h1>
+<p>Load an LLM and explore different prompting strategies to try to make it answer the questions in the dataset. As a benchmark, you can use the ROUGE-1 precision/recall/F1 scores.</p>
+<pre><code>def rouge1(gold, predicted):
+  assert(len(gold) == len(predicted))
+  n_p = 0
+  n_g = 0
+  n_c = 0
+  for g, p in zip(gold, predicted):
+    g = set(cleanup(g).strip().split())
+    p = set(cleanup(p).strip().split())
+    n_g += len(g)
+    n_p += len(p)
+    n_c += len(p.intersection(g))
+  pr = n_c / n_p
+  re = n_c / n_g
+  if pr &gt; 0 and re &gt; 0:
+    f1 = 2*pr*re/(pr + re)
+  else:
+    f1 = 0.0
+  return pr, re, f1
+
+def cleanup(text):
+  text = text.replace(',', ' ')
+  text = text.replace('.', ' ')
+  return text</code></pre>
+<p>While developing, you should probably just use a small subset of the dataset.</p>
+</section>
+<section id="step-2-an-idealized-retrieval-augmented-llm" class="level1">
+<h1>Step 2: An idealized retrieval-augmented LLM</h1>
+<p>The third column in the dataset (called <code>gold_context</code> above) contains a text fragment from a Wikipedia page, from which the answer can be deduced. Try out new prompts where you include this relevant context. How does this change the evaluation scores?</p>
+</section>
+<section id="step-3-setting-up-the-retriever" class="level1">
+<h1>Step 3: Setting up the retriever</h1>
+<p>The setup in Step 2 is idealized, because we provided a context from Wikipedia where we know that the answer is avaialable. In real-world settings, this is not going to be the case.</p>
+<p>To make this assignment work in Colab, we are going to work with a rather small set of passages. You can download these texts from <a href="https://www.cse.chalmers.se/~richajo/waspnlp2024/passages.txt">here</a>. For a given question, we are going to search among these passages to find the best-matching passage.</p>
+<section id="representing-the-passages-as-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="representing-the-passages-as-vectors">Representing the passages as vectors</h3>
+<p>Set up a representation model that maps a text passage to a numerical vector.</p>
+<p>For instance, some model from <a href="https://www.sbert.net/">SentenceTransformers</a>, such as <a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"><code>all-MiniLM-L6-v2</code></a> could be a good choice.</p>
+<p>Apply this model to all text passages.</p>
+</section>
+<section id="storing-the-passage-vectors-in-a-database" class="level3">
+<h3 class="anchored" data-anchor-id="storing-the-passage-vectors-in-a-database">Storing the passage vectors in a database</h3>
+<p>We now create a vector database that allows us to search efficiently for the neareast neighbors in the vector space of a given query vector. We recommend the <a href="https://github.com/facebookresearch/faiss">FAISS</a> library for this purpose. You can install it as follows.</p>
+<pre><code>!pip install faiss-gpu</code></pre>
+<p>To create the vector database, you can use the following code:</p>
+<pre><code>import faiss
+index = faiss.IndexFlatL2(embedded_passages.shape[1])
+index.add(embedded_passages)</code></pre>
+<p>To search for the nearest neighbor, we simply call <code>search</code> on the previously created database.</p>
+<pre><code>_, ix = index.search(embedded_question, 1)</code></pre>
+<p>As an example, which is the passage that most closely matches the question <code>where did the first african american air force unit train</code>?</p>
+</section>
+</section>
+<section id="step-4-putting-the-pieces-together" class="level1">
+<h1>Step 4: Putting the pieces together</h1>
+<p>For each of the questions in the dataset we used in Steps 1–2, retrieve the best-matching passage from the vector database. Use this passage instead of the gold-standard passages you used in Step 2. Evaluate again.</p>
+<p>How does your result compare to those in Steps 1 and 2?</p>
+<p><strong>Hint.</strong> While you are developing, it might be useful to run the retriever once and for all and store the result.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
