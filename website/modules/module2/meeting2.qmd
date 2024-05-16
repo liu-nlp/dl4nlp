@@ -17,7 +17,7 @@ The second meeting will take place 16&ndash;17 May at Chalmers, Gothenburg.
 | **Friday** | |
 | 09:00–10:00 | Discussion: Summarization use case |
 | 10:00–10:30 | Fika |
-| 10:30–11:30 | Exercise 2-2: Using open LLMs |
+| 10:30–11:30 | Exercise 2-2: Using open LLMs ([notebook](https://colab.research.google.com/drive/1sRDyMwBSRohzbqqgIT9KgXntemJaRZTf?usp=sharing)) |
 | 11:30–12:30 | Lunch at [Waste](https://maps.app.goo.gl/6V9uAXxUdLLVop2Y8) | 
 | 12:30–15:00 | Project practicalities; Introduction to Assignment 2 |
 : {.striped .hover}
