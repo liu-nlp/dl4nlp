@@ -13,7 +13,7 @@ The second meeting will take place 16&ndash;17 May at Chalmers, Gothenburg.
 | 13:00–13:30 | Comments about Assignment 1 |
 | 13:30–14:30 | Discussion: Large language models |
 | 14:30–15:00 | Fika |
-| 15:00–17:00 | Exercise 2-1: Efficient fine-tuning ([notebook](peft/parameter-efficient-finetuning.ipynb), [data](https://github.com/liu-nlp/dl4nlp/tree/main/website/modules/module2/peft/)) |
+| 15:00–17:00 | Exercise 2-1: Efficient fine-tuning ([repo](https://github.com/liu-nlp/dl4nlp/tree/main/website/modules/module2/peft/)) |
 | **Friday** | |
 | 09:00–10:00 | Discussion: Summarization use case |
 | 10:00–10:30 | Fika |
