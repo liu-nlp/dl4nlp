@@ -1,79 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/modules/module3/meeting3.html</loc>
-    <lastmod>2024-05-13T08:37:30.101Z</lastmod>
-  </url>
-  <url>
     <loc>https://liu-nlp.github.io/dl4nlp/modules/module1/meeting1.html</loc>
-    <lastmod>2024-04-17T08:57:32.706Z</lastmod>
+    <lastmod>2024-05-05T17:37:59.703Z</lastmod>
   </url>
   <url>
     <loc>https://liu-nlp.github.io/dl4nlp/modules/module0/Introduction_to_PyTorch.html</loc>
-    <lastmod>2024-03-22T07:27:05.144Z</lastmod>
+    <lastmod>2024-04-12T06:01:48.110Z</lastmod>
   </url>
   <url>
     <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/meeting2.html</loc>
-    <lastmod>2024-05-17T13:58:36.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/peft/parameter-efficient-finetuning.html</loc>
-    <lastmod>2024-05-16T08:48:58.261Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/project/index.html</loc>
-    <lastmod>2024-04-16T07:48:52.238Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment2/Assignment2.html</loc>
-    <lastmod>2024-03-22T07:27:05.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment1/index.html</loc>
-    <lastmod>2024-04-17T07:34:52.217Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment3/Assignment3.html</loc>
-    <lastmod>2024-03-22T07:27:05.128Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/index.html</loc>
-    <lastmod>2024-03-26T07:59:18.696Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment3/index.html</loc>
-    <lastmod>2024-03-22T07:58:41.962Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment1/assignment-1.html</loc>
-    <lastmod>2024-04-16T07:48:52.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment2/index.html</loc>
-    <lastmod>2024-05-16T16:04:03.993Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/about.html</loc>
-    <lastmod>2024-03-19T11:51:21.512Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/index.html</loc>
-    <lastmod>2024-05-08T08:46:20.816Z</lastmod>
+    <lastmod>2024-05-17T17:23:02.268Z</lastmod>
   </url>
   <url>
     <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/peft/parameter-efficient-finetuning-with-solutions.html</loc>
-    <lastmod>2024-05-17T13:21:22.341Z</lastmod>
+    <lastmod>2024-05-16T19:12:11.975Z</lastmod>
   </url>
   <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/modules/module0/index.html</loc>
-    <lastmod>2024-03-26T07:59:18.696Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liu-nlp.github.io/dl4nlp/modules/module1/index.html</loc>
-    <lastmod>2024-04-24T10:44:35.648Z</lastmod>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/local-rag.html</loc>
+    <lastmod>2024-05-17T17:21:32.329Z</lastmod>
   </url>
   <url>
     <loc>https://liu-nlp.github.io/dl4nlp/modules/module3/index.html</loc>
-    <lastmod>2024-05-13T08:40:00.101Z</lastmod>
+    <lastmod>2024-05-16T05:29:05.632Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/about.html</loc>
+    <lastmod>2024-03-15T22:07:51.997Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment3/Assignment3.html</loc>
+    <lastmod>2024-03-15T22:07:51.757Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment2/Assignment2.html</loc>
+    <lastmod>2024-03-15T22:07:51.710Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment1/index.html</loc>
+    <lastmod>2024-04-16T13:24:44.625Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment1/assignment-1.html</loc>
+    <lastmod>2024-04-12T12:56:23.274Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment2/index.html</loc>
+    <lastmod>2024-05-16T19:12:11.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/assignments/assignment3/index.html</loc>
+    <lastmod>2024-04-12T06:01:48.110Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/index.html</loc>
+    <lastmod>2024-05-17T16:35:24.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/project/index.html</loc>
+    <lastmod>2024-04-12T11:03:00.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module3/meeting3.html</loc>
+    <lastmod>2024-05-16T05:29:05.633Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/index.html</loc>
+    <lastmod>2024-05-16T05:29:05.628Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module2/peft/parameter-efficient-finetuning.html</loc>
+    <lastmod>2024-05-16T06:54:09.286Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module0/index.html</loc>
+    <lastmod>2024-04-12T06:01:48.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liu-nlp.github.io/dl4nlp/modules/module1/index.html</loc>
+    <lastmod>2024-04-12T06:01:48.116Z</lastmod>
   </url>
 </urlset>
