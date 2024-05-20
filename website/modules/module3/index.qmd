@@ -2,7 +2,37 @@
 title: "Module 3"
 ---
 
-This module will discuss techniques and tasks in the area of **structured prediction** in NLP.
+The topic of this module is structured prediction, an umbrella term for tasks that involve predicting structured outputs, rather than atomic values. We will covers two such tasks: sequence labelling, the task of mapping an input sequence to an output sequence, and dependency parsing, the task of mapping a sentence to a representation of its syntactic structure in the form of a dependency tree. The lectures introduce several technical approaches and concrete algorithms for these tasks.
 
-We will discuss this module during the third course meeting in Linköping. Please see the [meeting page](meeting3.qmd) for details.
+We will discuss the material during the third course meeting in Linköping. Please see the [meeting page](meeting3) for details.
 
+## Unit 3-1: Sequence labelling
+
+| Title | Slides | Video |
+|---|---|---|
+| Introduction to sequence labelling | [[slides](intro-to-sequence-labelling.pdf)] | [[video](https://youtu.be/3L3SbPIFf6w)] |
+| Approaches to sequence labelling | [[slides](approaches-to-sequence-labelling.pdf)] | [[video](https://youtu.be/N18QiGgYBpc)] |
+| The Viterbi algorithm | [[slides](the-viterbi-algorithm.pdf)] | [[video](https://youtu.be/jcm0J5S-o8c)] |
+: {.striped}
+
+### Reading
+
+* Eisenstein (2019), chapters 7–8, sections 2.3.1–2.3.2
+
+## Unit 3-2: Dependency parsing
+
+This unit introduces *dependency parsing*, the task of mapping a natural language sentence into a formal representation of its syntactic structure in the form of a dependency tree.
+
+### Lecture videos
+
+| Title | Slides | Video |
+|---|---|---|
+| Introduction to dependency parsing | [[slides](intro-to-dependency-parsing.pdf)] | [[video](https://youtu.be/XZQN1YVTs_I)] |
+| The arc-standard algorithm | [[slides](the-arc-standard-algorithm.pdf)] | [[video](https://youtu.be/uBxTSIaUlgc)] |
+| Neural architectures for dependency parsing | [[slides](neural-architectures-for-dependency-parsing.pdf)] | [[video](https://youtu.be/tlqUN7ekLWE)] |
+: {.striped}
+
+### Reading
+
+* Eisenstein (2019), chapter 11
+* [Glavaš and Vulić (2021)](http://dx.doi.org/10.18653/v1/2021.eacl-main.270)

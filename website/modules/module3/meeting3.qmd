@@ -2,7 +2,35 @@
 title: "Meeting 3"
 ---
 
-The third meeting will take place 3&ndash;4 June in Linköping.
+The third and final meeting will take place 3–4 June in Linköping.
 
-We will publish practical information some days before the meeting.
+## Schedule
 
+The meeting will start with lunch at 12:00 on Monday, 3 June and end at 15:00 on Tuesday, 4 June. Here is a rough schedule:
+
+| Time | Activity |
+|------|----------|
+| **Monday** | |
+| 12:00–13:00 | Lunch at [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/), Gästmatsalen |
+| 13:00–14:30 | Review and discussion of the video material |
+| 14:30–15:00 | Fika |
+| 15:00–17:00 | Project presentations, part 1 |
+| **Tuesday** | |
+| 09:00–10:00 | Exercise on structured prediction (TBD) |
+| 10:00–12:00 | Project presentations, part 2 (including fika) |
+| 12:00–13:00 | Lunch at [Universitetsklubben](https://www.hors.se/linkoping/17/6/universitetsklubben/) |
+| 13:00–14:00 | Introduction to Assignment 3: [Dependency parsing](https://github.com/liu-nlp/dl4nlp/tree/main/website/assignments/assignment3) |
+| 14:00–15:00 | Closing session |
+
+: {.striped .hover}
+
+## Practical information
+
+**Meeting venue.** We will be at Linköping University, in [C-huset](https://link.mazemap.com/bhnLVFzU), Campus Valla. Plenary sessions will be in lecture hall [S26](https://link.mazemap.com/5Na48t8n), group sessions in lecture halls [S2](https://link.mazemap.com/9zmNYSFY) and [S6](https://link.mazemap.com/5AR9lZNE). Lunches will be in [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/) (Monday) and [Universitetsklubben](https://www.hors.se/linkoping/17/6/universitetsklubben/) (Tuesday).
+
+**Public transport.** You can choose between two bus lines to get to C-huset from the city center using public transport ([Östgötatrafiken](https://www.ostgotatrafiken.se/)). The specified travel times include a final walk from the bus stop to the meeting room.
+
+* Bus no. 4 to Lambohov, get off at [Nobeltorget](https://www.ostgotatrafiken.se/hallplats/nobeltorget) (25 minutes)
+* Bus no. 12 to Lambohov, get off at [Universitetet](https://www.ostgotatrafiken.se/hallplats/universitetet-linkoping) or [Mästar Mattias väg](https://www.ostgotatrafiken.se/hallplats/master-mattias-vag) (20 minutes)
+
+**Hotels.** We can recommend [Scandic Frimurarhotellet](https://www.scandichotels.se/hotell/sverige/linkoping/scandic-frimurarehotellet) and [Scandic Linköping City](https://www.scandichotels.se/hotell/sverige/linkoping/scandic-linkoping-city). Both of them are located close to the city centre and train station.
