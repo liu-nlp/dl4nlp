@@ -55,6 +55,6 @@ In the project, you apply your learning in the course to your own field of resea
 * 2024-05-03 [Assignment 1](assignments/assignment1/) due
 * 2024-05-10 [Project pitch](project/index.qmd) due
 * 2024-05-31 [Assignment 2](assignments/assignment2/) due
-* 2024-06-14 Assignment 3 due
+* 2024-06-14 [Assignment 3](assignments/assignment3/) due
 * 2024-06-14 [Project report](project/index.qmd) due
 * 2024-08-31 Last day to submit late assignments and project reports
