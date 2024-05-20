@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -123,6 +123,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../assignments/assignment2/index.html">
  <span class="dropdown-text">Assignment 2</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignments/assignment3/index.html">
+ <span class="dropdown-text">Assignment 3</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -142,7 +146,21 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unit-3-1-sequence-labelling" id="toc-unit-3-1-sequence-labelling" class="nav-link active" data-scroll-target="#unit-3-1-sequence-labelling">Unit 3-1: Sequence labelling</a>
+  <ul class="collapse">
+  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
+  </ul></li>
+  <li><a href="#unit-3-2-dependency-parsing" id="toc-unit-3-2-dependency-parsing" class="nav-link" data-scroll-target="#unit-3-2-dependency-parsing">Unit 3-2: Dependency parsing</a>
+  <ul class="collapse">
+  <li><a href="#lecture-videos" id="toc-lecture-videos" class="nav-link" data-scroll-target="#lecture-videos">Lecture videos</a></li>
+  <li><a href="#reading-1" id="toc-reading-1" class="nav-link" data-scroll-target="#reading-1">Reading</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -166,10 +184,85 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This module will discuss techniques and tasks in the area of <strong>structured prediction</strong> in NLP.</p>
-<p>We will discuss this module during the third course meeting in Linköping. Please see the <a href="../../modules/module3/meeting3.html">meeting page</a> for details.</p>
+<p>The topic of this module is structured prediction, an umbrella term for tasks that involve predicting structured outputs, rather than atomic values. We will covers two such tasks: sequence labelling, the task of mapping an input sequence to an output sequence, and dependency parsing, the task of mapping a sentence to a representation of its syntactic structure in the form of a dependency tree. The lectures introduce several technical approaches and concrete algorithms for these tasks.</p>
+<p>We will discuss the material during the third course meeting in Linköping. Please see the <a href="meeting3">meeting page</a> for details.</p>
+<section id="unit-3-1-sequence-labelling" class="level2">
+<h2 class="anchored" data-anchor-id="unit-3-1-sequence-labelling">Unit 3-1: Sequence labelling</h2>
+<table class="table-striped table">
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Slides</th>
+<th>Video</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introduction to sequence labelling</td>
+<td>[<a href="intro-to-sequence-labelling.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/3L3SbPIFf6w">video</a>]</td>
+</tr>
+<tr class="even">
+<td>Approaches to sequence labelling</td>
+<td>[<a href="approaches-to-sequence-labelling.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/N18QiGgYBpc">video</a>]</td>
+</tr>
+<tr class="odd">
+<td>The Viterbi algorithm</td>
+<td>[<a href="the-viterbi-algorithm.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/jcm0J5S-o8c">video</a>]</td>
+</tr>
+</tbody>
+</table>
+<section id="reading" class="level3">
+<h3 class="anchored" data-anchor-id="reading">Reading</h3>
+<ul>
+<li>Eisenstein (2019), chapters 7–8, sections 2.3.1–2.3.2</li>
+</ul>
+</section>
+</section>
+<section id="unit-3-2-dependency-parsing" class="level2">
+<h2 class="anchored" data-anchor-id="unit-3-2-dependency-parsing">Unit 3-2: Dependency parsing</h2>
+<p>This unit introduces <em>dependency parsing</em>, the task of mapping a natural language sentence into a formal representation of its syntactic structure in the form of a dependency tree.</p>
+<section id="lecture-videos" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-videos">Lecture videos</h3>
+<table class="table-striped table">
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Slides</th>
+<th>Video</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introduction to dependency parsing</td>
+<td>[<a href="intro-to-dependency-parsing.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/XZQN1YVTs_I">video</a>]</td>
+</tr>
+<tr class="even">
+<td>The arc-standard algorithm</td>
+<td>[<a href="the-arc-standard-algorithm.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/uBxTSIaUlgc">video</a>]</td>
+</tr>
+<tr class="odd">
+<td>Neural architectures for dependency parsing</td>
+<td>[<a href="neural-architectures-for-dependency-parsing.pdf">slides</a>]</td>
+<td>[<a href="https://youtu.be/tlqUN7ekLWE">video</a>]</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reading-1" class="level3">
+<h3 class="anchored" data-anchor-id="reading-1">Reading</h3>
+<ul>
+<li>Eisenstein (2019), chapter 11</li>
+<li><a href="http://dx.doi.org/10.18653/v1/2021.eacl-main.270">Glavaš and Vulić (2021)</a></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
