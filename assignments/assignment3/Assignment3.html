@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DL4NLP - Assignment 3: Graph-based dependency parsing</title>
+<title>DL4NLP - Assignment 3: Dependency parsing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -167,6 +167,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../modules/module2/index.html">
  <span class="dropdown-text">Module 2</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../modules/module3/index.html">
+ <span class="dropdown-text">Module 3</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -177,6 +181,14 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../../assignments/assignment1/index.html">
  <span class="dropdown-text">Assignment 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignments/assignment2/index.html">
+ <span class="dropdown-text">Assignment 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignments/assignment3/index.html">
+ <span class="dropdown-text">Assignment 3</span></a>
   </li>  
     </ul>
   </li>
@@ -205,7 +217,9 @@ window.Quarto = {
   <li><a href="#problem-1-tokenisation" id="toc-problem-1-tokenisation" class="nav-link" data-scroll-target="#problem-1-tokenisation">Problem 1: Tokenisation</a>
   <ul class="collapse">
   <li><a href="#test-your-code" id="toc-test-your-code" class="nav-link" data-scroll-target="#test-your-code">🤞 Test your code</a></li>
-  <li><a href="#problem-2-merging-tokens" id="toc-problem-2-merging-tokens" class="nav-link" data-scroll-target="#problem-2-merging-tokens">Problem 2: Merging tokens</a></li>
+  </ul></li>
+  <li><a href="#problem-2-merging-tokens" id="toc-problem-2-merging-tokens" class="nav-link" data-scroll-target="#problem-2-merging-tokens">Problem 2: Merging tokens</a>
+  <ul class="collapse">
   <li><a href="#test-your-code-1" id="toc-test-your-code-1" class="nav-link" data-scroll-target="#test-your-code-1">🤞 Test your code</a></li>
   </ul></li>
   <li><a href="#problem-3-biaffine-layer" id="toc-problem-3-biaffine-layer" class="nav-link" data-scroll-target="#problem-3-biaffine-layer">Problem 3: Biaffine layer</a>
@@ -216,9 +230,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#test-your-code-3" id="toc-test-your-code-3" class="nav-link" data-scroll-target="#test-your-code-3">🤞 Test your code</a></li>
   </ul></li>
-  <li><a href="#batching-the-data" id="toc-batching-the-data" class="nav-link" data-scroll-target="#batching-the-data">Batching the data</a></li>
+  <li><a href="#data-loader" id="toc-data-loader" class="nav-link" data-scroll-target="#data-loader">Data loader</a></li>
   <li><a href="#training-loop" id="toc-training-loop" class="nav-link" data-scroll-target="#training-loop">Training loop</a></li>
-  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
+  <li><a href="#problem-5-evaluation" id="toc-problem-5-evaluation" class="nav-link" data-scroll-target="#problem-5-evaluation">Problem 5: Evaluation</a></li>
+  <li><a href="#problem-6-counting-trees" id="toc-problem-6-counting-trees" class="nav-link" data-scroll-target="#problem-6-counting-trees">Problem 6: Counting trees</a></li>
   </ul>
 </nav>
     </div>
@@ -227,7 +242,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 3: Graph-based dependency parsing</h1>
+<h1 class="title">Assignment 3: Dependency parsing</h1>
 </div>
 
 
@@ -244,126 +259,119 @@ window.Quarto = {
 </header>
 
 
-<p>In this assignment, you will implement a simplified version of the dependency parser used by <a href="http://dx.doi.org/10.18653/v1/2021.eacl-main.270">Glavaš and Vulić (2021)</a> (Figure&nbsp;1). This parser consists of a transformer encoder followed by a bi-affine layer that computes arc scores for all pairs of words. These scores are then used as logits in a classifier that predicts the syntactic head of each word. In contrast to the parser described in the paper, your parser will only support unlabelled parsing, i.e., you will implement an <em>arc classifier</em> but no <em>relation classifier</em>. As the encoder, you will use the <a href="https://huggingface.co/bert-base-uncased">uncased BERT base model</a> from the <a href="https://huggingface.co/docs/transformers/main/en/index">Transformers</a> library.</p>
-<p>We start by importing PyTorch and setting the device we will use for training and evaluating.</p>
-<div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DEVICE <span class="op">=</span> torch.device(<span class="st">'cuda'</span>) <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> torch.device(<span class="st">'cpu'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>In this assignment, you will implement a simplified version of the dependency parser presented by <a href="http://dx.doi.org/10.18653/v1/2021.eacl-main.270">Glavaš and Vulić (2021)</a>. This parser consists of a transformer encoder followed by a bi-affine layer that computes arc scores for all pairs of words. These scores are then used as logits in a classifier that predicts the position of the head of each word. In contrast to the parser described in the paper, yours will only support unlabelled parsing, that is, you will not implement what the authors call a <em>relation classifier</em>. As the encoder, you will use the <a href="https://huggingface.co/docs/transformers/model_doc/distilbert">uncased DistilBERT base model</a> from the <a href="https://huggingface.co/docs/transformers/main/en/index">Transformers</a> library, even though every other BERT-based encoder should work equally well.</p>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>The data for this lab comes from the English Web Treebank from the <a href="http://universaldependencies.org">Universal Dependencies Project</a>; we distribute it here in the form of two JSON files. The code in the next cell below defines a PyTorch Dataset wrapper for the data.</p>
-<div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ParserDataset(Dataset):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, filename):</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'rt'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> fp:</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.items <span class="op">=</span> [[<span class="bu">tuple</span>(x) <span class="cf">for</span> x <span class="kw">in</span> json.loads(l)] <span class="cf">for</span> l <span class="kw">in</span> fp]</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.items)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.items[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The data for this lab comes from the English Web Treebank from the <a href="http://universaldependencies.org">Universal Dependencies Project</a>. To read the data, we use the <a href="https://pypi.org/project/conllu/">CoNLL-U Parser</a> library. The code in the next cell defines a PyTorch <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Dataset">Dataset</a> wrapper for the data.</p>
+<div id="cell-5" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> conllu</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ParserDataset(Dataset):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, filename):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.items <span class="op">=</span> []</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'rt'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> fp:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> tokens <span class="kw">in</span> conllu.parse_incr(fp):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.items.append([(t[<span class="st">'form'</span>], t[<span class="st">'head'</span>]) <span class="cf">for</span> t <span class="kw">in</span> tokens <span class="cf">if</span> <span class="bu">isinstance</span>(t[<span class="st">'id'</span>], <span class="bu">int</span>)])</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.items)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.items[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now load the training data:</p>
+<div id="cell-7" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>TRAIN_DATA <span class="op">=</span> ParserDataset(<span class="st">'en_ewt-ud-train.conllu'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Our data consists of <strong>parsed sentences</strong>. A parsed sentence is represented as a list of pairs. The first component of each pair (a string) represents a word; the second component (an integer) specifies the position of the word’s head, i.e., its parent in the dependency tree. Note that word positions are numbered starting at&nbsp;1; the head position&nbsp;0 represents the root of the tree.</p>
+<p>Run the next cell to see an example sentence:</p>
 <div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TRAIN_DATA <span class="op">=</span> ParserDataset(<span class="st">'en_ewt-ud-train.jsonl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>EXAMPLE_WORDS, EXAMPLE_HEADS <span class="op">=</span> <span class="bu">zip</span>(<span class="op">*</span>TRAIN_DATA[<span class="dv">531</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>EXAMPLE_WORDS, EXAMPLE_HEADS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A data set consists of <strong>parsed sentences</strong>. A parsed sentence is represented as a list of pairs. The first component of each pair (a string) represents a word. The second component (an integer) specifies the position of the word’s syntactic head, i.e., its parent in the dependency tree. Note that word positions are numbered starting at&nbsp;1. The special head position&nbsp;0 marks the root of the tree.</p>
-<p>Run the following code cell to see an example sentence:</p>
-<div id="cell-11" class="cell" data-outputid="7738299c-a6d7-419a-a360-8c17f86bfb7c">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>EXAMPLE_SENTENCE <span class="op">=</span> TRAIN_DATA[<span class="dv">531</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>EXAMPLE_SENTENCE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In this example the head of the pronoun <em>I</em> is the word at position&nbsp;2 – the verb <em>like</em>. The dependents of <em>like</em> are <em>I</em> (position&nbsp;1) and the noun <em>blog</em> (position&nbsp;4), as well as the final punctuation mark. Note that the pronoun <em>your</em> (position&nbsp;3) is misspelled as <em>yuor</em>.</p>
+<p>The example sentence consists of five whitespace-separated words, including the final punctuation mark. The head of the pronoun <em>I</em> is the word at position&nbsp;2 – the verb <em>like</em>. The head of the word <em>like</em> is the root of the tree (position&nbsp;0). The dependents of <em>like</em> are <em>I</em> (position&nbsp;1), the noun <em>blog</em> (position&nbsp;4), and the final punctuation mark. Note that the pronoun <em>your</em> (position&nbsp;3) is misspelled as <em>yuor</em>.</p>
 </section>
 <section id="problem-1-tokenisation" class="level2">
 <h2 class="anchored" data-anchor-id="problem-1-tokenisation">Problem 1: Tokenisation</h2>
-<p>To feed parsed sentences to BERT, we need to tokenise them and encode the resulting tokens as integers in the model vocabulary. We start by loading the BERT tokeniser using the Auto classes:</p>
+<p>To feed parsed sentences to DistilBERT, we need to tokenise them and encode the resulting tokens as integers in the model vocabulary. We start by loading the DistilBERT tokeniser using the <a href="https://huggingface.co/docs/transformers/v4.37.2/en/model_doc/auto">Auto classes</a>:</p>
+<div id="cell-13" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoTokenizer</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>TOKENIZER <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">'distilbert-base-uncased'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can call the tokeniser on the example sentence as shown in the next cell. Note that we use the <em>is_split_into_words</em> keyword argument to indicate that the input is already pre-tokenised (split on whitespace).</p>
 <div id="cell-15" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoTokenizer</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>TOKENIZER <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">'bert-base-uncased'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>EXAMPLE_TOKENS <span class="op">=</span> TOKENIZER(EXAMPLE_WORDS, is_split_into_words<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can call the tokeniser on the example sentence as follows:</p>
-<div id="cell-17" class="cell" data-outputid="8d1c9de2-4c39-4f3b-8c7b-92877d138b1f">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>TOKENIZER([w <span class="cf">for</span> w, _ <span class="kw">in</span> EXAMPLE_SENTENCE], is_split_into_words<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output of the tokeniser is an object of class <a href="https://huggingface.co/docs/transformers/main_classes/tokenizer#transformers.BatchEncoding"><code>BatchEncoding</code></a>. The code in the following cell shows the list of tokens:</p>
+<div id="cell-17" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>[TOKENIZER.decode(i) <span class="cf">for</span> i <span class="kw">in</span> EXAMPLE_TOKENS.input_ids]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that we use the <em>is_split_into_words</em> keyword argument to indicate that the input is already pre-tokenised (split on whitespace).</p>
-<p>The BERT tokeniser segments each word (pre-token) into one or several subword tokens, and we want to keep track of which of these were introduced by which word. To this end, for each actual word in a parsed sentence we compute the corresponding span in the tokens list.</p>
-<p>To illustrate this, consider again the tokenisation of the example sentence. Note that in order to match the default behaviour when calling the tokeniser, we explicitly add the special tokens at the beginning and at the end of the sentence.</p>
-<div id="cell-19" class="cell" data-outputid="9fbb6b88-d7b4-4134-a4d1-bde532eb9f90">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>TOKENIZER.tokenize([w <span class="cf">for</span> w, _ <span class="kw">in</span> EXAMPLE_SENTENCE], add_special_tokens<span class="op">=</span><span class="va">True</span>, is_split_into_words<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As you can see, the tokeniser adds the special tokens <code>[CLS]</code> and <code>[SEP]</code> and splits unknown words (here: the misspelled word <em>yuor</em>) into sub-word tokens. We will need to keep track of which tokens correspond to which word. To achieve that, we can use the method <a href="https://huggingface.co/docs/transformers/main_classes/tokenizer#transformers.BatchEncoding.word_to_tokens"><code>word_to_tokens()</code></a>, which gets us the encoded token span (an object of class <a href="https://huggingface.co/docs/transformers/internal/tokenization_utils#transformers.TokenSpan"><code>TokenSpan</code></a>) corresponding to a word in a sequence of the input batch:</p>
+<div id="cell-19" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, word <span class="kw">in</span> <span class="bu">enumerate</span>(EXAMPLE_WORDS):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(EXAMPLE_TOKENS.word_to_tokens(i), <span class="st">'-&gt;'</span>, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For this sentence, we would like to compute the following token spans:</p>
-<div id="cell-21" class="cell" data-outputid="eddd659b-160a-478c-8a44-52474e5d398c">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">1</span>, <span class="dv">2</span>), (<span class="dv">2</span>, <span class="dv">3</span>), (<span class="dv">3</span>, <span class="dv">5</span>), (<span class="dv">5</span>, <span class="dv">6</span>), (<span class="dv">6</span>, <span class="dv">7</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Each of these spans covers a single token, except for the span <code>(3, 5)</code> which covers the tokens <code>yu</code> and <code>##or</code>. Note that token indices start at&nbsp;1, as position&nbsp;0 is occupied by the special <code>[CLS]</code> token.</p>
-<p>The next cell contains skeleton code for a function <code>encode</code> that takes a tokeniser and a batch of sentences and returns the tokeniser’s encoded input as well as the corresponding token spans.</p>
-<div id="cell-24" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> encode(tokenizer, sentences):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Your first task is to code a function <code>encode()</code> that takes a tokeniser and a list of sentences and returns the tokeniser’s encoded input as well as the corresponding token spans. The following cell contains skeleton code for this function.</p>
+<div id="cell-21" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> encode(tokenizer, sentences):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Implement this function to match the following specification:</p>
 <p><strong>encode</strong> (<em>tokenizer</em>, <em>sentences</em>):</p>
 <blockquote class="blockquote">
-<p>Uses the specified <em>tokenizer</em> to encode a batch of parsed sentences (<em>sentences</em>). This returns a pair consisting of a <a href="https://huggingface.co/docs/transformers/main/en/main_classes/tokenizer#transformers.BatchEncoding"><code>BatchEncoding</code></a> and a matching batch of token spans (as explained above). The <code>BatchEncoding</code> is the standard batch encoding, including the token ids to be fed to a model. Its inner content have been converted to PyTorch tensors. Token indexes start at&nbsp;1.</p>
+<p>Uses the specified <em>tokenizer</em> to encode a batch of parsed sentences (<em>sentences</em>). Returns a pair consisting of a <a href="https://huggingface.co/docs/transformers/main_classes/tokenizer#transformers.BatchEncoding"><code>BatchEncoding</code></a> and a matching batch of token spans (as explained above). The <a href="https://huggingface.co/docs/transformers/main_classes/tokenizer#transformers.BatchEncoding"><code>BatchEncoding</code></a> is the standard batch encoding, but with tensors instead of lists of Python integers. Sentences have been truncated to the maximum acceptable input length.</p>
 </blockquote>
 <section id="test-your-code" class="level3">
 <h3 class="anchored" data-anchor-id="test-your-code">🤞 Test your code</h3>
-<p>To test you code, call <code>encode</code> on the example sentence and check that output matches your expectations.</p>
+<p>To test you code, call <code>encode()</code> on a small number of sentences and check that output matches your expectations.</p>
 </section>
-<section id="problem-2-merging-tokens" class="level3">
-<h3 class="anchored" data-anchor-id="problem-2-merging-tokens">Problem 2: Merging tokens</h3>
-<p>BERT gives us a representation for each <em>token</em> in the input sequence. To compute scores between pairs of <em>words</em>, we need to combine the token representations that correspond to each word. A standard strategy for this is to take their element-wise mean.</p>
-<p>The next cell contains skeleton code for a function <code>merge_tokens</code> that implements this strategy.</p>
-<div id="cell-30" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_tokens(tokens, token_spans):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="problem-2-merging-tokens" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2-merging-tokens">Problem 2: Merging tokens</h2>
+<p>DistilBERT gives us a representation for each <em>token</em> in a sentence. To compute scores between pairs of <em>words</em>, we will need to combine the token representations that correspond to each word. A standard strategy for this is to take their element-wise mean. The next cell contains skeleton code for a function <code>merge_tokens()</code> that implements this strategy.</p>
+<div id="cell-26" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_tokens(tokens, token_spans):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Implement this function to match the following specification:</p>
 <p><strong>merge_tokens</strong> (<em>tokens</em>, <em>token_spans</em>)</p>
 <blockquote class="blockquote">
-<p>Takes a batch of token vectors (<em>tokens</em>) and a batch of token spans (<em>token_spans</em>) and returns a new batch of word-level representations, computed as explained above. The token vectors are a tensor of shape (<em>batch_size</em>, <em>num_tokens</em>, <em>hidden_dim</em>). The token spans are a nested list of integer pairs as computed in Problem&nbsp;1. The result is a tensor of shape (<em>batch_size</em>, <em>max_num_words</em>, <em>hidden_dim</em>), where <em>max_num_words</em> denotes the maximum number of words in any sentence in the batch. Entries corresponding to padding are represented by the zero vector of size <em>hidden_dim</em>.</p>
+<p>Takes a batch of token vectors (<em>tokens</em>) and a list of matching token spans (<em>token_spans</em>) and returns a batch of word-level representations, computed using the element-wise mean. The token vectors are a tensor of shape (<em>batch_size</em>, <em>num_tokens</em>, <em>hidden_dim</em>), where <em>hidden_dim</em> is the dimensionality of the DistilBERT representations. The token spans are a nested list containing integer pairs, as computed in Problem&nbsp;1. The result is a tensor of shape (<em>batch_size</em>, <em>max_num_words</em>, <em>hidden_dim</em>), where <em>max_num_words</em> denotes the maximum number of words in any sentence in the batch. Entries corresponding to padding are represented by the zero vector of size <em>hidden_dim</em>.</p>
 </blockquote>
-</section>
 <section id="test-your-code-1" class="level3">
 <h3 class="anchored" data-anchor-id="test-your-code-1">🤞 Test your code</h3>
-<p>To test you code, create a sample input to <code>merge_tokens</code> and check that the output matches your expectations</p>
+<p>To test you code, create a sample input to <code>merge_tokens()</code> and check that the output matches your expectations.</p>
 </section>
 </section>
 <section id="problem-3-biaffine-layer" class="level2">
 <h2 class="anchored" data-anchor-id="problem-3-biaffine-layer">Problem 3: Biaffine layer</h2>
-<p>Your next task is to implement the bi-affine layer. Given matrices <span class="math inline">\(X \in \mathbb{R}^{m \times h}\)</span> and <span class="math inline">\(X' \in \mathbb{R}^{n \times h}\)</span>, this layer computes a matrix <span class="math inline">\(Y \in \mathbb{R}^{m \times n}\)</span> as</p>
+<p>Your next task is to implement the bi-affine layer. Given matrices <span class="math inline">\(X \in \mathbb{R}^{m \times d}\)</span> and <span class="math inline">\(X' \in \mathbb{R}^{n \times d}\)</span>, this layer computes a matrix <span class="math inline">\(Y \in \mathbb{R}^{m \times n}\)</span> as</p>
 <p><span class="math display">\[
 Y = X W X'{}^\top + b
 \]</span></p>
-<p>where <span class="math inline">\(W \in \mathbb{R}^{h \times h}\)</span> and <span class="math inline">\(b \in \mathbb{R}\)</span> are learnable weight and bias parameters. In the context of the dependency parser, the matrices <span class="math inline">\(X\)</span> and <span class="math inline">\(X'\)</span> hold the encodings of all words in the input sentence, and the entries of the matrix <span class="math inline">\(Y\)</span> are interpreted as scores of dependency arcs between words. More specifically, the entry <span class="math inline">\(Y_{ij}\)</span> represents the score of an arc from a head word at position&nbsp;<span class="math inline">\(j\)</span> to a dependent at position&nbsp;<span class="math inline">\(i\)</span>.</p>
+<p>where <span class="math inline">\(W \in \mathbb{R}^{d \times d}\)</span> and <span class="math inline">\(b \in \mathbb{R}\)</span> are learnable weight and bias parameters. In the context of the dependency parser, the matrices <span class="math inline">\(X\)</span> and <span class="math inline">\(X'\)</span> hold the word representations of all dependents and all heads in the input sentence, and the entries of the matrix <span class="math inline">\(Y\)</span> are interpreted as scores of possible dependency arcs. More specifically, the entry <span class="math inline">\(Y_{ij}\)</span> represents the score of an arc from a head word at position&nbsp;<span class="math inline">\(j\)</span> to a dependent at position&nbsp;<span class="math inline">\(i\)</span>.</p>
 <p>The following cell contains skeleton code for the implementation of the bi-affine layer. Implement this layer according to the specification above.</p>
-<div id="cell-38" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Biaffine(nn.Module):</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_features):</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x1, x2):</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-34" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Biaffine(nn.Module):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, encoder_dim):</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x1, x2):</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>⚠️ Note that your implementation should be able to handle <em>batches</em> of input sentences.</strong></p>
 <section id="test-your-code-2" class="level3">
@@ -373,146 +381,189 @@ Y = X W X'{}^\top + b
 </section>
 <section id="problem-4-parser" class="level2">
 <h2 class="anchored" data-anchor-id="problem-4-parser">Problem 4: Parser</h2>
-<p>We are now ready to put the two main components of the parser together: the encoder (BERT) and the bi-affine layer that computes the arc scores. We also add a dropout layer between the two components. The following code cell contains skeleton code for the parsing model with the <code>init</code> method already complete. Your task is to implement the <code>forward</code> method. Have another look at the paper to understand how things need to be wired up.</p>
-<div id="cell-43" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> BertConfig, BertModel, BertPreTrainedModel</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BertForParsing(BertPreTrainedModel):</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    config_class <span class="op">=</span> BertConfig</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, config, dropout<span class="op">=</span><span class="fl">0.1</span>):</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(config)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.encoder <span class="op">=</span> BertModel(config)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dropout <span class="op">=</span> nn.Dropout(dropout)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.biaffine <span class="op">=</span> Biaffine(config.hidden_size)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, encoded_input, token_spans):</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We are now ready to put the two main components of the parser together: the encoder (DistilBert) and the bi-affine layer that computes the arc scores. We also add a dropout layer between the two components.</p>
+<p>The following code cell contains skeleton code for the parsing model with the <code>init()</code> method already complete. Your task is to implement the <code>forward()</code> method. If you are unsure how things should be wired up, have another look at the slides.</p>
+<div id="cell-39" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> DistilBertModel, DistilBertPreTrainedModel</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DistilBertForParsing(DistilBertPreTrainedModel):</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, config, dropout<span class="op">=</span><span class="fl">0.1</span>):</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(config)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.config <span class="op">=</span> config</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.distilbert <span class="op">=</span> DistilBertModel(config)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dropout <span class="op">=</span> nn.Dropout(dropout)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.biaffine <span class="op">=</span> Biaffine(config.hidden_size)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, encoded_input, token_spans):</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the next line with your own code</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NotImplementedError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Implement the <code>forward</code> method to match the following specification:</p>
+<p>Implement the <code>forward()</code> method to match the following specification:</p>
 <p><strong>forward</strong> (<em>encoded_input</em>, <em>token_spans</em>)</p>
 <blockquote class="blockquote">
-<p>Takes a tokeniser-encoded batch of sentences (of type <code>BatchEncoding</code>) and a corresponding batch of token spans and returns a tensor with scores between all words in the input. More specifically, the output tensor <span class="math inline">\(Y\)</span> has shape (<em>batch_size</em>, <em>num_words</em>, <em>num_words+1</em>), where the entry <span class="math inline">\(Y_{bij}\)</span> represents the score of an arc from a head word at position&nbsp;<span class="math inline">\(j\)</span> to a dependent at position&nbsp;<span class="math inline">\(i\)</span> in the <span class="math inline">\(b\)</span>th sentence of the batch. Note that the number of possible heads is one greater than the number of possible dependents because the heads include the special token <code>[CLS]</code> (at position&nbsp;0), which the paper uses to represent the root vertex.</p>
+<p>Takes a tokeniser-encoded batch of sentences (<em>encoded_input</em>, of type <code>BatchEncoding</code>) and a corresponding nested list of token spans (<em>token_spans</em>) and returns a tensor with scores for each pair of words. More specifically, the output tensor <span class="math inline">\(Y\)</span> has shape (<em>batch_size</em>, <em>num_words</em>, <em>num_words+1</em>), where the entry <span class="math inline">\(Y_{bij}\)</span> represents the score of an arc from a head word at position&nbsp;<span class="math inline">\(j\)</span> to a dependent at position&nbsp;<span class="math inline">\(i\)</span> in the <span class="math inline">\(b\)</span>th sentence of the batch. Note that the number of possible heads is one greater than the number of possible dependents because the possible heads include the root of the dependency tree, which we represent using the special token <code>[CLS]</code> (at position&nbsp;0).</p>
 </blockquote>
 <section id="test-your-code-3" class="level3">
 <h3 class="anchored" data-anchor-id="test-your-code-3">🤞 Test your code</h3>
-<p>To test you code, instantiate the parsing model and feed it the tokenised example sentence.</p>
+<p>To test you code, instantiate the parsing model and feed it a small batch of sentences.</p>
 </section>
 </section>
-<section id="batching-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="batching-the-data">Batching the data</h2>
+<section id="data-loader" class="level2">
+<h2 class="anchored" data-anchor-id="data-loader">Data loader</h2>
 <p>We are now almost ready to train the parser. The missing piece is a data collator that prepares a batch of parsed sentences:</p>
 <ul>
-<li>tokenises the sentences and extracts token spans using <code>encode</code> (Problem&nbsp;1)</li>
+<li>tokenises the sentences and extracts token spans using <code>encode()</code> (Problem&nbsp;1)</li>
 <li>constructs the ground-truth head tensor needed to compute the loss (Problem&nbsp;2)</li>
 </ul>
-<p>The code in the next cell implements these two steps. For pseudo-words introduced through padding, we assign a head index of −100. This value is ignored by PyTorch’s cross-entropy loss function.</p>
-<div id="cell-48" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ParserBatcher(<span class="bu">object</span>):</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, tokenizer, device<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.tokenizer <span class="op">=</span> tokenizer</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.device <span class="op">=</span> device</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, parser_inputs):</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        encoded_input, start_indices <span class="op">=</span> encode(<span class="va">self</span>.tokenizer, parser_inputs)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get the maximal number of words, for padding</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        max_num_words <span class="op">=</span> <span class="bu">max</span>(<span class="bu">len</span>(s) <span class="cf">for</span> s <span class="kw">in</span> parser_inputs)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Construct tensor containing the ground-truth heads</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        all_heads <span class="op">=</span> []</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> parser_input <span class="kw">in</span> parser_inputs:</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>            words, heads <span class="op">=</span> <span class="bu">zip</span>(<span class="op">*</span>parser_input)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>            heads <span class="op">=</span> <span class="bu">list</span>(heads)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>            heads.extend([<span class="op">-</span><span class="dv">100</span>] <span class="op">*</span> (max_num_words <span class="op">-</span> <span class="bu">len</span>(heads)))  <span class="co"># -100 will be ignored</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>            all_heads.append(heads)</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        all_heads <span class="op">=</span> torch.LongTensor(all_heads)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Send all data to the specified device</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.device:</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>            encoded_input <span class="op">=</span> encoded_input.to(<span class="va">self</span>.device)</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>            all_heads <span class="op">=</span> all_heads.to(<span class="va">self</span>.device)</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> encoded_input, start_indices, all_heads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The code in the next cell implements these two steps. For pseudo-words introduced through padding, we assign a head position of −100. This value is ignored by PyTorch’s cross-entropy loss function.</p>
+<div id="cell-44" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ParserBatcher(<span class="bu">object</span>):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, tokenizer, device<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.tokenizer <span class="op">=</span> tokenizer</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.device <span class="op">=</span> device</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, parser_inputs):</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        encoded_input, start_indices <span class="op">=</span> encode(<span class="va">self</span>.tokenizer, parser_inputs)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get the maximal number of words, for padding</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        max_num_words <span class="op">=</span> <span class="bu">max</span>(<span class="bu">len</span>(s) <span class="cf">for</span> s <span class="kw">in</span> parser_inputs)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Construct tensor containing the ground-truth heads</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        all_heads <span class="op">=</span> []</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> parser_input <span class="kw">in</span> parser_inputs:</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>            words, heads <span class="op">=</span> <span class="bu">zip</span>(<span class="op">*</span>parser_input)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>            heads <span class="op">=</span> <span class="bu">list</span>(heads)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>            heads.extend([<span class="op">-</span><span class="dv">100</span>] <span class="op">*</span> (max_num_words <span class="op">-</span> <span class="bu">len</span>(heads)))  <span class="co"># -100 will be ignored</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            all_heads.append(heads)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        all_heads <span class="op">=</span> torch.LongTensor(all_heads)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Send all data to the specified device</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.device:</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            encoded_input <span class="op">=</span> encoded_input.to(<span class="va">self</span>.device)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>            all_heads <span class="op">=</span> all_heads.to(<span class="va">self</span>.device)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> encoded_input, start_indices, all_heads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="training-loop" class="level2">
 <h2 class="anchored" data-anchor-id="training-loop">Training loop</h2>
 <p>Finally, here is the training loop of the parser. Most of it is quite standard. The training loss of the parser is the cross-entropy between the head scores and the ground truth head positions. In other words, the parser is trained as a classifier that predicts the position of each word’s head.</p>
-<div id="cell-51" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim <span class="im">import</span> Adam</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(dataset, n_epochs<span class="op">=</span><span class="dv">1</span>, lr<span class="op">=</span><span class="fl">1e-5</span>, batch_size<span class="op">=</span><span class="dv">8</span>):</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">'bert-base-uncased'</span>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> BertForParsing.from_pretrained(<span class="st">'bert-base-uncased'</span>).to(DEVICE)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    data_loader <span class="op">=</span> DataLoader(dataset, batch_size<span class="op">=</span>batch_size, collate_fn<span class="op">=</span>ParserBatcher(tokenizer, device<span class="op">=</span>DEVICE))</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> Adam(model.parameters(), lr<span class="op">=</span>lr)</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        model.train()</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        running_loss <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        n_batches <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> tqdm(total<span class="op">=</span><span class="bu">len</span>(dataset)) <span class="im">as</span> pbar:</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            pbar.set_description(<span class="ss">f'Epoch </span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> encoded_input, token_spans, gold_heads <span class="kw">in</span> data_loader:</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                optimizer.zero_grad()</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                head_scores <span class="op">=</span> model.forward(encoded_input, token_spans)</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>                loss <span class="op">=</span> F.cross_entropy(head_scores.flatten(<span class="dv">0</span>, <span class="op">-</span><span class="dv">2</span>), gold_heads.view(<span class="op">-</span><span class="dv">1</span>))</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>                loss.backward()</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>                optimizer.step()</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>                running_loss <span class="op">+=</span> loss.item()</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>                n_batches <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>                pbar.set_postfix(loss<span class="op">=</span>running_loss<span class="op">/</span>n_batches)</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>                pbar.update(<span class="bu">len</span>(token_spans))</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-47" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim <span class="im">import</span> Adam</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>DEVICE <span class="op">=</span> torch.device(<span class="st">'cuda'</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">'cpu'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># DEVICE = torch.device('mps')</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(dataset, n_epochs<span class="op">=</span><span class="dv">1</span>, lr<span class="op">=</span><span class="fl">1e-5</span>, batch_size<span class="op">=</span><span class="dv">8</span>):</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialise the tokeniser</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">'distilbert-base-uncased'</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialise the encoder</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> DistilBertForParsing.from_pretrained(<span class="st">'distilbert-base-uncased'</span>).to(DEVICE)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialise the data loader</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    data_loader <span class="op">=</span> DataLoader(dataset, batch_size<span class="op">=</span>batch_size, collate_fn<span class="op">=</span>ParserBatcher(tokenizer, device<span class="op">=</span>DEVICE))</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialise the optimiser</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> Adam(model.parameters(), lr<span class="op">=</span>lr)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Train for the specified number of epochs</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        model.train()</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># We keep track of the running loss</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>        running_loss <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        n_batches <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> tqdm(total<span class="op">=</span><span class="bu">len</span>(dataset)) <span class="im">as</span> pbar:</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>            pbar.set_description(<span class="ss">f'Epoch </span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Process a batch of samples</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> encoded_input, token_spans, gold_heads <span class="kw">in</span> data_loader:</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>                optimizer.zero_grad()</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Compute the arc scores</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>                arc_scores <span class="op">=</span> model.forward(encoded_input, token_spans)</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>                <span class="co"># shape: [batch_size, num_words, num_words+1]</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Flatten arc_scores and gold_heads for cross_entropy</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>                loss <span class="op">=</span> F.cross_entropy(arc_scores.flatten(<span class="dv">0</span>, <span class="op">-</span><span class="dv">2</span>), gold_heads.view(<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>                <span class="co"># shape of the flattened arc_scores: [batch_size * num_words, num_words+1]</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>                <span class="co"># shape of the flattened gold_heads: [batch_size * num_words]</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Backward pass</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>                loss.backward()</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>                optimizer.step()</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Update the loss</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>                running_loss <span class="op">+=</span> loss.item()</span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>                n_batches <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>                pbar.set_postfix(loss<span class="op">=</span>running_loss<span class="op">/</span>n_batches)</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>                pbar.update(<span class="bu">len</span>(token_spans))</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We are now ready to train the parser. With a GPU, you should expect training times of approximately 3&nbsp;minutes per epoch.</p>
-<div id="cell-53" class="cell" data-outputid="126f4b76-9cdc-43af-f9fa-92f4f2df1755">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>PARSING_MODEL <span class="op">=</span> train(TRAIN_DATA, n_epochs<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-49" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>PARSING_MODEL <span class="op">=</span> train(TRAIN_DATA, n_epochs<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="evaluation" class="level2">
-<h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
-<p>The parser is evaluated using unlabelled attachment score (UAS), which is the percentage of words that have been assigned their correct heads. Note that pseudo-words corresponding to padding (which we marked with the special head index −100 above) must be excluded from this calculation.</p>
+<section id="problem-5-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5-evaluation">Problem 5: Evaluation</h2>
+<p>Dependency parsers are commonly evaluated using <strong>unlabelled attachment score (UAS)</strong>, which is the percentage of (non-root) words that have been assigned their correct heads. The following cell contains skeleton code for a function <code>uas()</code> that computes this score on a given dataset.</p>
+<div id="cell-52" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> uas(tokenizer, model, filename, batch_size<span class="op">=</span><span class="dv">8</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Replace the following line with your own code</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Implement the <code>uas()</code> function to match the following specification:</p>
+<p><strong>uas</strong> (<em>tokenizer</em>, <em>model</em>, <em>filename</em>)</p>
+<blockquote class="blockquote">
+<p>Takes a tokenizer (<em>tokenizer</em>), a trained parsing model (<em>model</em>), and the filename of a dataset in the CoNLLU format (<em>filename</em>) and returns the unlabelled attachment score of the model on the tokenised dataset.</p>
+</blockquote>
+<p><strong>⚠️ Note that pseudo-words corresponding to padding must be excluded from the calculation of the UAS.</strong></p>
+<p>The code in the following cell evaluates the trained parser on the development section of the data:</p>
 <div id="cell-56" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>DEV_DATA <span class="op">=</span> ParserDataset(<span class="st">'en_ewt-ud-dev.jsonl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>uas(TOKENIZER, PARSING_MODEL, ParserDataset(<span class="st">'en_ewt-ud-dev.conllu'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-57" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<p><strong>Your notebook must contain output demonstrating at least 86% UAS on the development data.</strong></p>
+</section>
+<section id="problem-6-counting-trees" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6-counting-trees">Problem 6: Counting trees</h2>
+<p>In the last problem of this assignment, we ask you to take a closer look at the graph-theoretic properties of the outputs of your trained model.</p>
+<p>The following cell contains code that will use the tokeniser and your trained model to parse the development data and write the gold-standard dependency trees as well as the dependency trees predicted by the parser to a JSON file:</p>
+<div id="cell-60" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(model, dataset, batch_size<span class="op">=</span><span class="dv">8</span>):</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">'bert-base-uncased'</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    data_loader <span class="op">=</span> DataLoader(DEV_DATA, batch_size<span class="op">=</span>batch_size, collate_fn<span class="op">=</span>ParserBatcher(tokenizer, device<span class="op">=</span>DEVICE))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    n_correct <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    n_total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> tqdm(total<span class="op">=</span><span class="bu">len</span>(dataset)) <span class="im">as</span> pbar:</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> encoded_input, token_spans, gold_heads <span class="kw">in</span> data_loader:</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                head_scores <span class="op">=</span> model.forward(encoded_input, token_spans)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>                pred_heads <span class="op">=</span> torch.argmax(head_scores, dim<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>            mask <span class="op">=</span> gold_heads.ne(<span class="op">-</span><span class="dv">100</span>)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>            n_correct <span class="op">+=</span> torch.<span class="bu">sum</span>(pred_heads[mask] <span class="op">==</span> gold_heads[mask])</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>            n_total <span class="op">+=</span> torch.<span class="bu">sum</span>(mask)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>            pbar.update(<span class="bu">len</span>(token_spans))</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_correct <span class="op">/</span> n_total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> ParserDataset(<span class="st">'en_ewt-ud-dev.conllu'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>data_loader <span class="op">=</span> DataLoader(dataset, collate_fn<span class="op">=</span>ParserBatcher(TOKENIZER, device<span class="op">=</span>DEVICE))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'graphs.jsonl'</span>, <span class="st">'wt'</span>) <span class="im">as</span> fp:</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> encoded_input, token_spans, gold_heads <span class="kw">in</span> data_loader:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>            head_scores <span class="op">=</span> PARSING_MODEL.forward(encoded_input, token_spans)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>            pred_heads <span class="op">=</span> torch.argmax(head_scores, dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> gold, pred <span class="kw">in</span> <span class="bu">zip</span>(gold_heads, pred_heads):</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>            mask <span class="op">=</span> gold.ne(<span class="op">-</span><span class="dv">100</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(json.dumps((gold[mask].tolist(), pred[mask].tolist())), <span class="bu">file</span><span class="op">=</span>fp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-58" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>evaluate(PARSING_MODEL, DEV_DATA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Your notebook must contain output demonstrating at least 88% UAS on the development data.</strong></p>
-<p>That’s it! Congratulations on finishing the last assignment of this course! 🥳</p>
+<p>The repo for this assignment contains a script <code>analyze.py</code> that you can use to compute statistics on various graph-theoretic properties: total number of graphs, number of acyclic graphs, connected graphs, trees, and projective trees. Document your exploration in a short reflection piece (ca.&nbsp;150&nbsp;words). Respond to the following prompts</p>
+<ul>
+<li>What are the results of this exploration? Summarise the statistics you obtained.</li>
+<li>Based on what you know about the parser, did you expect your results? Was there anything surprising in them?</li>
+<li>What did you learn? How, exactly, did you learn it? Why does this learning matter?</li>
+</ul>
 
 
 </section>
