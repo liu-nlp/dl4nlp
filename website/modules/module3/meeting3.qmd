@@ -14,11 +14,12 @@ The meeting will start with lunch at 12:00 on Monday, 3 June and end at 15:00 o
 | 12:00–13:00 | Lunch at [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/), Gästmatsalen |
 | 13:00–14:30 | Review and discussion of the video material |
 | 14:30–15:00 | Fika |
-| 15:00–17:00 | Project presentations, part 1 |
+| 15:00–17:00 | Project presentations, Session 1 and Session 2 |
 | **Tuesday** | |
 | 09:00–10:00 | Exercise on structured prediction (TBD) |
-| 10:00–12:00 | Project presentations, part 2 (including fika) |
-| 12:00–13:00 | Lunch at [Universitetsklubben](https://www.hors.se/linkoping/17/6/universitetsklubben/) |
+| 10:00–10:30 | Fika |
+| 10:30–12:00 | Project presentations, Session 3 and Session 4 |
+| 12:00–13:00 | Lunch at [Pegs and Tails](https://www.pegsandtails.se) |
 | 13:00–14:00 | Introduction to Assignment 3: [Dependency parsing](https://github.com/liu-nlp/dl4nlp/tree/main/website/assignments/assignment3) |
 | 14:00–15:00 | Closing session |
 
@@ -26,7 +27,7 @@ The meeting will start with lunch at 12:00 on Monday, 3 June and end at 15:00 o
 
 ## Practical information
 
-**Meeting venue.** We will be at Linköping University, in [C-huset](https://link.mazemap.com/bhnLVFzU), Campus Valla. Plenary sessions will be in lecture hall [S26](https://link.mazemap.com/5Na48t8n), group sessions in lecture halls [S2](https://link.mazemap.com/9zmNYSFY) and [S6](https://link.mazemap.com/5AR9lZNE). Lunches will be in [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/) (Monday) and [Universitetsklubben](https://www.hors.se/linkoping/17/6/universitetsklubben/) (Tuesday).
+**Meeting venue.** We will be at Linköping University, in [C-huset](https://link.mazemap.com/bhnLVFzU), Campus Valla. Plenary sessions will be in lecture hall [S26](https://link.mazemap.com/5Na48t8n), group sessions in lecture halls [S2](https://link.mazemap.com/9zmNYSFY) and [S6](https://link.mazemap.com/5AR9lZNE). Lunches will be in [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/) (Monday) and [Pegs and Tails](https://www.pegsandtails.se) (Tuesday).
 
 **Public transport.** You can choose between two bus lines to get to C-huset from the city center using public transport ([Östgötatrafiken](https://www.ostgotatrafiken.se/)). The specified travel times include a final walk from the bus stop to the meeting room.
 
@@ -34,3 +35,46 @@ The meeting will start with lunch at 12:00 on Monday, 3 June and end at 15:00 o
 * Bus no. 12 to Lambohov, get off at [Universitetet](https://www.ostgotatrafiken.se/hallplats/universitetet-linkoping) or [Mästar Mattias väg](https://www.ostgotatrafiken.se/hallplats/master-mattias-vag) (20 minutes)
 
 **Hotels.** We can recommend [Scandic Frimurarhotellet](https://www.scandichotels.se/hotell/sverige/linkoping/scandic-frimurarehotellet) and [Scandic Linköping City](https://www.scandichotels.se/hotell/sverige/linkoping/scandic-linkoping-city). Both of them are located close to the city centre and train station.
+
+## Project presentations
+
+Here is a more detailed schedule for the project presentations:
+
+### Session 1 (15:00–17:00, S2)
+
+* 15:00–15:10 Victor Aregbede and Francisco Calatrava (P04)
+* 15:10–15:20 Amir Mohammad Karimi Mamaghan (P11)
+* 15:30–15:40 Magnus Tarle (P24)
+* 15:40–15:50 Han Fu and Nancy Xu (P09)
+* 16:00–16:10 Arturas Aleksandraus, Nithesh Chander Karthikeyan, Håkon Karlsson Faronius, and Kamran Hosseini (P02)
+* 16:10–16:20 Noah-Manuel Michael (P26)
+* 16:30–16:40 Sofia Andersson (P03)
+* 16:40–16:50 Vincent Szolnoky (P23)
+
+### Session 2 (15:00–17:00, S6)
+
+* 15:00–15:10 Sonia Horchidan (P10)
+* 15:10–15:20 William Ljungbergh, Carl Lindström, and Adam Lilja (P13)
+* 15:30–15:40 Marcel Büsching (P08)
+* 15:40–15:50 Anindya Sundar Das (P22)
+* 16:00–16:10 Joana Palés Huix (P18)
+* 16:10–16:20 Andreas Bexell and Lo Heander (P07)
+* 16:30–16:40 Josef Bengtson and Karol Wojtulewicz (P06)
+* 16:40–16:50 Olle Torstensson (P27)
+
+### Session 3 (10:30–12:00, S2)
+
+* 10:30–10:40 William Ahlberg (P01)
+* 10:40–10:50 Niloofar Momeni and Anahita Baninajjar (P05)
+* 11:00–11:10 Fredrik Malmberg (P14)
+* 11:10–11:20 Anton Risberg Alaküla (P19)
+* 11:30–11:40 Adam Orucu and Franco Ruggeri (P17)
+
+### Session 4 (10:30–12:00, S6)
+
+* 10:30–10:40 André Silva (P21)
+* 10:40–10:50 Ali Nouri, Malsha Ashani Mahawatta Dona, and Ranim Khojah (P12)
+* 11:00–11:10 Qi Shao (P20)
+* 11:10–11:20 Yiran Wang (P25)
+* 11:30–11:40 Anton Matsson (P15)
+* 11:40–11:50 Lena Strobl and Rajmund Nagy (P16)
