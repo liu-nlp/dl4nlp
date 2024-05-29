@@ -10,7 +10,7 @@ In the project work, your task will be to
 * look around for related work
 * implement software to train some deep learning model for your task
 * evaluate your system
-* report on your (intermediate) results during the final meeting
+* present your (intermediate) results at the final meeting
 * write up a report about your results
 
 The projects can be carried out individually or in groups of 2–4 students.
@@ -20,6 +20,12 @@ The projects can be carried out individually or in groups of 2–4 students.
 Please submit a short text that describes what you intend to work on. For suggestions of topics, see below.
 
 The text should include a project title and about 1&nbsp;page giving a rough outline of how you intend to work. If you have found any related work or relevant dataset, this is useful information to include. The deadline for this preliminary description is **2024-05-10**; we will give you comments on your description before the second meeting (16–17 May).
+
+## Oral presentation
+
+For the [final meeting](../modules/module3/meeting3.qmd) of the course, we ask you to prepare a short (no more than 7&nbsp;minutes) oral presentation. Depending on how far you have come in the project, you can focus on your project idea, method, or preliminary results. After your presentation, there will be time for feedback.
+
+If you are unable to attend the third meeting, we request you to record your presentation as a video (in mp4 format) and submit it to us by **2024-06-03, 10:00**. We will then present your video at the meeting and share any feedback received with you.
 
 ## The report
 
