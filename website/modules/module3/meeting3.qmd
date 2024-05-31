@@ -60,7 +60,6 @@ Here is a more detailed schedule for the project presentations:
 * 16:00–16:10 Joana Palés Huix (P18)
 * 16:10–16:20 Andreas Bexell and Lo Heander (P07)
 * 16:30–16:40 Josef Bengtson and Karol Wojtulewicz (P06)
-* 16:40–16:50 Olle Torstensson (P27)
 
 ### Session 3 (10:30–12:00, S2)
 
@@ -69,6 +68,7 @@ Here is a more detailed schedule for the project presentations:
 * 11:00–11:10 Fredrik Malmberg (P14)
 * 11:10–11:20 Anton Risberg Alaküla (P19)
 * 11:30–11:40 Adam Orucu and Franco Ruggeri (P17)
+* 11:40–12:00 Olle Torstensson (P27)
 
 ### Session 4 (10:30–12:00, S6)
 
