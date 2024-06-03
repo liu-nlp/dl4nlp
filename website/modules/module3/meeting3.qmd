@@ -12,7 +12,7 @@ The meeting will start with lunch at 12:00 on Monday, 3 June and end at 15:00 o
 |------|----------|
 | **Monday** | |
 | 12:00–13:00 | Lunch at [Kårallen](https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/karallen/), Gästmatsalen |
-| 13:00–14:30 | Review and discussion of the video material |
+| 13:00–14:30 | Review and discussion of the video material. [Challenge](https://github.com/liu-nlp/dl4nlp/tree/main/website/modules/module3/challenge) |
 | 14:30–15:00 | Fika |
 | 15:00–17:00 | Project presentations, Session 1 and Session 2 |
 | **Tuesday** | |
@@ -40,7 +40,7 @@ The meeting will start with lunch at 12:00 on Monday, 3 June and end at 15:00 o
 
 Here is a more detailed schedule for the project presentations:
 
-### Session 1 (15:00–17:00, S2)
+### Session 1 (15:00–17:00, S2, host: Marco)
 
 * 15:00–15:10 Victor Aregbede and Francisco Calatrava (P04)
 * 15:10–15:20 Amir Mohammad Karimi Mamaghan (P11)
@@ -51,7 +51,7 @@ Here is a more detailed schedule for the project presentations:
 * 16:30–16:40 Sofia Andersson (P03)
 * 16:40–16:50 Vincent Szolnoky (P23)
 
-### Session 2 (15:00–17:00, S6)
+### Session 2 (15:00–17:00, S6, host: Richard)
 
 * 15:00–15:10 Sonia Horchidan (P10)
 * 15:10–15:20 William Ljungbergh, Carl Lindström, and Adam Lilja (P13)
@@ -62,7 +62,7 @@ Here is a more detailed schedule for the project presentations:
 * 16:30–16:40 Josef Bengtson and Karol Wojtulewicz (P06)
 * 16:40–16:50 Anton Matsson (P15)
 
-### Session 3 (10:30–12:00, S2)
+### Session 3 (10:30–12:00, S2, host: Marco)
 
 * 10:30–10:40 William Ahlberg (P01)
 * 10:40–10:50 Niloofar Momeni and Anahita Baninajjar (P05)
@@ -70,7 +70,7 @@ Here is a more detailed schedule for the project presentations:
 * 11:10–11:20 Anton Risberg Alaküla (P19)
 * 11:30–11:40 Adam Orucu and Franco Ruggeri (P17)
 
-### Session 4 (10:30–12:00, S6)
+### Session 4 (10:30–12:00, S6, host: Richard)
 
 * 10:30–10:40 André Silva (P21)
 * 10:40–10:50 Ali Nouri, Malsha Ashani Mahawatta Dona, and Ranim Khojah (P12)

@@ -4,7 +4,7 @@ title: "Module 3"
 
 The topic of this module is structured prediction, an umbrella term for tasks that involve predicting structured outputs, rather than atomic values. We will covers two such tasks: sequence labelling, the task of mapping an input sequence to an output sequence, and dependency parsing, the task of mapping a sentence to a representation of its syntactic structure in the form of a dependency tree. The lectures introduce several technical approaches and concrete algorithms for these tasks.
 
-We will discuss the material during the third course meeting in Linköping. Please see the [meeting page](meeting3) for details.
+We will discuss the material during the third course meeting in Linköping. Please see the [meeting page](meeting3.qmd) for details.
 
 ## Unit 3-1: Sequence labelling
 
