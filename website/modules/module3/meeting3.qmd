@@ -16,7 +16,7 @@ The meeting will start with lunch at 12:00 on Monday, 3 June and end at 15:00 o
 | 14:30–15:00 | Fika |
 | 15:00–17:00 | Project presentations, Session 1 and Session 2 |
 | **Tuesday** | |
-| 09:00–10:00 | Exercise on structured prediction (TBD) |
+| 09:00–10:00 | Exercise: Named entity recognition ([link](https://drive.google.com/file/d/1U___PyxWOzRuDxnTDoeYoY2fCk-PD7P0/view?usp=sharing)) |
 | 10:00–10:30 | Fika |
 | 10:30–12:00 | Project presentations, Session 3 and Session 4 |
 | 12:00–13:00 | Lunch at [Pegs and Tails](https://www.pegsandtails.se) |
