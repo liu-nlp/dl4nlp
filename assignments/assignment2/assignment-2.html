@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DL4NLP - Module 3</title>
+<title>DL4NLP - Assignment 2: Retrieval-augmented language models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,14 +119,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../assignments/assignment1/index.html">
  <span class="dropdown-text">Assignment 1</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../assignments/assignment2/index.html">
- <span class="dropdown-text">Assignment 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../assignments/assignment3/index.html">
- <span class="dropdown-text">Assignment 3</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -150,15 +142,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#unit-3-1-sequence-labelling" id="toc-unit-3-1-sequence-labelling" class="nav-link active" data-scroll-target="#unit-3-1-sequence-labelling">Unit 3-1: Sequence labelling</a>
-  <ul class="collapse">
-  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
-  </ul></li>
-  <li><a href="#unit-3-2-dependency-parsing" id="toc-unit-3-2-dependency-parsing" class="nav-link" data-scroll-target="#unit-3-2-dependency-parsing">Unit 3-2: Dependency parsing</a>
-  <ul class="collapse">
-  <li><a href="#lecture-videos" id="toc-lecture-videos" class="nav-link" data-scroll-target="#lecture-videos">Lecture videos</a></li>
-  <li><a href="#reading-1" id="toc-reading-1" class="nav-link" data-scroll-target="#reading-1">Reading</a></li>
-  </ul></li>
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link active" data-scroll-target="#the-dataset">The dataset</a></li>
+  <li><a href="#step-1-evaluating-an-llm-on-natural-questions" id="toc-step-1-evaluating-an-llm-on-natural-questions" class="nav-link" data-scroll-target="#step-1-evaluating-an-llm-on-natural-questions">Step 1: Evaluating an LLM on Natural Questions</a></li>
+  <li><a href="#step-2-an-idealized-retrieval-augmented-llm" id="toc-step-2-an-idealized-retrieval-augmented-llm" class="nav-link" data-scroll-target="#step-2-an-idealized-retrieval-augmented-llm">Step 2: An idealized retrieval-augmented LLM</a></li>
+  <li><a href="#step-3-setting-up-the-retriever" id="toc-step-3-setting-up-the-retriever" class="nav-link" data-scroll-target="#step-3-setting-up-the-retriever">Step 3: Setting up the retriever</a></li>
+  <li><a href="#step-4-putting-the-pieces-together" id="toc-step-4-putting-the-pieces-together" class="nav-link" data-scroll-target="#step-4-putting-the-pieces-together">Step 4: Putting the pieces together</a></li>
   </ul>
 </nav>
     </div>
@@ -167,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Module 3</h1>
+<h1 class="title">Assignment 2: Retrieval-augmented language models</h1>
 </div>
 
 
@@ -184,84 +172,67 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The topic of this module is structured prediction, an umbrella term for tasks that involve predicting structured outputs, rather than atomic values. We will covers two such tasks: sequence labelling, the task of mapping an input sequence to an output sequence, and dependency parsing, the task of mapping a sentence to a representation of its syntactic structure in the form of a dependency tree. The lectures introduce several technical approaches and concrete algorithms for these tasks.</p>
-<p>We will discuss the material during the third course meeting in Linköping. Please see the <a href="../../modules/module3/meeting3.html">meeting page</a> for details.</p>
-<section id="unit-3-1-sequence-labelling" class="level2">
-<h2 class="anchored" data-anchor-id="unit-3-1-sequence-labelling">Unit 3-1: Sequence labelling</h2>
-<table class="table-striped table">
-<thead>
-<tr class="header">
-<th>Title</th>
-<th>Slides</th>
-<th>Video</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Introduction to sequence labelling</td>
-<td>[<a href="intro-to-sequence-labelling.pdf">slides</a>]</td>
-<td>[<a href="https://youtu.be/3L3SbPIFf6w">video</a>]</td>
-</tr>
-<tr class="even">
-<td>Approaches to sequence labelling</td>
-<td>[<a href="approaches-to-sequence-labelling.pdf">slides</a>]</td>
-<td>[<a href="https://youtu.be/N18QiGgYBpc">video</a>]</td>
-</tr>
-<tr class="odd">
-<td>The Viterbi algorithm</td>
-<td>[<a href="the-viterbi-algorithm.pdf">slides</a>]</td>
-<td>[<a href="https://youtu.be/jcm0J5S-o8c">video</a>]</td>
-</tr>
-</tbody>
-</table>
-<section id="reading" class="level3">
-<h3 class="anchored" data-anchor-id="reading">Reading</h3>
-<ul>
-<li>Eisenstein (2019), chapters 7–8, sections 2.3.1–2.3.2</li>
-</ul>
+<p>In the second assignment, we are going to use a large language model in a <strong>retrieval-augmented</strong> setup. As an application, we are going to consider a question answering task.</p>
+<p>You can use any LLMs you want in this assignment, but your solution must consider at least one open model (e.g.&nbsp;Mistral or one of the Llama models). Optionally, you may compare to a commercial model.</p>
+<section id="the-dataset" class="level1">
+<h1>The dataset</h1>
+<p>The dataset we will use in this assignment is a simplified version of <a href="https://ai.google.com/research/NaturalQuestions/">Natural Questions</a>, which was compiled by Google and consists of real search engine queries about factual questions.</p>
+<p>Download the assignment dataset <a href="https://www.cse.chalmers.se/~richajo/waspnlp2024/nq_simplified.val.tsv">here</a>. Then load the file using Pandas as follows:</p>
+<pre><code>nq_data = pd.read_csv('nq_simplified.val.tsv', sep='\t', header=None, names=['question', 'answer', 'gold_context'], quoting=3)</code></pre>
+<p>There are three columns: the question, the answer, and part of a Wikipedia page.</p>
 </section>
+<section id="step-1-evaluating-an-llm-on-natural-questions" class="level1">
+<h1>Step 1: Evaluating an LLM on Natural Questions</h1>
+<p>Load an LLM and explore different prompting strategies to try to make it answer the questions in the dataset. As a benchmark, you can use the ROUGE-1 precision/recall/F1 scores.</p>
+<pre><code>def rouge1(gold, predicted):
+  assert(len(gold) == len(predicted))
+  n_p = 0
+  n_g = 0
+  n_c = 0
+  for g, p in zip(gold, predicted):
+    g = set(cleanup(g).strip().split())
+    p = set(cleanup(p).strip().split())
+    n_g += len(g)
+    n_p += len(p)
+    n_c += len(p.intersection(g))
+  pr = n_c / n_p
+  re = n_c / n_g
+  if pr &gt; 0 and re &gt; 0:
+    f1 = 2*pr*re/(pr + re)
+  else:
+    f1 = 0.0
+  return pr, re, f1
+
+def cleanup(text):
+  text = text.replace(',', ' ')
+  text = text.replace('.', ' ')
+  return text</code></pre>
+<p>While developing, you should probably just use a small subset of the dataset.</p>
 </section>
-<section id="unit-3-2-dependency-parsing" class="level2">
-<h2 class="anchored" data-anchor-id="unit-3-2-dependency-parsing">Unit 3-2: Dependency parsing</h2>
-<p>This unit introduces <em>dependency parsing</em>, the task of mapping a natural language sentence into a formal representation of its syntactic structure in the form of a dependency tree.</p>
-<section id="lecture-videos" class="level3">
-<h3 class="anchored" data-anchor-id="lecture-videos">Lecture videos</h3>
-<table class="table-striped table">
-<thead>
-<tr class="header">
-<th>Title</th>
-<th>Slides</th>
-<th>Video</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Introduction to dependency parsing</td>
-<td>[<a href="intro-to-dependency-parsing.pdf">slides</a>]</td>
-<td>[<a href="https://youtu.be/XZQN1YVTs_I">video</a>]</td>
-</tr>
-<tr class="even">
-<td>The arc-standard algorithm</td>
-<td>[<a href="the-arc-standard-algorithm.pdf">slides</a>]</td>
-<td>[<a href="https://youtu.be/uBxTSIaUlgc">video</a>]</td>
-</tr>
-<tr class="odd">
-<td>Neural architectures for dependency parsing</td>
-<td>[<a href="neural-architectures-for-dependency-parsing.pdf">slides</a>]</td>
-<td>[<a href="https://youtu.be/tlqUN7ekLWE">video</a>]</td>
-</tr>
-</tbody>
-</table>
+<section id="step-2-an-idealized-retrieval-augmented-llm" class="level1">
+<h1>Step 2: An idealized retrieval-augmented LLM</h1>
+<p>The third column in the dataset (called <code>gold_context</code> above) contains a text fragment from a Wikipedia page, from which the answer can be deduced. Try out new prompts where you include this relevant context. How does this change the evaluation scores?</p>
 </section>
-<section id="reading-1" class="level3">
-<h3 class="anchored" data-anchor-id="reading-1">Reading</h3>
-<ul>
-<li>Eisenstein (2019), chapter 11</li>
-<li><a href="http://dx.doi.org/10.18653/v1/2021.eacl-main.270">Glavaš and Vulić (2021)</a></li>
-</ul>
+<section id="step-3-setting-up-the-retriever" class="level1">
+<h1>Step 3: Setting up the retriever</h1>
+<p>The setup in Step 2 is idealized, because we provided a context from Wikipedia where we know that the answer is avaialable. In real-world settings, this is not going to be the case.</p>
+<pre><code>!pip install faiss-gpu</code></pre>
+<p>To make this assignment work in Colab, we are going to work with a rather small set of passages. You can download these texts from <a href="https://www.cse.chalmers.se/~richajo/waspnlp2024/passages.txt">here</a>.</p>
+<p>To create the vector database, you can use the following code:</p>
+<pre><code>import faiss
+index = faiss.IndexFlatL2(embedded_passages.shape[1])
+index.add(embedded_passages)</code></pre>
+<p>To search for the nearest neighbors, we simply call <code>search</code> on the previously created database.</p>
+<pre><code>_, ix = index.search(embedded_question, 1)</code></pre>
+<p>As an example, what is the best hit for the question <code>where did the first african american air force unit train</code>?</p>
+</section>
+<section id="step-4-putting-the-pieces-together" class="level1">
+<h1>Step 4: Putting the pieces together</h1>
+<p>For each of the questions in the dataset we used in Steps 1–2, retrieve the best-matching passage from the vector database. Use this passage instead of the gold-standard passages you used in Step 2. Evaluate again.</p>
+<p>How does your result compare to those in Steps 1 and 2?</p>
+<p><strong>Hint.</strong> While you are developing, it might be useful to run the retriever once and for all and store the result.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -346,7 +317,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/liu-nlp\.github\.io\/dl4nlp\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
