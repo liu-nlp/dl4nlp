@@ -79,10 +79,10 @@ The third unit explores applications of large language models (LLMs) in various 
 
 | Title | Slides | Video |
 |---|---|---|
-| Introduction to generation tasks | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-311.pdf)] | [[video](https://youtu.be/rQgA09R8kSM)] |
-| Evaluation of generation systems | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-312.pdf)] | [[video](https://youtu.be/pJHmKn2FDRY)] |
+| Introduction to generation tasks | [[slides](slides-2020-intro-gen.pdf)] | [[video](https://youtu.be/rQgA09R8kSM)] |
+| Evaluation of generation systems | [[slides](slides-2020-eval-gen.pdf)] | [[video](https://youtu.be/pJHmKn2FDRY)] |
 | Summarization | [[slides](https://www.cse.chalmers.se/~richajo/dat450/lectures/l10/l10_1.pdf)] | [[video](https://youtu.be/EUJlrdJhBJg)] |
-| Dialogue | [[slides](https://raw.githubusercontent.com/liu-nlp/dl4nlp/main/slides/slides-2022-232.pdf)] | [[video](https://youtu.be/jWkQLVN3ixI)] |
+| Dialogue | [[slides](slides-2022-dialogue.pdf)] | [[video](https://youtu.be/jWkQLVN3ixI)] |
 : {.striped}
 
 ### Reading
